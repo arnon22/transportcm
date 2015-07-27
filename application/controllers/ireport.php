@@ -52,14 +52,12 @@ class Ireport extends CI_Controller
     public function index()
     {
 
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
 
 
             $i_rule = $this->session->userdata('user_cizacl_role_id');
 
-            if ($this->cizacl->check_isAllowed($i_rule, 'ireport'))
-            {
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
                 $h2_title = $this->lang->line('report_menu');
 
 
@@ -73,8 +71,7 @@ class Ireport extends CI_Controller
             } //end if
 
 
-        } else
-        {
+        } else {
             redirect('login', 'refresh');
         } //end if
 
@@ -133,14 +130,12 @@ class Ireport extends CI_Controller
         $car = $this->car->get_Allcar();
 
 
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
 
 
             $i_rule = $this->session->userdata('user_cizacl_role_id');
 
-            if ($this->cizacl->check_isAllowed($i_rule, 'ireport'))
-            {
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
                 $h2_title = $this->lang->line('report_menu');
 
                 //$factory = $this->factory->getFactory();
@@ -149,8 +144,7 @@ class Ireport extends CI_Controller
                 $this->load->model('report_model', 'report');
 
 
-                if (isset($_POST['submit']))
-                {
+                if (isset($_POST['submit'])) {
 
 
                     $factory_id = $this->input->post('factory');
@@ -179,8 +173,7 @@ class Ireport extends CI_Controller
                     $check_num = $this->report->check_order_report($factory_id, $carNumber, $start_date,
                         $end_date, $method);
 
-                    if ($check_num == 0 || $check_num == '')
-                    {
+                    if ($check_num == 0 || $check_num == '') {
                         $data_report = array(
                             'factory' => '',
                             'startDate' => '',
@@ -194,8 +187,7 @@ class Ireport extends CI_Controller
                         $report_status = "<div class=\"alert\">
   <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
   <strong>Warning!</strong> ไม่มีข้อมูลที่ร้องขอ</div>";
-                    } else
-                    {
+                    } else {
                         $data_report = array(
                             'factory' => $factory_id,
                             'startDate' => $start_date,
@@ -233,8 +225,7 @@ class Ireport extends CI_Controller
             } //end if
 
 
-        } else
-        {
+        } else {
             redirect('login', 'refresh');
 
         }
@@ -245,15 +236,13 @@ class Ireport extends CI_Controller
     public function report_order_month()
     {
         $this->load->model('report_model', 'report');
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
 
 
             $i_rule = $this->session->userdata('user_cizacl_role_id');
 
 
-            if ($this->cizacl->check_isAllowed($i_rule, 'ireport'))
-            {
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
                 $h2_title = $this->lang->line('report_menu');
                 $factory = $this->factory->getFactory();
                 $car_number = $this->car->get_Allcar();
@@ -262,8 +251,7 @@ class Ireport extends CI_Controller
 
                 $action = $this->input->post('submit');
 
-                if (isset($action) && $action != "")
-                {
+                if (isset($action) && $action != "") {
 
                     $factory_id = $this->input->post('factory');
                     $monthYear_post = $this->input->post('monthYear');
@@ -286,8 +274,7 @@ class Ireport extends CI_Controller
                         'method' => "report");
 
 
-                    if ($checknum_report == "" || $checknum_report == 0)
-                    {
+                    if ($checknum_report == "" || $checknum_report == 0) {
 
                         $data_report = array(
                             'factory_id' => "",
@@ -302,8 +289,7 @@ class Ireport extends CI_Controller
   <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
   <strong>Warning!</strong> ไม่มีข้อมูลที่ร้องขอ</div>";
 
-                    } else
-                    {
+                    } else {
                         $data_report = array(
                             'factory_id' => $factory_id,
                             'selectMonth' => $selectMonth,
@@ -339,8 +325,7 @@ class Ireport extends CI_Controller
             } //end if
 
 
-        } else
-        {
+        } else {
             redirect('login', 'refresh');
 
         }
@@ -351,15 +336,13 @@ class Ireport extends CI_Controller
     public function report_summary_order_month()
     {
         $this->load->model('report_model', 'report');
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
 
 
             $i_rule = $this->session->userdata('user_cizacl_role_id');
 
 
-            if ($this->cizacl->check_isAllowed($i_rule, 'ireport'))
-            {
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
                 $h2_title = $this->lang->line('report_menu');
                 $factory = $this->factory->getFactory();
                 // $thaimonth = $this->factory->getThaimonth();
@@ -367,8 +350,7 @@ class Ireport extends CI_Controller
 
                 $action = $this->input->post('submit');
 
-                if (isset($action) && $action != "")
-                {
+                if (isset($action) && $action != "") {
 
                     $factory_id = $this->input->post('factory');
                     $monthYear_post = $this->input->post('monthYear');
@@ -389,8 +371,7 @@ class Ireport extends CI_Controller
                         'method' => "report");
 
 
-                    if ($checknum_report == "" || $checknum_report == 0)
-                    {
+                    if ($checknum_report == "" || $checknum_report == 0) {
 
                         $data_report = array(
                             'factory_id' => "",
@@ -404,8 +385,7 @@ class Ireport extends CI_Controller
   <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
   <strong>Warning!</strong> ไม่มีข้อมูลที่ร้องขอ</div>";
 
-                    } else
-                    {
+                    } else {
                         $data_report = array(
                             'factory_id' => $factory_id,
                             'selectMonth' => $selectMonth,
@@ -439,8 +419,7 @@ class Ireport extends CI_Controller
             } //end if
 
 
-        } else
-        {
+        } else {
             redirect('login', 'refresh');
 
         }
@@ -452,14 +431,12 @@ class Ireport extends CI_Controller
 
         $factory = $this->factory->getFactory();
         $car = $this->car->get_Allcar();
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
 
 
             $i_rule = $this->session->userdata('user_cizacl_role_id');
 
-            if ($this->cizacl->check_isAllowed($i_rule, 'ireport'))
-            {
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
                 $h2_title = $this->lang->line('report_menu');
 
                 $this->load->library('cmdf');
@@ -484,8 +461,7 @@ class Ireport extends CI_Controller
             } //end if
 
 
-        } else
-        {
+        } else {
             redirect('login', 'refresh');
 
         }
@@ -494,14 +470,12 @@ class Ireport extends CI_Controller
 
     public function report_car_driver()
     {
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
 
 
             $i_rule = $this->session->userdata('user_cizacl_role_id');
 
-            if ($this->cizacl->check_isAllowed($i_rule, 'ireport'))
-            {
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
                 $h2_title = $this->lang->line('report_menu');
                 $factory = $this->factory->getFactory();
                 $thaimonth = $this->factory->getThaimonth();
@@ -521,8 +495,7 @@ class Ireport extends CI_Controller
             } //end if
 
 
-        } else
-        {
+        } else {
             redirect('login', 'refresh');
 
         }
@@ -534,58 +507,54 @@ class Ireport extends CI_Controller
     {
 
         $factory = $this->factory->getFactory();
-        
-        if ($this->session->userdata('user_name'))
-        {
+
+        if ($this->session->userdata('user_name')) {
             $this->load->model("report_model", "report");
 
             $i_rule = $this->session->userdata('user_cizacl_role_id');
 
-            if ($this->cizacl->check_isAllowed($i_rule, 'ireport'))
-            {
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
                 $h2_title = $this->lang->line('report_menu');
                 //display Remark
-                
+
                 $note = "income";
                 $show_note = $this->report->display_note($note);
 
                 //display
                 //$c_date = "01/01/2014";
 
-                if (!empty($_REQUEST['submit']))
-                {
-                    $select_note ="";
-                    $check ="";
+                if (!empty($_REQUEST['submit'])) {
+                    $select_note = "";
+                    $check = "";
 
                     $startDate = $this->input->post('startDate'); //d-m-Y
                     $endDate = $this->input->post('endDate'); //d-m-Y
                     $factory_id = $this->input->post('factory');
-                    $select_note = $this->input->post('income_remark');#20/07/2015 add Remark filter
+                    $select_note = $this->input->post('income_remark'); #20/07/2015 add Remark filter
                     /*Y-m-d*/
                     $st_date = $this->conv_date->eng2engDate($startDate);
                     $et_date = $this->conv_date->eng2engDate($endDate);
 
-                   // $check = $this->report->check_numreport($factory_id, $st_date, $et_date);
-                    $check = $this->report->check_numreport($factory_id, $st_date, $et_date,$select_note);
-                   
+                    // $check = $this->report->check_numreport($factory_id, $st_date, $et_date);
+                    $check = $this->report->check_numreport($factory_id, $st_date, $et_date, $select_note);
+
 
                     $income_data = array(
                         'start_date' => $st_date,
                         'end_date' => $et_date,
                         'factory_id' => $factory_id,
-                        'select_note'=>$select_note,
+                        'select_note' => $select_note,
                         'method' => 'report');
 
                     $this->session->set_userdata($income_data);
 
-                    if ($check == "0" || $check_report = '')
-                    {
+                    if ($check == "0" || $check_report = '') {
                         #Unset Sesssion
                         $income_data = array(
                             'start_date' => '',
                             'end_date' => '',
                             'factory_id' => '',
-                            'select_note'=>'',
+                            'select_note' => '',
                             'method' => '');
                         $this->session->unset_userdata($income_data);
 
@@ -593,8 +562,7 @@ class Ireport extends CI_Controller
   <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
   <strong>Warning!</strong> ไม่มีข้อมูลที่ร้องขอ.
 </div>";
-                    } else
-                    {
+                    } else {
                         $report_status = "<div class=\"alert alert-success\">
   <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
   <strong>Warning!</strong> มีข้อมูลที่ร้องขอทั้งหมด $check รายการ <a href=\"gen_income_report\" target=\"_blank\">" .
@@ -613,8 +581,8 @@ class Ireport extends CI_Controller
                     'output' => "order_report",
                     'factory' => $factory,
                     'h2_title' => $h2_title,
-                    'remark'=>$show_note,
-                    'income_remark'=>$select_note,
+                    'remark' => $show_note,
+                    'income_remark' => $select_note,
                     'report_status' => $report_status,
                     'date' => $date,
                     'out' => $out));
@@ -622,8 +590,7 @@ class Ireport extends CI_Controller
             } //end if
 
 
-        } else
-        {
+        } else {
             redirect('login', 'refresh');
 
         }
@@ -639,8 +606,7 @@ class Ireport extends CI_Controller
         $this->load->model("report_model", "report");
 
         $method = $this->session->userdata('method');
-        if (isset($method) && $method == "report")
-        {
+        if (isset($method) && $method == "report") {
 
 
             $start_Date = $this->session->userdata('start_date');
@@ -697,10 +663,10 @@ class Ireport extends CI_Controller
             $this->pdf->Ln();
 
 
-            $check_report = $this->report->check_numreport($factory_id, $start_Date, $end_Date,$select_note);
+            $check_report = $this->report->check_numreport($factory_id, $start_Date, $end_Date,
+                $select_note);
 
-            if ($check_report == '0')
-            {
+            if ($check_report == '0') {
 
 
                 echo "<script>
@@ -712,15 +678,12 @@ alert('There are no fields to generate a report');
                 exit();
 
 
-            } else
-            {
+            } else {
                 //$result = $this->report->report_income($factory_id, $start_Date, $end_Date);
                 $result = $this->report->report_income($factory_id, $start_Date, $end_Date);
-                
 
 
-                if ($result)
-                {
+                if ($result) {
                     //income_date,factory_code,ref_number,income_details,total_amount,note
                     $i = 0;
                     $p = $this->pdf->totalpage();
@@ -729,8 +692,7 @@ alert('There are no fields to generate a report');
 
                     $sumline_amount = 0;
 
-                    foreach ($result as $row)
-                    {
+                    foreach ($result as $row) {
 
                         $incom_date = $this->conv_date->thaiDate2($row['income_date']);
                         $ref_number = iconv('utf-8', 'tis-620', $row['ref_number']);
@@ -773,8 +735,7 @@ alert('There are no fields to generate a report');
                             "$remark"));
 
 
-                        if ($i == 48)
-                        {
+                        if ($i == 48) {
 
                             $sub_total = number_format($sumline_amount, 2, '.', ',');
 
@@ -811,7 +772,7 @@ alert('There are no fields to generate a report');
                             $this->pdf->SetFont('THNiramitAS', '', 12);
                             $this->pdf->SetFillColor(95, 158, 160); //$this->pdf->SetFillColor(200,220,255);
                             $this->pdf->Cell(20, 5, $Date_title, 1, 0, "C", true);
-                            $this->pdf->Cell(15, 5, $factory_title, 1, 0, "C", true);                          
+                            $this->pdf->Cell(15, 5, $factory_title, 1, 0, "C", true);
                             $this->pdf->Cell(100, 5, $List_title, 1, 0, "C", true);
                             $this->pdf->Cell(20, 5, $Amount_title, 1, 0, "C", true);
                             $this->pdf->Cell(45, 5, $Remark_title, 1, 0, "C", true);
@@ -824,8 +785,7 @@ alert('There are no fields to generate a report');
                     } // end for each
                 } // end if
 
-                if ('{nb}' == $p)
-                {
+                if ('{nb}' == $p) {
                     $sub_total = number_format($sumline_amount, 2, '.', ',');
                     $this->pdf->SetFillColor(220, 220, 255); //$this->pdf->SetFillColor(200,220,255);
                     $this->pdf->Cell(135, 5, $sub_total_title, 1, 0, "C", true);
@@ -856,8 +816,7 @@ alert('There are no fields to generate a report');
             } // End if
 
 
-        } else
-        {
+        } else {
             redirect("ireport/report_income", "refresh");
         } //end if
 
@@ -870,8 +829,7 @@ alert('There are no fields to generate a report');
     public function report_expense()
     {
 
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
             $car = $this->car->get_Allcar();
 
             $factory = $this->factory->getFactory();
@@ -881,16 +839,14 @@ alert('There are no fields to generate a report');
 
             $i_rule = $this->session->userdata('user_cizacl_role_id');
 
-            if ($this->cizacl->check_isAllowed($i_rule, 'ireport'))
-            {
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
                 $h2_title = $this->lang->line('report_menu');
 
 
                 //display
                 //$c_date = "01/01/2014";
 
-                if (!empty($_REQUEST['submit']))
-                {
+                if (!empty($_REQUEST['submit'])) {
 
 
                     $startDate = $this->conv_date->eng2engDate($this->input->post('startDate'));
@@ -915,14 +871,12 @@ alert('There are no fields to generate a report');
                         $expenseType, $remark, $car_number, $car_remark);
 
 
-                    if ($check == 0)
-                    {
+                    if ($check == 0) {
                         $report_status = "<div class=\"alert\">
   <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
   <strong>Warning!</strong> ไม่มีข้อมูลที่ร้องขอ.
 </div>";
-                    } else
-                    {
+                    } else {
 
                         $newdata = array(
                             'factory' => $factory_id,
@@ -966,8 +920,7 @@ alert('There are no fields to generate a report');
             } //end if
 
 
-        } else
-        {
+        } else {
             redirect('login', 'refresh');
 
         }
@@ -1001,36 +954,30 @@ alert('There are no fields to generate a report');
 
 
         //Check Num Report
-        if ($expenseType == "normal")
-        {
+        if ($expenseType == "normal") {
 
             //$num_expense = $this->report->check_numreport_expense($factory, $start_date,$end_date,$expenseType,$remark);
             $num_expense = $this->report->check_numreport_expense($factory, $startDate, $endDate,
                 $expenseType, $remark, $car_number, $car_remark);
-        } else
-        {
+        } else {
             //$num_expense = $this->report->check_numreport_expense($factory, $start_date, $end_date,$expenseType,$remark,$car_number);
             $num_expense = $this->report->check_numreport_expense($factory, $startDate, $endDate,
                 $expenseType, $remark, $car_number, $car_remark);
         }
 
 
-        if ($num_expense == 0 || $num_expense == '' || $num_expense == '0')
-        {
+        if ($num_expense == 0 || $num_expense == '' || $num_expense == '0') {
 
             $status = array("STATUS" => "false");
 
 
-        } else
-        {
-            if ($expenseType == "normal")
-            {
+        } else {
+            if ($expenseType == "normal") {
 
                 //Result Expense form Post data form
                 $rs = $this->report->report_expense($factory, $startDate, $endDate, $expenseType,
                     $remark, $car_number, $car_remark);
-            } else
-            {
+            } else {
                 $rs = $this->report->report_expense($factory, $startDate, $endDate, $expenseType,
                     $remark, $car_number, $car_remark);
             }
@@ -1065,8 +1012,7 @@ alert('There are no fields to generate a report');
         $this->load->model("report_model", "report");
         $this->load->helper('download');
 
-        if ($formAction == 'send')
-        {
+        if ($formAction == 'send') {
 
             $factory_id = intval($this->input->post('factory'));
             $startDate = $this->input->post('startDate'); //format '00-00-0000'
@@ -1082,36 +1028,30 @@ alert('There are no fields to generate a report');
 
 
             //Check Num Report
-            if ($expenseType == "normal")
-            {
+            if ($expenseType == "normal") {
 
                 //$num_expense = $this->report->check_numreport_expense($factory, $start_date,$end_date,$expenseType,$remark);
                 $num_expense = $this->report->check_numreport_expense($factory, $start_date, $end_date,
                     $expenseType, $remark, $car_number, $car_remark);
-            } else
-            {
+            } else {
                 //$num_expense = $this->report->check_numreport_expense($factory, $start_date, $end_date,$expenseType,$remark,$car_number);
                 $num_expense = $this->report->check_numreport_expense($factory, $start_date, $end_date,
                     $expenseType, $remark, $car_number, $car_remark);
             }
 
 
-            if ($num_expense == 0 || $num_expense == '' || $num_expense == '0')
-            {
+            if ($num_expense == 0 || $num_expense == '' || $num_expense == '0') {
 
                 $status = array("STATUS" => "false");
 
 
-            } else
-            {
-                if ($expenseType == "normal")
-                {
+            } else {
+                if ($expenseType == "normal") {
 
                     //Result Expense form Post data form
                     $rs = $this->report->report_expense($factory, $start_date, $end_date, $expenseType,
                         $remark);
-                } else
-                {
+                } else {
 
                 }
 
@@ -1141,14 +1081,12 @@ alert('There are no fields to generate a report');
 
     public function report_expense_car()
     {
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
 
 
             $i_rule = $this->session->userdata('user_cizacl_role_id');
 
-            if ($this->cizacl->check_isAllowed($i_rule, 'ireport'))
-            {
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
                 $h2_title = $this->lang->line('report_menu');
 
 
@@ -1162,25 +1100,22 @@ alert('There are no fields to generate a report');
             } //end if
 
 
-        } else
-        {
+        } else {
             redirect('login', 'refresh');
 
         }
 
     } // report_expense_car
 
-    public function report_oli()
-    {
-        $this->load->model('customers_model', 'customer');
-        $this->load->model('report_model', 'report');
 
-        if ($this->session->userdata('user_name'))
-        {
+public function oilexpenditure_report(){
+    $this->load->model('customers_model', 'customer');
+    $this->load->model('report_model', 'report');
+    
+    if ($this->session->userdata('user_name')) {
             $i_rule = $this->session->userdata('user_cizacl_role_id');
 
-            if ($this->cizacl->check_isAllowed($i_rule, 'ireport'))
-            {
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
                 $h2_title = $this->lang->line('report_menu');
 
                 $this->session->set_userdata('oilType', "receive");
@@ -1192,8 +1127,7 @@ alert('There are no fields to generate a report');
                 $car_number_form = $this->car->get_Allcar();
 
 
-                if (!empty($_POST['submit']))
-                {
+                if (!empty($_POST['submit'])) {
                     //* Receive POST Value
                     $oilType = $this->input->post('oilType');
                     $factory = $this->input->post('factory');
@@ -1221,8 +1155,7 @@ alert('There are no fields to generate a report');
 
                     $check = $this->report->check_oil_receive_sell_number($factory, $oilType, $car_number,
                         $customer, $start_date, $end_date);
-                    if ($check == '0')
-                    {
+                    if ($check == '0') {
                         $data = array(
                             'oiltype' => "",
                             'factory' => "",
@@ -1238,8 +1171,7 @@ alert('There are no fields to generate a report');
   <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
   <strong>Warning!</strong> ไม่มีข้อมูลที่ร้องขอ.
 </div>";
-                    } else
-                    {
+                    } else {
 
                         $this->session->set_userdata($data);
 
@@ -1274,24 +1206,235 @@ alert('There are no fields to generate a report');
             } //end if
 
 
-        } else
-        {
+        } else {
+            redirect('login', 'refresh');
+
+        }
+    
+    
+} // end of function oilexpenditure_report()
+
+
+    public function oilrecive_report()
+    {
+        $this->load->model('customers_model', 'customer');
+        $this->load->model('report_model', 'report');
+
+        if ($this->session->userdata('user_name')) {
+            $i_rule = $this->session->userdata('user_cizacl_role_id');
+
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
+                $h2_title = $this->lang->line('report_menu');
+
+                $this->session->set_userdata('oilType', "receive");
+
+
+                // Set fill form
+                $factory_form = $this->factory->getFactory();
+                $customer_form = $this->customer->getCustomer_oil();
+                $car_number_form = $this->car->get_Allcar();
+
+
+                if (!empty($_POST['submit'])) {
+                    //* Receive POST Value
+                    $oilType = $this->input->post('oilType');
+                    $factory = $this->input->post('factory');
+                    $startDate = $this->input->post('startDate'); // d-m-Y
+                    $endDate = $this->input->post('endDate'); // d-m-Y
+                    $customer = $this->input->post('customer');
+                    $car_number = $this->input->post('car_number');
+
+                    //Convert Date y-m-d
+                    $start_date = $this->conv_date->eng2engDate($startDate);
+                    $end_date = $this->conv_date->eng2engDate($endDate);
+
+                    $method = "check";
+
+
+                    $data = array(
+                        'oiltype' => $oilType,
+                        'factory' => $factory,
+                        'startdate' => $start_date,
+                        'enddate' => $end_date,
+                        'customer' => $customer,
+                        'car_number' => $car_number,
+                        'method' => "report");
+
+
+                    $check = $this->report->check_oil_receive_sell_number($factory, $oilType, $car_number,
+                        $customer, $start_date, $end_date);
+                    if ($check == '0') {
+                        $data = array(
+                            'oiltype' => "",
+                            'factory' => "",
+                            'startdate' => "",
+                            'enddate' => "",
+                            'customer' => "",
+                            'car_number' => "",
+                            'method' => "");
+
+                        $this->session->unset_userdata($data);
+
+                        $report_status = "<div class=\"alert\">
+  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
+  <strong>Warning!</strong> ไม่มีข้อมูลที่ร้องขอ.
+</div>";
+                    } else {
+
+                        $this->session->set_userdata($data);
+
+
+                        $report_status = "<div class=\"alert alert-success\">
+  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
+  <strong>Warning!</strong> มีข้อมูลที่ร้องขอทั้งหมด $check รายการ <a href=\"print_receive_pay_oil\" target=\"_blank\">" .
+                            img('Printer-icon32.png', array("title" => "Click เพื่อพิมพ์รายงาน")) . "</a>.
+</div>";
+                    } // End if else check
+
+
+                    // $report_status ="OK".$oilType;
+
+                    $this->session->set_userdata('oilType', $oilType);
+
+                }
+
+
+                //display
+                $viewpage = "oil-recived-report";
+                $this->show_report_form($viewpage, (object)array(
+                    'output' => "order_report",
+                    'h2_title' => $h2_title,
+                    'report_status' => $report_status,
+                    'factory' => $factory_form,
+                    'customer' => $customer_form,
+                    'car_number' => $car_number_form,
+                    'data' => $data,
+                    'out' => $out));
+
+            } //end if
+
+
+        } else {
             redirect('login', 'refresh');
 
         }
 
-    } // report_expense_car
+    } //end of function oilrecive_report
+
+    public function report_oli()
+    {
+        $this->load->model('customers_model', 'customer');
+        $this->load->model('report_model', 'report');
+
+        if ($this->session->userdata('user_name')) {
+            $i_rule = $this->session->userdata('user_cizacl_role_id');
+
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
+                $h2_title = $this->lang->line('report_menu');
+
+                $this->session->set_userdata('oilType', "receive");
+
+
+                // Set fill form
+                $factory_form = $this->factory->getFactory();
+                $customer_form = $this->customer->getCustomer_oil();
+                $car_number_form = $this->car->get_Allcar();
+
+
+                if (!empty($_POST['submit'])) {
+                    //* Receive POST Value
+                    $oilType = $this->input->post('oilType');
+                    $factory = $this->input->post('factory');
+                    $startDate = $this->input->post('startDate'); // d-m-Y
+                    $endDate = $this->input->post('endDate'); // d-m-Y
+                    $customer = $this->input->post('customer');
+                    $car_number = $this->input->post('car_number');
+
+                    //Convert Date y-m-d
+                    $start_date = $this->conv_date->eng2engDate($startDate);
+                    $end_date = $this->conv_date->eng2engDate($endDate);
+
+                    $method = "check";
+
+
+                    $data = array(
+                        'oiltype' => $oilType,
+                        'factory' => $factory,
+                        'startdate' => $start_date,
+                        'enddate' => $end_date,
+                        'customer' => $customer,
+                        'car_number' => $car_number,
+                        'method' => "report");
+
+
+                    $check = $this->report->check_oil_receive_sell_number($factory, $oilType, $car_number,
+                        $customer, $start_date, $end_date);
+                    if ($check == '0') {
+                        $data = array(
+                            'oiltype' => "",
+                            'factory' => "",
+                            'startdate' => "",
+                            'enddate' => "",
+                            'customer' => "",
+                            'car_number' => "",
+                            'method' => "");
+
+                        $this->session->unset_userdata($data);
+
+                        $report_status = "<div class=\"alert\">
+  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
+  <strong>Warning!</strong> ไม่มีข้อมูลที่ร้องขอ.
+</div>";
+                    } else {
+
+                        $this->session->set_userdata($data);
+
+
+                        $report_status = "<div class=\"alert alert-success\">
+  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
+  <strong>Warning!</strong> มีข้อมูลที่ร้องขอทั้งหมด $check รายการ <a href=\"print_receive_pay_oil\" target=\"_blank\">" .
+                            img('Printer-icon32.png', array("title" => "Click เพื่อพิมพ์รายงาน")) . "</a>.
+</div>";
+                    } // End if else check
+
+
+                    // $report_status ="OK".$oilType;
+
+                    $this->session->set_userdata('oilType', $oilType);
+
+                }
+
+
+                //display
+                $viewpage = "oil-income-expense";
+                $this->show_report_form($viewpage, (object)array(
+                    'output' => "order_report",
+                    'h2_title' => $h2_title,
+                    'report_status' => $report_status,
+                    'factory' => $factory_form,
+                    'customer' => $customer_form,
+                    'car_number' => $car_number_form,
+                    'data' => $data,
+                    'out' => $out));
+
+            } //end if
+
+
+        } else {
+            redirect('login', 'refresh');
+
+        }
+
+    } //end of report_oli
 
     public function oil_stock()
     {
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
 
 
             $i_rule = $this->session->userdata('user_cizacl_role_id');
 
-            if ($this->cizacl->check_isAllowed($i_rule, 'ireport'))
-            {
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
                 //Load Model
                 $this->load->model('report_model', 'report');
                 $h2_title = $this->lang->line('report_menu');
@@ -1300,8 +1443,7 @@ alert('There are no fields to generate a report');
                 $myYear = $this->factory->getYearly();
 
 
-                if (!empty($_POST['submit']))
-                {
+                if (!empty($_POST['submit'])) {
                     // var_dump($_POST);
                     $monthYear = $this->input->post('monthYear');
                     $y_d = $this->conv_date->yearMonth($monthYear);
@@ -1321,8 +1463,7 @@ alert('There are no fields to generate a report');
                         'monthYear' => $monthYear);
                     $this->session->set_userdata($data_oilstock);
 
-                    if ($check == '0')
-                    {
+                    if ($check == '0') {
 
                         $data_oilstock = array(
                             'oilstock_month' => '',
@@ -1335,8 +1476,7 @@ alert('There are no fields to generate a report');
   <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
   <strong>Warning!</strong> ไม่มีข้อมูลที่ร้องขอ.
 </div>";
-                    } else
-                    {
+                    } else {
 
 
                         $report_status = "มีข้อมูล" . $check . "รายการ";
@@ -1368,8 +1508,7 @@ alert('There are no fields to generate a report');
             } //end if
 
 
-        } else
-        {
+        } else {
             redirect('login', 'refresh');
 
         }
@@ -1384,8 +1523,7 @@ alert('There are no fields to generate a report');
         $this->load->model('customers_model', 'customer');
 
 
-        if ($this->session->userdata('method') == "report")
-        {
+        if ($this->session->userdata('method') == "report") {
 
             /* Data from  Session
             $data = array(
@@ -1407,30 +1545,24 @@ alert('There are no fields to generate a report');
             $car_number = $this->session->userdata('car_number');
             $method = $this->session->userdata('method');
 
-            if ($factory == "All")
-            {
+            if ($factory == "All") {
                 $factory_name = "ทั้งหมด";
-            } else
-            {
+            } else {
                 $factory_name = $this->factory->getNamefactory($factory);
             }
 
 
             //**/
-            if ($oiltype == 'receive')
-            {
+            if ($oiltype == 'receive') {
                 $head_report = iconv('utf-8', 'tis-620', "รายงานรับน้ำมัน $factory_name");
-            } else
-            {
+            } else {
                 $head_report = iconv('utf-8', 'tis-620', "รายงานจ่ายน้ำมัน $factory_name");
             }
 
 
-            if ($customer == "All")
-            {
+            if ($customer == "All") {
                 $left_report = "ลูกค้า : ทั้งหมด";
-            } else
-            {
+            } else {
                 $left_report = "ลูกค้า : " . $this->customer->getCustomer_name($customer);
             }
             $right_report = "วันที่  " . $this->conv_date->DateThai2($startdate) . " ถึง " .
@@ -1493,18 +1625,15 @@ alert('There are no fields to generate a report');
 
             $i = 0;
 
-            foreach ($result as $row)
-            {
+            foreach ($result as $row) {
 
                 $i = $i + 1;
 
-                if ($oiltype == 'receive')
-                {
+                if ($oiltype == 'receive') {
                     $oil = intval($row['receive_oil']);
                     $price = intval($row['receive_price']);
                     $amount = intval($row['receive_amount']);
-                } else
-                {
+                } else {
                     $oil = intval($row['sell_oil']);
                     $price = intval($row['sell_price']);
                     $amount = intval($row['sell_amount']);
@@ -1533,8 +1662,7 @@ alert('There are no fields to generate a report');
                 $this->pdf->Cell(35, 5, $i, 1, 0, "C");
                 $this->pdf->Ln();
 
-                if ($i == 48)
-                {
+                if ($i == 48) {
                     $i = 0;
                     // Total
                     $this->pdf->Ln(1);
@@ -1594,8 +1722,7 @@ alert('There are no fields to generate a report');
 
             } //End foreach
 
-            if ('{nb}' == $p)
-            {
+            if ('{nb}' == $p) {
                 // Total
                 $this->pdf->Ln(1);
                 $this->pdf->SetFillColor(192, 192, 192);
@@ -1634,16 +1761,14 @@ alert('There are no fields to generate a report');
     public function print_orders_by_month_summary_report()
     {
 
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
             $this->load->model('report_model', 'report');
             $this->load->model('factory_model', 'factory');
             $this->load->library('mycompany');
             $this->load->model('company_model', 'company');
 
 
-            if ($this->session->userdata('method') == "report")
-            {
+            if ($this->session->userdata('method') == "report") {
                 /**
                  * $data_report = array(
                  * 'factory_id' => $factory_id,
@@ -1660,11 +1785,9 @@ alert('There are no fields to generate a report');
                 $selectMonth = $this->session->userdata('selectMonth');
                 $selectYear = $this->session->userdata('selectYear');
 
-                if ($factory_id == "All")
-                {
+                if ($factory_id == "All") {
                     $factory_name = "ทั้งหมด";
-                } else
-                {
+                } else {
                     $factory_name = $this->factory->getNamefactory($factory_id);
                 }
 
@@ -1729,14 +1852,12 @@ alert('There are no fields to generate a report');
                 //$date2 = "";
                 $i = 0;
 
-                if ($this->session->userdata('mydate'))
-                {
+                if ($this->session->userdata('mydate')) {
                     $this->session->unset_userdata('mydate');
                 }
 
 
-                foreach ($date_rs as $rs)
-                {
+                foreach ($date_rs as $rs) {
                     $data1[$rs['inday']][] = array(
                         'order_date' => $rs['order_date'],
                         'distance_code' => $rs['distance_code'],
@@ -1752,11 +1873,9 @@ alert('There are no fields to generate a report');
                 $total_price = 0;
                 $total_vat7 = 0;
                 $total_vat3 = 0;
-                foreach ($data1 as $key => $val)
-                {
+                foreach ($data1 as $key => $val) {
                     //$this->pdf->Cell(35, 5, iconv('utf-8', 'tis-620', $key), 1, 0, "C");
-                    foreach ($val as $rs)
-                    {
+                    foreach ($val as $rs) {
 
                         $sum_price = $rs['sum_price'];
                         $sub_vat7 = ($sum_price) * 0.07;
@@ -1818,14 +1937,12 @@ alert('There are no fields to generate a report');
 
                 $this->pdf->Output();
 
-            } else
-            {
+            } else {
                 redirect("ireport/report_order_month", "refresh");
             } //end if else
 
 
-        } else
-        {
+        } else {
             redirect('login', 'refresh');
         }
 
@@ -1838,14 +1955,12 @@ alert('There are no fields to generate a report');
     public function print_orders_by_month()
     {
 
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
             $this->load->model('report_model', 'report');
             $this->load->model('factory_model', 'factory');
 
 
-            if ($this->session->userdata('method') == "report")
-            {
+            if ($this->session->userdata('method') == "report") {
                 /**
                  * $data_report = array(
                  * 'factory_id' => $factory_id,
@@ -1863,19 +1978,15 @@ alert('There are no fields to generate a report');
                 $selectYear = $this->session->userdata('selectYear');
                 $carNumber = $this->session->userdata('carNumber');
 
-                if ($factory_id == "All")
-                {
+                if ($factory_id == "All") {
                     $factory_name = "ทั้งหมด";
-                } else
-                {
+                } else {
                     $factory_name = $this->factory->getNamefactory($factory_id);
                 }
 
-                if ($carNumber == "All")
-                {
+                if ($carNumber == "All") {
                     $car_number = "ทั้งหมด";
-                } else
-                {
+                } else {
                     $car_number = $this->car->getCar_number($carNumber);
                 }
 
@@ -1945,14 +2056,12 @@ alert('There are no fields to generate a report');
                 //$date2 = "";
                 $i = 0;
 
-                if ($this->session->userdata('mydate'))
-                {
+                if ($this->session->userdata('mydate')) {
                     $this->session->unset_userdata('mydate');
                 }
 
 
-                foreach ($date_rs as $rs)
-                {
+                foreach ($date_rs as $rs) {
                     $data1[$rs['inday']][] = array(
                         'order_date' => $rs['order_date'],
                         'distance_code' => $rs['distance_code'],
@@ -1969,11 +2078,9 @@ alert('There are no fields to generate a report');
                 $total_cout_order = 0;
                 $total_count_cubic = 0;
                 $total_count_sumprice = 0;
-                foreach ($data1 as $key => $val)
-                {
+                foreach ($data1 as $key => $val) {
                     //$this->pdf->Cell(35, 5, iconv('utf-8', 'tis-620', $key), 1, 0, "C");
-                    foreach ($val as $rs)
-                    {
+                    foreach ($val as $rs) {
                         $sub_count_order = $sub_count_order + $rs['count_order'];
                         $sub_count_cubic = $sub_count_cubic + $rs['sum_cubic'];
                         $sub_count_sumprice = $sub_count_sumprice + $rs['sum_price'];
@@ -2035,14 +2142,12 @@ alert('There are no fields to generate a report');
 
                 $this->pdf->Output();
 
-            } else
-            {
+            } else {
                 redirect("ireport/report_order_month", "refresh");
             } //end if else
 
 
-        } else
-        {
+        } else {
             redirect('login', 'refresh');
         }
 
@@ -2060,11 +2165,9 @@ alert('There are no fields to generate a report');
         $factory_id = $this->session->userdata('oil_factory_id');
         //$monthYear = $this->session->userdata('monthYear');
 
-        if ($factory_id == "All")
-        {
+        if ($factory_id == "All") {
             $factory_name = "(ทั้งหมด)";
-        } else
-        {
+        } else {
             $factory_name = $this->factory->getNamefactory($factory_id);
         }
 
@@ -2072,8 +2175,7 @@ alert('There are no fields to generate a report');
         $lastdayOfmonth = date("$year-$month-t");
 
 
-        if (!empty($month) && !empty($year))
-        {
+        if (!empty($month) && !empty($year)) {
             /*Print PDF*/
 
 
@@ -2127,8 +2229,7 @@ alert('There are no fields to generate a report');
             $subtotal_receiveAmount = 0;
 
 
-            foreach ($result as $row)
-            {
+            foreach ($result as $row) {
 
                 $stock_date = date('d-m-Y', strtotime("{$row['stock_date']}"));
                 $oilType = $row['oil_type'];
@@ -2170,12 +2271,10 @@ alert('There are no fields to generate a report');
                 $this->pdf->Cell(20, 8, iconv('utf-8', 'tis-620', $stock_date), 1, 'C');
                 $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', "{$row['ref_number']}"), 1,
                     'C');
-                if ($oilType == "1")
-                {
+                if ($oilType == "1") {
                     $this->pdf->Cell(45, 8, iconv('utf-8', 'tis-620', "{$row['stock_details']}"), 1,
                         'C');
-                } else
-                {
+                } else {
                     $this->pdf->Cell(45, 8, iconv('utf-8', 'tis-620', "{$row['stock_details']} {$row['car_number']}"),
                         1, 'C');
                 }
@@ -2196,8 +2295,7 @@ alert('There are no fields to generate a report');
                 $this->pdf->Ln();
 
 
-                if ($i == 18)
-                {
+                if ($i == 18) {
 
                     //Sub Total
                     $this->pdf->SetX(5);
@@ -2264,8 +2362,7 @@ alert('There are no fields to generate a report');
 
             } // End for each
 
-            if ('{nb}' == $p)
-            {
+            if ('{nb}' == $p) {
 
                 $this->pdf->SetX(5);
                 $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
@@ -2329,8 +2426,7 @@ alert('There are no fields to generate a report');
 
             $this->pdf->output();
 
-        } else
-        {
+        } else {
             redirect('ireport/oil_stock', 'refresh');
             exit();
         }
@@ -2360,8 +2456,7 @@ alert('There are no fields to generate a report');
 
         $method = $this->session->userdata('method');
 
-        if ($method == "report")
-        {
+        if ($method == "report") {
             $factory_id = $this->session->userdata('factory');
             $car_id = $this->session->userdata('car_id');
             $start_date = $this->session->userdata('startDate');
@@ -2369,11 +2464,9 @@ alert('There are no fields to generate a report');
             $car_id = $this->session->userdata('carNumber');
 
             $head_report = iconv('utf-8', 'tis-620', 'รายงานสรุปการใช้รถโม่');
-            if ($factory_id == "All")
-            {
+            if ($factory_id == "All") {
                 $left_report = "ทั้งหมด";
-            } else
-            {
+            } else {
                 $left_report = $this->factory->getNamefactory($factory_id);
             }
 
@@ -2457,8 +2550,7 @@ alert('There are no fields to generate a report');
             $sub_usedoil = 0;
             $total_usedoil = 0;
 
-            foreach ($result as $row)
-            {
+            foreach ($result as $row) {
                 $order_date = date('Y-m-d', strtotime($row['order_date']));
                 $order_time = date('H:i:s', strtotime($row['order_date']));
                 $sub_usedoil = $sub_usedoil + $row['use_oil'];
@@ -2500,8 +2592,7 @@ alert('There are no fields to generate a report');
                 $this->pdf->Ln();
 
 
-                if ($r == 25)
-                {
+                if ($r == 25) {
 
                     $this->pdf->Cell(150, 6, iconv('utf-8', 'tis-620', "ผลรวมหน้านี้"), 1, 0, "C");
                     $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "$sub_cubicvalue"), 1, 0, "C");
@@ -2565,8 +2656,7 @@ alert('There are no fields to generate a report');
                 $r++;
             } //foreach
 
-            if ('{nb}' == $p)
-            {
+            if ('{nb}' == $p) {
                 $this->pdf->Cell(150, 6, iconv('utf-8', 'tis-620', "ผลรวมหน้านี้"), 1, 0, "C");
                 $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "$sub_cubicvalue"), 1, 0, "C");
                 $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
@@ -2592,8 +2682,7 @@ alert('There are no fields to generate a report');
             #display
             $this->pdf->output();
 
-        } else
-        {
+        } else {
             redirect("ireport/orders_report", 'refresh');
 
         }
@@ -2617,14 +2706,12 @@ alert('There are no fields to generate a report');
 
     public function taxsell()
     {
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
 
 
             $i_rule = $this->session->userdata('user_cizacl_role_id');
 
-            if ($this->cizacl->check_isAllowed($i_rule, 'ireport'))
-            {
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
                 //Load Model
                 $this->load->model('report_model', 'report');
                 $h2_title = $this->lang->line('report_menu');
@@ -2633,8 +2720,7 @@ alert('There are no fields to generate a report');
                 $myYear = $this->factory->getYearly();
 
 
-                if (!empty($_POST['submit']))
-                {
+                if (!empty($_POST['submit'])) {
                     // var_dump($_POST);
                     $monthYear = $this->input->post('monthYear');
                     $y_d = $this->conv_date->yearMonth($monthYear);
@@ -2658,8 +2744,7 @@ alert('There are no fields to generate a report');
 
                     $this->session->set_userdata($data_taxsell);
 
-                    if ($check == '0')
-                    {
+                    if ($check == '0') {
 
                         $data_taxsell = array(
                             'taxsell_month' => '',
@@ -2673,8 +2758,7 @@ alert('There are no fields to generate a report');
   <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
   <strong>Warning!</strong> ไม่มีข้อมูลที่ร้องขอ.
 </div>";
-                    } else
-                    {
+                    } else {
 
 
                         $report_status = "มีข้อมูล" . $check . "รายการ";
@@ -2708,8 +2792,7 @@ alert('There are no fields to generate a report');
             } //end if
 
 
-        } else
-        {
+        } else {
             redirect('login', 'refresh');
 
         }
@@ -2719,14 +2802,12 @@ alert('There are no fields to generate a report');
 
     public function taxbuy()
     {
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
 
 
             $i_rule = $this->session->userdata('user_cizacl_role_id');
 
-            if ($this->cizacl->check_isAllowed($i_rule, 'ireport'))
-            {
+            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
                 //Load Model
                 $this->load->model('report_model', 'report');
                 $h2_title = $this->lang->line('report_menu');
@@ -2735,8 +2816,7 @@ alert('There are no fields to generate a report');
                 $myYear = $this->factory->getYearly();
 
 
-                if (!empty($_POST['submit']))
-                {
+                if (!empty($_POST['submit'])) {
                     // var_dump($_POST);
                     $monthYear = $this->input->post('monthYear');
                     $y_d = $this->conv_date->yearMonth($monthYear);
@@ -2760,8 +2840,7 @@ alert('There are no fields to generate a report');
 
                     $this->session->set_userdata($data_taxsell);
 
-                    if ($check == '0')
-                    {
+                    if ($check == '0') {
 
                         $data_taxsell = array(
                             'taxsell_month' => '',
@@ -2775,8 +2854,7 @@ alert('There are no fields to generate a report');
   <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
   <strong>Warning!</strong> ไม่มีข้อมูลที่ร้องขอ.
 </div>";
-                    } else
-                    {
+                    } else {
 
 
                         $report_status = "มีข้อมูล" . $check . "รายการ";
@@ -2810,8 +2888,7 @@ alert('There are no fields to generate a report');
             } //end if
 
 
-        } else
-        {
+        } else {
             redirect('login', 'refresh');
 
         }
@@ -2826,19 +2903,16 @@ alert('There are no fields to generate a report');
 
         //$data_taxsell = array('taxsell_month' => $selectMonth, 'taxsell_year' => $selectYear,'tax_type'=>$tax_type,'method'=>'report');
 
-        if ($this->session->userdata('method') == "report")
-        {
+        if ($this->session->userdata('method') == "report") {
 
 
             $taxsell_month = $this->session->userdata('taxsell_month');
             $taxsell_year = $this->session->userdata('taxsell_year');
             $method = $this->session->userdata('method');
             $tax_type = $this->session->userdata('tax_type');
-            if ($tax_type == "taxsell")
-            {
+            if ($tax_type == "taxsell") {
                 $head_tax = "รายงานภาษีขาย";
-            } else
-            {
+            } else {
                 $head_tax = "รายงานภาษีซื้อ";
             }
 
@@ -2922,8 +2996,7 @@ alert('There are no fields to generate a report');
             $sum_totalvat = 0;
             $sum_totalamount = 0;
 
-            foreach ($result as $row)
-            {
+            foreach ($result as $row) {
 
                 $sum_totalprice = $sum_totalprice + $row['total_price'];
                 $sum_totalvat = $sum_totalvat + $row['total_vat'];

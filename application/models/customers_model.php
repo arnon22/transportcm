@@ -48,10 +48,9 @@ class Customers_model extends CI_Model{
     
     public function getCustomer_oil(){
         
-        $str = "SELECT customer_id,customers_name FROM transport_customers WHERE customer_type_id =2";
-        
-        $query = $this->db->query($str);        
-        
+       #$str = "SELECT customer_id,customers_name FROM transport_customers WHERE customer_type_id =2";
+        $str = "SELECT customer_id,customer_name FROM transport_oilcustomers WHERE status =1"; #Update Code 27/07/2015        
+        $query = $this->db->query($str);     
         return $query->result_array();
     }
     

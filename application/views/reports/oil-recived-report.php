@@ -21,7 +21,7 @@
         <div id="form-bg">        
         <form action="" method="POST" class="form-horizontal">
         
-        <legend>รายงาน รับ/จ่ายน้ำมัน</legend>
+        <legend><?php echo $this->lang->line('oil_recive_report');?></legend>
         
         <div class="control-group">
         <label class="control-label">เลือกประเภทรายงาน</label>
@@ -97,7 +97,7 @@ if (isset($factory))
             <?php if(isset($customer)){
                 foreach($customer as $row){
                     
-                    echo "<option value=\"{$row['customer_id']}\">{$row['customers_name']}</option>";
+                    echo "<option value=\"{$row['customer_id']}\">{$row['customer_name']}</option>";
                 }
                 
             }?>      
