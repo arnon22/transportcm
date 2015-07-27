@@ -1,0 +1,13 @@
+#RewriteEngine on
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ index.php?$1 [L]
+
+
+RewriteEngine on
+RewriteBase /transportcm
+RewriteCond %{REQUEST_URI} ^transportcm.*
+RewriteRule ^(.*)$ /index.php?/$1 [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?/$1 [L,QSA]

@@ -1,0 +1,157 @@
+body {
+
+    background-color: #f5f5f5;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+.container-login {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.form-signin {
+    max-width: 300px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin input[type="text"],
+.form-signin input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -60px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+    height: 60px;
+}
+
+#footer {
+    background-color: #f5f5f5;
+}
+
+#logo-span {
+    display: block;
+    clear: both;
+}
+
+.exportDiv {
+    float: right;
+    margin-bottom: 14px;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.main-div-index {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+#db_config_form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.csv-link {
+    display: inline-block;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    border: 1px solid #CCCCCC;
+    padding: 10px;
+}
+
+.csv-link:hover {
+    text-decoration: none;
+}
+
+.csv-link span {
+    display: block;
+}
+
+.alert {
+    padding-left: 22px;
+}
+
+.export-step {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.btn, .btn.active,
+.btn:focus,
+.btn:hover,
+select:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+    outline: none !important;
+}
+
+#exported_fields, #imported_fields {
+    height: 150px;
+}
+
+.dropdown-menu .divider {
+    clear: both;
+}
+
+hr.index {
+    margin: 7px 0 0;
+}
+
+textarea#custom_query {
+    height: 169px;
+    width: 340px;
+}
+
+.main-div-index legend {
+    line-height: 30px;
+    margin-bottom: 11px;
+}
+
+.update-query-notice {
+    display: none;
+    margin-top: 13px;
+    margin-bottom: 0;
+}

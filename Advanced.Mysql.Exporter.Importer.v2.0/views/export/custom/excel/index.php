@@ -1,0 +1,57 @@
+<div class="main-div-index">
+    <form action="" id="export_form" class="form-horizontal export-step" method="post">
+        <fieldset>
+            <legend>Export Custom Query to Excel</legend>
+            <?php
+            FlashSession::showSuccess();
+            FlashSession::showErrors();
+            ?>
+            <div class="control-group" id="field-list-div">
+                <div class="control-group">
+                    <label for="custom_query" class="control-label">Custom Sql Query <i
+                            class="icon-th-list"></i></label>
+
+                    <div class="controls">
+                      <textarea name="custom_query" id="custom_query"></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="excel_version">Excel version <i class="icon-info-sign"></i></label>
+
+                    <div class="form-inline">
+                        <div class="controls">
+                            <select name="excel_version" id="excel_version">
+                                <option value="xlsx">Excel 2007 (xlsx)</option>
+                                <option value="xls">Excel 5 (xls)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Export Column names <i class="icon-question-sign"></i></label>
+
+                    <div class="form-inline">
+                        <div class="controls">
+                            <label for="with_header_row_1">Yes</label>
+                            <input type="radio" checked="checked" value="1" name="with_header_row"
+                                   id="with_header_row_1">
+                            &nbsp;&nbsp;&nbsp;
+                            <label for="with_header_row_2">No</label>
+                            <input type="radio" value="0" name="with_header_row" id="with_header_row_2">
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="xls_file_name" class="control-label">Output File Name <i class="icon-file"></i></label>
+
+                    <div class="controls">
+                        <input type="text" required="required" class="input" value="custom_xls" name="xls_file_name"
+                               id="xls_file_name">
+                    </div>
+                </div>
+                <div class="control-group">
+
+                    <input type="submit" class="btn" value="Export" name="submitExportCustomXLS" id="submitBtn">
+                </div>
+            </div>
+</div>

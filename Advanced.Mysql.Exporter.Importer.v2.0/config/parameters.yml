@@ -1,0 +1,15 @@
+#Application Config File
+
+#Admin Access
+admin_access:
+    admin_login: admin
+    admin_password: aaa
+
+site_settings:
+    #main url
+    url: "http://localhost/Advanced.Mysql.Exporter.Importer.v2.0"
+    #some databases needs to be set default charset, example : 'utf8'
+    database_default_charset: "none"
+    #function to use for encode values from database, if you don't want to use it type 'none'
+    export_encode_function: "utf8_encode"
+    import_encode_function: "utf8_decode"

@@ -1,0 +1,60 @@
+
+#my-tbl {
+	background-color: #FFF;
+	color: black;
+	padding: 5px;
+	width: 700px;
+	border: thin solid red;
+}
+
+#th{
+	background-color: #000;
+	color: #FFF;
+	padding: 10px; 
+	border-bottom: thin solid #000;  
+}
+
+.data-tr{
+	background-color: #FFF;
+	color: #000;
+	border-bottom: thin solid #000;
+}
+
+.data-tr:hover {
+	background-color: #FAEFCF;
+	color: black;
+	padding: 5px; 
+	border-bottom: thin solid #000;
+	   
+}
+
+.data-tr td{       
+	padding: 10px;            
+	margin: 0px;         
+}
+
+/* you can change page navigation here*/
+.page-nav{
+	margin: 10px 0 0 0;
+	padding: 8px;
+}
+
+.page-nav a{
+	border: none;
+	padding: 8px;
+	text-decoration: none;
+	background-color: #FFC;
+	border: thin solid #FC0;
+	color: #000;
+}
+
+.page-nav a:hover{
+	border: thin solid #FC0;
+	background-color: #FC0;
+	color: #fff;
+}
+
+/*this is the style for selected page number*/
+.page_link{
+	padding: 8px;
+}

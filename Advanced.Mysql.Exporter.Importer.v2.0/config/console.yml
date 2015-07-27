@@ -1,0 +1,59 @@
+#Console Config File
+
+#Database Access
+database_access:
+    host: "localhost"
+    user: "root"
+    password: "root"
+    database_name: "test"
+
+#Import Settings
+import_settings:
+    #options : csv, xls,xlsx
+    import_type: csv
+    #file name to import it, must be in /bin/files_import directory
+    file_name: "test_import.csv"
+    #options : true, false
+    #true : first row is fields name
+    #false: imported file not contain fields name at first row
+    ignore_first_row: true
+    #file Separator for CSV import type
+    file_separator: ";"
+    #table name to import to it
+    table_name: "user"
+    #options : true, false
+    #true ;execute Update Query instead of Insert Query, the first field is considered as primary key
+    #in case == true, you must fill all fields in custom_fields option, the first element is the primary key of table
+    #false; run Insert Query
+    update_query: false
+    #options: all, custom
+    #all : the script will insert to all table fields, not need to declare them
+    #custom : the script will insert to custom fields, you need to specify them in custom_fields options
+    import_fields_type: all
+    #required when import_fields_type : custom, or when update_query : true
+    custom_fields:
+            - id
+            - email
+
+#Export Settings
+export_settings:
+    #options : csv, xls, xlsx, pdf
+    export_type: csv
+    #file name to export it, will created in /bin/files_export directory
+    file_name: "test_export"
+     #file Separator for CSV export type
+    file_separator: ";"
+     #table name to export it
+    table_name: "user"
+    #option : true, false
+    #true : export fields name in first row
+    #false: not export fields name
+    export_fields_name: true
+    #Options: all, custom
+    #all : the script will export all table fields, not need to declare them
+    #custom : the script will export custom fields, you need to specify them in custom_fields options
+    export_fields_type: all
+    #required when export_fields_type : custom
+    custom_fields:
+            - id
+            - email

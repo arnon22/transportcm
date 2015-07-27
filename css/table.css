@@ -1,0 +1,84 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+table.cruises {
+    border-collapse: collapse;
+    font-family: verdana,arial,helvetica,sans-serif;
+    font-size: 12px;
+   /* width: 100%; */ 
+   width: 653px;
+}
+table.cruises td {
+    border-left: 1px solid #999999;
+    border-top: 1px solid #999999;
+    padding: 2px 4px;
+}
+table.cruises tr:first-child td {
+    border-top: medium none;
+}
+table.cruises th {
+    background: none repeat scroll 0 0 #6B6164;
+    border-left: 1px solid #999999;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    font-variant: small-caps;
+    padding: 2px 4px;
+}
+table.cruises td {
+    background: none repeat scroll 0 0 #EEEEEE;
+    overflow: hidden;
+}
+table.cruises tr:hover td {
+    background: none repeat scroll 0 0 #FFFF03;
+}
+div.scrollableContainer {
+    background: none repeat scroll 0 0 #6B6164;
+    border: 1px solid #999999;
+    /*margin: 40px;*/
+    padding-top: 2em;
+    position: relative;
+    /*width: 100% */
+    width: 710px;
+}
+div.scrollingArea {
+    height: 240px;
+    overflow: auto;
+}
+table.scrollable thead tr {
+    left: -1px;
+    position: absolute;
+    top: 0;
+}
+table.cruises .name div {
+    width: 108px; /*width: 108px;*/
+}
+table.cruises .operator div {
+    width: 126px; /*width: 126px;*/
+}
+table.cruises .began div {
+    text-align: center;
+    /*width: 76px; */
+    width: 156px;
+}
+table.cruises .tonnage div {
+    text-align: center;
+    width: 136px;/*width: 60px;*/
+}
+table.cruises .status div {
+    width: 122px;/*width: 160px;*/
+}
+table.cruises td.operator {
+    background: none repeat scroll 0 0 #EBCB4D;
+}
+table.cruises td.tonnage {
+    background: none repeat scroll 0 0 #B7C3E8;
+}
+table.cruises td.name {
+    background: none repeat scroll 0 0 #C7E0C1;
+}
+table.cruises td.began {
+    background: none repeat scroll 0 0 #E5F1F4;
+}

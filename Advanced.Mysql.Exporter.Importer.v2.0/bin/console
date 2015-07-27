@@ -1,0 +1,65 @@
+#!/usr/bin/env php
+<?php
+
+set_time_limit(0);
+
+define('DIR_APP', dirname( dirname(__FILE__) ));
+define('DIR_IMPORT', DIR_APP."/bin/files_import/");
+define('DIR_EXPORT', DIR_APP."/bin/files_export/");
+
+require_once DIR_APP . '/config/app.php';
+require_once LIBS . 'adodb/adodb.inc.php';
+require_once LIBS . 'PDF/mPDF5.4/mpdf.php';
+require_once LIBS . 'DBAccess.php';
+
+
+if (!defined('PHPEXCEL_ROOT')) {
+    define('PHPEXCEL_ROOT', LIBS);
+    require(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+}
+
+function handleFalseError($errno, $errstr, $errfile, $errline, array $errcontext)
+{
+    return false;
+}
+
+function __autoload($class_name)
+{
+    $fileToInclude = sprintf(LIBS . '/%s.php', $class_name);
+    if (file_exists($fileToInclude)) {
+        require_once $fileToInclude;
+    }
+
+}
+$errorColor = "\033[31m";
+$successColor = "\033[32m";
+$blueColor = "\033[34m";
+$normalColor = "\033[30m";
+
+Console::startScript();
+
+if(!isset($argv[1])){
+    Console::showError("Please chose one option : import | export");
+}elseif($argv[1] !='import' && $argv[1] != 'export'){
+     Console::showError("Command \"".$argv[1]."\" is not defined.");
+}else{
+
+    $config = Spyc::YAMLLoad(CONF.'console.yml');
+
+    $cDataBaseAccess = $config['database_access'];
+    $cImportSettings= $config['import_settings'];
+    $cExportSettings= $config['export_settings'];
+
+    $console  = new Console($cDataBaseAccess['localhost'],
+                            $cDataBaseAccess['user'],
+                            $cDataBaseAccess['password'],
+                            $cDataBaseAccess['database_name']);
+    //Run Script
+    if($argv[1]  == 'import'){
+        $console->runImport($cImportSettings );
+    }elseif($argv[1]  == 'export'){
+        $console->runExport($cExportSettings );
+    }
+}
+
+Console::endScript();

@@ -1,0 +1,255 @@
+/* icons */
+[class^="igoo-"],
+[class*=" igoo-"] {
+  display: inline-block;
+  width: 69px;
+  height: 68px;
+  *margin-right: .3em;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: url("../img/igoogles-icons.png");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+}
+[class^="igoo-"]:last-child,
+[class*=" igoo-"]:last-child {
+  *margin-left: 0;
+}
+
+
+
+
+.igoo-abacus{ background-position: 0 0; width: 128px; height: 128px; } 
+.igoo-access_point{ background-position: -133px 0; width: 128px; height: 128px; } 
+.igoo-add{ background-position: -266px 0; width: 128px; height: 128px; } 
+.igoo-administrator{ background-position: -399px 0; width: 128px; height: 128px; } 
+.igoo-alarm{ background-position: -532px 0; width: 128px; height: 128px; } 
+.igoo-arrow_bidirectional{ background-position: -665px 0; width: 128px; height: 128px; } 
+.igoo-arrow_down2{ background-position: -798px 0; width: 128px; height: 128px; } 
+.igoo-arrow_left2{ background-position: -931px 0; width: 128px; height: 128px; } 
+.igoo-arrow_right2{ background-position: -1064px 0; width: 128px; height: 128px; } 
+.igoo-arrow_up2{ background-position: -1197px 0; width: 128px; height: 128px; } 
+.igoo-attachment{ background-position: -1330px 0; width: 128px; height: 128px; } 
+.igoo-audio_knob{ background-position: -1463px 0; width: 128px; height: 128px; } 
+.igoo-barcode{ background-position: -1596px 0; width: 128px; height: 128px; } 
+.igoo-battery_empty{ background-position: -1729px 0; width: 128px; height: 128px; } 
+.igoo-battery_full{ background-position: -1862px 0; width: 128px; height: 128px; } 
+.igoo-battery_half{ background-position: 0 -133px; width: 128px; height: 128px; } 
+.igoo-bell{ background-position: -133px -133px; width: 128px; height: 128px; } 
+.igoo-bill{ background-position: -266px -133px; width: 128px; height: 128px; } 
+.igoo-binoculars{ background-position: -399px -133px; width: 128px; height: 128px; } 
+.igoo-bold{ background-position: -532px -133px; width: 128px; height: 128px; } 
+.igoo-book{ background-position: -665px -133px; width: 128px; height: 128px; } 
+.igoo-bookmark{ background-position: -798px -133px; width: 128px; height: 128px; } 
+.igoo-briefcase{ background-position: -931px -133px; width: 128px; height: 128px; } 
+.igoo-brightness{ background-position: -1064px -133px; width: 128px; height: 128px; } 
+.igoo-broken_link{ background-position: -1197px -133px; width: 128px; height: 128px; } 
+.igoo-brush{ background-position: -1330px -133px; width: 128px; height: 128px; } 
+.igoo-burn_blu-ray{ background-position: -1463px -133px; width: 128px; height: 128px; } 
+.igoo-burn_blu-ray2{ background-position: -1596px -133px; width: 128px; height: 128px; } 
+.igoo-burn_dvd{ background-position: -1729px -133px; width: 128px; height: 128px; } 
+.igoo-burn_dvd2{ background-position: -1862px -133px; width: 128px; height: 128px; } 
+.igoo-cabinet{ background-position: 0 -266px; width: 128px; height: 128px; } 
+.igoo-calculator{ background-position: -133px -266px; width: 128px; height: 128px; } 
+.igoo-calendar{ background-position: -266px -266px; width: 128px; height: 128px; } 
+.igoo-camera{ background-position: -399px -266px; width: 128px; height: 128px; } 
+.igoo-cancel{ background-position: -532px -266px; width: 128px; height: 128px; } 
+.igoo-card_clubs{ background-position: -665px -266px; width: 128px; height: 128px; } 
+.igoo-card_diamonds{ background-position: -798px -266px; width: 128px; height: 128px; } 
+.igoo-card_hearts{ background-position: -931px -266px; width: 128px; height: 128px; } 
+.igoo-card_spades{ background-position: -1064px -266px; width: 128px; height: 128px; } 
+.igoo-certificate-2{ background-position: -1197px -266px; width: 128px; height: 128px; } 
+.igoo-certificate{ background-position: -1330px -266px; width: 128px; height: 128px; } 
+.igoo-chat-exclamation{ background-position: -1463px -266px; width: 128px; height: 128px; } 
+.igoo-checkmark{ background-position: -1596px -266px; width: 128px; height: 128px; } 
+.igoo-checkmark2{ background-position: -1729px -266px; width: 128px; height: 128px; } 
+.igoo-clip{ background-position: -1862px -266px; width: 128px; height: 128px; } 
+.igoo-clipboard{ background-position: 0 -399px; width: 128px; height: 128px; } 
+.igoo-clock{ background-position: -133px -399px; width: 128px; height: 128px; } 
+.igoo-close{ background-position: -266px -399px; width: 128px; height: 128px; } 
+.igoo-cloud{ background-position: -399px -399px; width: 128px; height: 128px; } 
+.igoo-cloud2{ background-position: -532px -399px; width: 128px; height: 128px; } 
+.igoo-coin{ background-position: -665px -399px; width: 128px; height: 128px; } 
+.igoo-compress{ background-position: -798px -399px; width: 128px; height: 128px; } 
+.igoo-connect{ background-position: -931px -399px; width: 128px; height: 128px; } 
+.igoo-contrast{ background-position: -1064px -399px; width: 128px; height: 128px; } 
+.igoo-copy{ background-position: -1197px -399px; width: 128px; height: 128px; } 
+.igoo-cross{ background-position: -1330px -399px; width: 128px; height: 128px; } 
+.igoo-cutter{ background-position: -1463px -399px; width: 128px; height: 128px; } 
+.igoo-delete{ background-position: -1596px -399px; width: 128px; height: 128px; } 
+.igoo-dial{ background-position: -1729px -399px; width: 128px; height: 128px; } 
+.igoo-diary{ background-position: -1862px -399px; width: 128px; height: 128px; } 
+.igoo-dimensions{ background-position: 0 -532px; width: 128px; height: 128px; } 
+.igoo-directional_down{ background-position: -133px -532px; width: 128px; height: 128px; } 
+.igoo-directional_left{ background-position: -266px -532px; width: 128px; height: 128px; } 
+.igoo-directional_right{ background-position: -399px -532px; width: 128px; height: 128px; } 
+.igoo-directional_up{ background-position: -532px -532px; width: 128px; height: 128px; } 
+.igoo-disconnect{ background-position: -665px -532px; width: 128px; height: 128px; } 
+.igoo-diskette{ background-position: -798px -532px; width: 128px; height: 128px; } 
+.igoo-document{ background-position: -931px -532px; width: 128px; height: 128px; } 
+.igoo-door{ background-position: -1064px -532px; width: 128px; height: 128px; } 
+.igoo-download2{ background-position: -1197px -532px; width: 128px; height: 128px; } 
+.igoo-dropper{ background-position: -1330px -532px; width: 128px; height: 128px; } 
+.igoo-earphones{ background-position: -1463px -532px; width: 128px; height: 128px; } 
+.igoo-effects{ background-position: -1596px -532px; width: 128px; height: 128px; } 
+.igoo-eject{ background-position: -1729px -532px; width: 128px; height: 128px; } 
+.igoo-emoticon_angry{ background-position: -1862px -532px; width: 128px; height: 128px; } 
+.igoo-emoticon_confused{ background-position: 0 -665px; width: 128px; height: 128px; } 
+.igoo-emoticon_grin{ background-position: -133px -665px; width: 128px; height: 128px; } 
+.igoo-emoticon_in_love{ background-position: -266px -665px; width: 128px; height: 128px; } 
+.igoo-emoticon_sad{ background-position: -399px -665px; width: 128px; height: 128px; } 
+.igoo-emoticon_sleeping{ background-position: -532px -665px; width: 128px; height: 128px; } 
+.igoo-emoticon_smile{ background-position: -665px -665px; width: 128px; height: 128px; } 
+.igoo-encrypt{ background-position: -798px -665px; width: 128px; height: 128px; } 
+.igoo-eraser{ background-position: -931px -665px; width: 128px; height: 128px; } 
+.igoo-eye{ background-position: -1064px -665px; width: 128px; height: 128px; } 
+.igoo-eye_closed{ background-position: -1197px -665px; width: 128px; height: 128px; } 
+.igoo-fast_forward{ background-position: -1330px -665px; width: 128px; height: 128px; } 
+.igoo-file{ background-position: -1463px -665px; width: 128px; height: 128px; } 
+.igoo-fill{ background-position: -1596px -665px; width: 128px; height: 128px; } 
+.igoo-fingerprint{ background-position: -1729px -665px; width: 128px; height: 128px; } 
+.igoo-firewall{ background-position: -1862px -665px; width: 128px; height: 128px; } 
+.igoo-first{ background-position: 0 -798px; width: 128px; height: 128px; } 
+.igoo-folder{ background-position: -133px -798px; width: 128px; height: 128px; } 
+.igoo-font{ background-position: -266px -798px; width: 128px; height: 128px; } 
+.igoo-font_size{ background-position: -399px -798px; width: 128px; height: 128px; } 
+.igoo-game_control{ background-position: -532px -798px; width: 128px; height: 128px; } 
+.igoo-gear{ background-position: -665px -798px; width: 128px; height: 128px; } 
+.igoo-group{ background-position: -798px -798px; width: 128px; height: 128px; } 
+.igoo-hammer{ background-position: -931px -798px; width: 128px; height: 128px; } 
+.igoo-hand_point{ background-position: -1064px -798px; width: 128px; height: 128px; } 
+.igoo-hand_thumbsdown{ background-position: -1197px -798px; width: 128px; height: 128px; } 
+.igoo-hand_thumbsup{ background-position: -1330px -798px; width: 128px; height: 128px; } 
+.igoo-hard_disk{ background-position: -1463px -798px; width: 128px; height: 128px; } 
+.igoo-headset{ background-position: -1596px -798px; width: 128px; height: 128px; } 
+.igoo-heart{ background-position: -1729px -798px; width: 128px; height: 128px; } 
+.igoo-help{ background-position: -1862px -798px; width: 128px; height: 128px; } 
+.igoo-help2{ background-position: 0 -931px; width: 128px; height: 128px; } 
+.igoo-history{ background-position: -133px -931px; width: 128px; height: 128px; } 
+.igoo-home{ background-position: -266px -931px; width: 128px; height: 128px; } 
+.igoo-hourglass{ background-position: -399px -931px; width: 128px; height: 128px; } 
+.igoo-hourglass2{ background-position: -532px -931px; width: 128px; height: 128px; } 
+.igoo-id{ background-position: -665px -931px; width: 128px; height: 128px; } 
+.igoo-info{ background-position: -798px -931px; width: 128px; height: 128px; } 
+.igoo-info2{ background-position: -931px -931px; width: 128px; height: 128px; } 
+.igoo-italic{ background-position: -1064px -931px; width: 128px; height: 128px; } 
+.igoo-item{ background-position: -1197px -931px; width: 128px; height: 128px; } 
+.igoo-key{ background-position: -1330px -931px; width: 128px; height: 128px; } 
+.igoo-last{ background-position: -1463px -931px; width: 128px; height: 128px; } 
+.igoo-lightbulb{ background-position: -1596px -931px; width: 128px; height: 128px; } 
+.igoo-link{ background-position: -1729px -931px; width: 128px; height: 128px; } 
+.igoo-list{ background-position: -1862px -931px; width: 128px; height: 128px; } 
+.igoo-location{ background-position: 0 -1064px; width: 128px; height: 128px; } 
+.igoo-lock{ background-position: -133px -1064px; width: 128px; height: 128px; } 
+.igoo-lock_open{ background-position: -266px -1064px; width: 128px; height: 128px; } 
+.igoo-login{ background-position: -399px -1064px; width: 128px; height: 128px; } 
+.igoo-mail{ background-position: -532px -1064px; width: 128px; height: 128px; } 
+.igoo-mail_open{ background-position: -665px -1064px; width: 128px; height: 128px; } 
+.igoo-messenger{ background-position: -798px -1064px; width: 128px; height: 128px; } 
+.igoo-microhpone{ background-position: -931px -1064px; width: 128px; height: 128px; } 
+.igoo-microphone{ background-position: -1064px -1064px; width: 128px; height: 128px; } 
+.igoo-money_bag{ background-position: -1197px -1064px; width: 128px; height: 128px; } 
+.igoo-monitor{ background-position: -1330px -1064px; width: 128px; height: 128px; } 
+.igoo-moon{ background-position: -1463px -1064px; width: 128px; height: 128px; } 
+.igoo-music{ background-position: -1596px -1064px; width: 128px; height: 128px; } 
+.igoo-music_folder{ background-position: -1729px -1064px; width: 128px; height: 128px; } 
+.igoo-music_library{ background-position: -1862px -1064px; width: 128px; height: 128px; } 
+.igoo-next{ background-position: 0 -1197px; width: 128px; height: 128px; } 
+.igoo-notepad{ background-position: -133px -1197px; width: 128px; height: 128px; } 
+.igoo-paragraph_align_left{ background-position: -266px -1197px; width: 128px; height: 128px; } 
+.igoo-paragraph_align_right{ background-position: -399px -1197px; width: 128px; height: 128px; } 
+.igoo-paragraph_justify{ background-position: -532px -1197px; width: 128px; height: 128px; } 
+.igoo-password{ background-position: -665px -1197px; width: 128px; height: 128px; } 
+.igoo-paste{ background-position: -798px -1197px; width: 128px; height: 128px; } 
+.igoo-pause{ background-position: -931px -1197px; width: 128px; height: 128px; } 
+.igoo-pen{ background-position: -1064px -1197px; width: 128px; height: 128px; } 
+.igoo-pencil{ background-position: -1197px -1197px; width: 128px; height: 128px; } 
+.igoo-phone{ background-position: -1330px -1197px; width: 128px; height: 128px; } 
+.igoo-photo_album{ background-position: -1463px -1197px; width: 128px; height: 128px; } 
+.igoo-pictures_folder{ background-position: -1596px -1197px; width: 128px; height: 128px; } 
+.igoo-play{ background-position: -1729px -1197px; width: 128px; height: 128px; } 
+.igoo-point{ background-position: -1862px -1197px; width: 128px; height: 128px; } 
+.igoo-power{ background-position: 0 -1330px; width: 128px; height: 128px; } 
+.igoo-previous{ background-position: -133px -1330px; width: 128px; height: 128px; } 
+.igoo-print{ background-position: -266px -1330px; width: 128px; height: 128px; } 
+.igoo-pyramid{ background-position: -399px -1330px; width: 128px; height: 128px; } 
+.igoo-random{ background-position: -532px -1330px; width: 128px; height: 128px; } 
+.igoo-record{ background-position: -665px -1330px; width: 128px; height: 128px; } 
+.igoo-redo{ background-position: -798px -1330px; width: 128px; height: 128px; } 
+.igoo-reload{ background-position: -931px -1330px; width: 128px; height: 128px; } 
+.igoo-repeat{ background-position: -1064px -1330px; width: 128px; height: 128px; } 
+.igoo-resize2{ background-position: -1197px -1330px; width: 128px; height: 128px; } 
+.igoo-rewind{ background-position: -1330px -1330px; width: 128px; height: 128px; } 
+.igoo-rotate{ background-position: -1463px -1330px; width: 128px; height: 128px; } 
+.igoo-round{ background-position: -1596px -1330px; width: 128px; height: 128px; } 
+.igoo-ruler_square{ background-position: -1729px -1330px; width: 128px; height: 128px; } 
+.igoo-satellite{ background-position: -1862px -1330px; width: 128px; height: 128px; } 
+.igoo-scissors{ background-position: 0 -1463px; width: 128px; height: 128px; } 
+.igoo-screwdriver{ background-position: -133px -1463px; width: 128px; height: 128px; } 
+.igoo-security{ background-position: -266px -1463px; width: 128px; height: 128px; } 
+.igoo-shopping_basket{ background-position: -399px -1463px; width: 128px; height: 128px; } 
+.igoo-software24{ background-position: -532px -1463px; width: 128px; height: 128px; } 
+.igoo-spam{ background-position: -665px -1463px; width: 128px; height: 128px; } 
+.igoo-speaker{ background-position: -798px -1463px; width: 128px; height: 128px; } 
+.igoo-speaker2{ background-position: -931px -1463px; width: 128px; height: 128px; } 
+.igoo-sphere{ background-position: -1064px -1463px; width: 128px; height: 128px; } 
+.igoo-spreadsheet{ background-position: -1197px -1463px; width: 128px; height: 128px; } 
+.igoo-square{ background-position: -1330px -1463px; width: 128px; height: 128px; } 
+.igoo-star{ background-position: -1463px -1463px; width: 128px; height: 128px; } 
+.igoo-stats_bars{ background-position: -1596px -1463px; width: 128px; height: 128px; } 
+.igoo-stats_lines{ background-position: -1729px -1463px; width: 128px; height: 128px; } 
+.igoo-stats_pie{ background-position: -1862px -1463px; width: 128px; height: 128px; } 
+.igoo-stop{ background-position: 0 -1596px; width: 128px; height: 128px; } 
+.igoo-strike_through{ background-position: -133px -1596px; width: 128px; height: 128px; } 
+.igoo-sun{ background-position: -266px -1596px; width: 128px; height: 128px; } 
+.igoo-target{ background-position: -399px -1596px; width: 128px; height: 128px; } 
+.igoo-thunder{ background-position: -532px -1596px; width: 128px; height: 128px; } 
+.igoo-trash_can{ background-position: -665px -1596px; width: 128px; height: 128px; } 
+.igoo-underlined{ background-position: -798px -1596px; width: 128px; height: 128px; } 
+.igoo-undo{ background-position: -931px -1596px; width: 128px; height: 128px; } 
+.igoo-upload2{ background-position: -1064px -1596px; width: 128px; height: 128px; } 
+.igoo-usb{ background-position: -1197px -1596px; width: 128px; height: 128px; } 
+.igoo-user{ background-position: -1330px -1596px; width: 128px; height: 128px; } 
+.igoo-user_woman{ background-position: -1463px -1596px; width: 128px; height: 128px; } 
+.igoo-volume_control{ background-position: -1596px -1596px; width: 128px; height: 128px; } 
+.igoo-webcam{ background-position: -1729px -1596px; width: 128px; height: 128px; } 
+.igoo-window{ background-position: -1862px -1596px; width: 128px; height: 128px; } 
+.igoo-wizard{ background-position: 0 -1729px; width: 128px; height: 128px; } 
+.igoo-world{ background-position: -133px -1729px; width: 128px; height: 128px; } 
+.igoo-zoom{ background-position: -266px -1729px; width: 128px; height: 128px; } 
+.igoo-zoom_in{ background-position: -399px -1729px; width: 128px; height: 128px; } 
+.igoo-zoom_out{ background-position: -532px -1729px; width: 128px; height: 128px; } 
+
+
+
+
+
+
+/* icons */
+[class^="iweb-"],
+[class*=" iweb-"] {
+  display: inline-block;
+  width: 65px;
+  height: 64px;
+  *margin-right: .3em;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: url("../img/iweb-icons.png");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+}
+[class^="iweb-"]:last-child,
+[class*=" iweb-"]:last-child {
+  *margin-left: 0;
+}
+
+.iweb-Alarm{ background-position: 0 0; width: 64px; height: 64px; } 
+.iweb-Chat{ background-position: -69px 0; width: 64px; height: 64px; } 
+.iweb-Login{ background-position: -138px 0; width: 64px; height: 64px; } 
+.iweb-Networkconnections{ background-position: -207px 0; width: 64px; height: 64px; } 
+.iweb-Ordertracking{ background-position: -276px 0; width: 64px; height: 64px; } 
+.iweb-Run{ background-position: -345px 0; width: 64px; height: 64px; } 
+.iweb-Saveall{ background-position: -414px 0; width: 64px; height: 64px; } 
+.iweb-Timetable{ background-position: -483px 0; width: 64px; height: 64px; } 
+.iweb-Yencoin{ background-position: -552px 0; width: 64px; height: 64px; } 
+.iweb-Zoom{ background-position: -621px 0; width: 64px; height: 64px; } 

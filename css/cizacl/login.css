@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+/*@import url(http://fonts.googleapis.com/css?family=Terminal+Dosis+Light|Yanone+Kaffeesatz&v2); */
+body {
+	background: #ddd;
+	margin: 20px;
+}
+body, buttom, input, select, textarea {
+	color: #444;
+	font-family: Tahoma, Verdana, Geneva, sans-serif;
+	font-size: 12px;
+    background-image: url("../../images/rmi-truck-picture.jpg");
+}
+p {
+	margin: 0px;
+	line-height: 19px;
+}
+input, select, textarea {
+	font-size: 14px;
+    font-weight: bold;
+	padding: 7px 8px;
+	border: 1px solid #999;
+    background: #fff;
+}
+h1 {
+	font-family: 'Yanone Kaffeesatz', Tahoma, sans-serif;
+	font-weight: normal;
+	text-shadow: 1px 1px 0px #555;
+	margin: 0px;
+	padding: 5px;
+	padding-bottom: 10px;
+	background: #aaa;
+	font-size: 30px;
+	color: #fff;
+}
+h3 {
+	margin: 0px;
+	margin-bottom: 10px;
+	padding: 0px;
+}
+#content {
+	background: #eee;
+	width: 550px;
+	margin: 0 auto;
+	margin-top: 10%;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border: 10px solid #aaa;
+	box-shadow: 0px 0px 20px #000;
+	-moz-box-shadow: 0px 0px 20px #000;
+	-webkit-box-shadow: 0px 0px 20px #000;
+}
+#content-login {
+	padding: 20px 10px;
+}
+#jq_msg {
+	display: none;
+}
+.ui-msg {
+	padding: 10px;
+}
