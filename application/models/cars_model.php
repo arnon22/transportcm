@@ -354,7 +354,24 @@ WHERE Exs.car_id =$cars_id AND Exs.expense_date BETWEEN '$startDate' AND '$endDa
     } //End of function expense_car
 
 
+public function get_listcar_oil($customer_oil_id){
+    
+    $cusOil_id = $customer_oil_id;
+    $strSql = "SELECT car_id,car_number FROM `transport_oilcars` WHERE customer_id='$cusOil_id' ORDER BY car_number ASC";
+    $query = $this->db->query($strSql);
+    
+    if($query->num_rows()>0){
+        return $query->result();
+    }
+    
+    
+} // end of function get_listcar_oil()
+
+
+
 } //end of Class
+
+
 
 
 ?>

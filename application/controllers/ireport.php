@@ -1214,6 +1214,33 @@ public function oilexpenditure_report(){
     
 } // end of function oilexpenditure_report()
 
+public function listCars_oil($oilCustomer_id){
+    
+    
+    
+} // end of function listCars_oil()
+function ajax_call() {
+        //Checking so that people cannot go to the page directly.
+        if (isset($_POST) && isset($_POST['oilcustomer'])) {
+            $customer_id = $_POST['oilcustomer'];
+            if($customer_id=="All"){
+                $customer_id =0;
+            }
+            $arrCar = $this->car->get_listcar_oil($customer_id);
+             
+             foreach($arrCar as $rs){
+                $arrFinal["All"]="ทั้งหมด";
+                $arrFinal[$rs->car_id]=$rs->car_number;
+             }
+            
+             
+            //Using the form_dropdown helper function to get the new dropdown.
+            print form_dropdown('caroil',$arrFinal);
+            //echo json_encode($arrFinal);
+            //echo "JOE $customer_id";
+        }
+    }
+
 
     public function oilrecive_report()
     {

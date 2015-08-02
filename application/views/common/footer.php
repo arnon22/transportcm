@@ -23,9 +23,12 @@
 		<!--<script src="bootstrap/js/bootstrap.min.js"></script>-->
         <?php #echo js('bootstrap/js/bootstrap.min.js');?>
         <?php #echo js('bootstrap-alert.js')?>
+       <?php #echo js('angular.min.js'); ?>
+       <?php #echo js('app.js'); ?>
         <?php echo js('bootstrap-tab.js');?>
         <?php echo js('jquery.hotkeys.js');?>
         <?php echo js('jquery.datetimepicker.js');?>
+        
         
       
 		<script>

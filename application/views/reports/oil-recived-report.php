@@ -1,5 +1,9 @@
 <?php $this->load->view('common/header');?>
 <!-- /header-->
+<?php
+//Initial
+$this->load->helper('html');
+?>
     <div class="container-fluid">
     <div class="row-fluid">
     <div class="span12">
@@ -18,6 +22,7 @@
         
         </div><!--/span2-->
         <div class="span9">
+    
         <div id="form-bg">        
         <form action="" method="POST" class="form-horizontal">
         
@@ -92,7 +97,8 @@ if (isset($factory))
         <div class="control-group">
         <label class="control-label">ลูกค้า</label>
         <div class="controls">
-        <select name="customer">
+        <div id="states-dropdown">
+        <select id="customer_oil" name="customer">
             <option value="All">ทั้งหมด</option>  
             <?php if(isset($customer)){
                 foreach($customer as $row){
@@ -102,24 +108,15 @@ if (isset($factory))
                 
             }?>      
         </select>
-        
+        </div>
         </div>
         </div>
         
         <div class="control-group">
         <label class="control-label">ระบุรถ</label>
         <div class="controls">
-        <select name="car_number">
-            <option value="All">ทั้งหมด</option>
-            <?php if(isset($car_number)){
-                foreach($car_number as $row){
-                    
-                    echo "<option value=\"{$row['car_id']}\">{$row['car_number']}</option>";
-                }
-                
-            }?> 
-            
-        </select>
+        <div id="city"></div>
+        
         </div>
         </div>
         
@@ -163,6 +160,33 @@ var opts = {
 
 };
 </script>
+<script type="text/javascript">
+            $(document).ready(function () {
+                $('#customer_oil').change(function () {
+                    var selState = $('#customer_oil').val();
+                    console.log(selState);
+                    if(selState!="All"){
+                        $('#city').show();                    
+                    $.ajax({   
+                        url: "<?= base_url()?>ireport/ajax_call", //The url where the server req would we made.
+                        async: false,
+                        type: "POST", //The type which you want to use: GET/POST
+                         data: "oilcustomer="+$('#customer_oil').val(),
+                        dataType: 'html',//dataType: "html", //Return data type (what we expect).
+                         
+                        //This is the function which will be called if ajax call is successful.
+                        success: function(data) {
+                            //data is the html of the page where the request is made.
+                            $('#city').html(data);
+                        }
+                    }) //$.ajax
+                    }else{
+                        $('#city').hide();
+                        //$('#type').html('<option value="">-- Select Type --</option>');                       
+                    }
+                });
+            });
+        </script>
 
 <script>
 $(document).ready(function() {
@@ -184,10 +208,10 @@ $(document).ready(function() {
     if(endDate==''){
         $('input[name=endDate]').focus();
         return false;
-    }
-    
+    }    
     
    });
+
 });
 </script>
 <script>
