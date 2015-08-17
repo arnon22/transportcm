@@ -27,16 +27,18 @@ $this->load->helper('html');
         <form action="" method="POST" class="form-horizontal">
         
         <legend><?php echo $this->lang->line('oil_recive_report');?></legend>
-        
+         <!--
         <div class="control-group">
         <label class="control-label">เลือกประเภทรายงาน</label>
-        
+       
         <div class="controls">       
         <input name="oilType" value="receive" type="radio" <?php if($this->session->userdata('oilType')=="receive"){ echo "checked=\"checked\" ";}?>/>รับน้ำมัน
         <input name="oilType" value="pay" type="radio" <?php if($this->session->userdata('oilType')=="pay"){ echo "checked=\"checked\" ";}?> />จ่ายน้ำมัน
         </div>
+       
         </div>
-        
+         -->
+         
         <div class="control-group">
         <label class="control-label"><?php echo $this->lang->line('factory');?></label>
         
@@ -115,7 +117,21 @@ if (isset($factory))
         <div class="control-group">
         <label class="control-label">ระบุรถ</label>
         <div class="controls">
-        <div id="city"></div>
+        <div id="city">
+        <select name="caroil">
+        <option value="All">ทั้งหมด</option>  
+            <?php if(isset($car_number)){
+                foreach($car_number as $row){
+                    
+                    echo "<option value=\"{$row['car_id']}\">{$row['car_number']}</option>";
+                }
+                
+            }?>  
+        
+        
+        </select>
+        
+        </div>
         
         </div>
         </div>
@@ -134,7 +150,13 @@ if (isset($factory))
             if(isset($report_status)){
                 echo $report_status;
                 
+                foreach ($data as $rs){
+                    echo $rs;
+                }
             }
+            
+            
+            
         ?>
         </div>
         </div>
@@ -165,7 +187,7 @@ var opts = {
                 $('#customer_oil').change(function () {
                     var selState = $('#customer_oil').val();
                     console.log(selState);
-                    if(selState!="All"){
+                    //if(selState!="All"){
                         $('#city').show();                    
                     $.ajax({   
                         url: "<?= base_url()?>ireport/ajax_call", //The url where the server req would we made.
@@ -180,10 +202,7 @@ var opts = {
                             $('#city').html(data);
                         }
                     }) //$.ajax
-                    }else{
-                        $('#city').hide();
-                        //$('#type').html('<option value="">-- Select Type --</option>');                       
-                    }
+                    //}
                 });
             });
         </script>

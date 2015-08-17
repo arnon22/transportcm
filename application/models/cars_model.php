@@ -16,6 +16,16 @@ class Cars_model extends CI_Model
 
 
     }
+    
+    public function get_AllcarOil()
+    {
+
+        $query = $this->db->where('status', 1)->get('transport_oilcars');
+
+        return $query->result_array();
+
+
+    }
 
     public function checkCarnumber($car_number)
     {
@@ -357,7 +367,13 @@ WHERE Exs.car_id =$cars_id AND Exs.expense_date BETWEEN '$startDate' AND '$endDa
 public function get_listcar_oil($customer_oil_id){
     
     $cusOil_id = $customer_oil_id;
-    $strSql = "SELECT car_id,car_number FROM `transport_oilcars` WHERE customer_id='$cusOil_id' ORDER BY car_number ASC";
+    if($cusOil_id==0){
+        $strSql = "SELECT car_id,car_number FROM `transport_oilcars` WHERE status=1 ORDER BY car_number ASC";
+    }else{
+       $strSql = "SELECT car_id,car_number FROM `transport_oilcars` WHERE customer_id='$cusOil_id' ORDER BY car_number ASC"; 
+    }
+    
+    
     $query = $this->db->query($strSql);
     
     if($query->num_rows()>0){

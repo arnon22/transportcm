@@ -1259,17 +1259,31 @@ function ajax_call() {
                 // Set fill form
                 $factory_form = $this->factory->getFactory();
                 $customer_form = $this->customer->getCustomer_oil();
-                $car_number_form = $this->car->get_Allcar();
+                $car_number_form = $this->car->get_AllcarOil();
 
 
                 if (!empty($_POST['submit'])) {
                     //* Receive POST Value
-                    $oilType = $this->input->post('oilType');
+                    $oilType = "receive";#$this->input->post('oilType');
                     $factory = $this->input->post('factory');
                     $startDate = $this->input->post('startDate'); // d-m-Y
                     $endDate = $this->input->post('endDate'); // d-m-Y
                     $customer = $this->input->post('customer');
-                    $car_number = $this->input->post('car_number');
+                    /*
+                    if(!empty($_POST['customer_oil'])){
+                        $customer = $this->input->post('customer_oil');
+                    }else{
+                        $customer = "All";
+                    }
+                    */
+                    
+                    if(!empty($_POST['caroil'])){
+                        $car_number = $this->input->post('caroil');
+                    }else{
+                        $car_number = "All";
+                    }
+                    
+                    
 
                     //Convert Date y-m-d
                     $start_date = $this->conv_date->eng2engDate($startDate);
