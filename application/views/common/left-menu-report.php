@@ -94,7 +94,7 @@ echo $this->lang->line('oil_recive_report');
 ?></a></li>
           
           -->
-          <li class=""><a href="<?php
+        <!--  <li class=""><a href="<?php
 
 echo site_url()
 
@@ -103,15 +103,17 @@ echo site_url()
 echo $this->lang->line('oil_recive_Expenditure_report');
 
 ?></a></li> 
+-->
 <li class=""><a href="<?php
 
 echo site_url()
 
 ?>ireport/oilrecive_report"><i class="icon-chevron-right"></i> <?php
 
-echo $this->lang->line('oil_recive_report');
+echo $this->lang->line('oil_recive_Expenditure_report');
 
 ?></a></li>
+<!--
 <li class=""><a href="<?php
 
 echo site_url()
@@ -120,7 +122,8 @@ echo site_url()
 
 echo $this->lang->line('oil_Expenditure_report');
 
-?></a></li>        
+?></a></li>
+-->        
           <li class=""><a href="<?php
 
 echo site_url()

@@ -836,14 +836,18 @@ ORDER BY
         $customer_id, $start_date = '0000-00-00', $end_date = '0000-00-00', $method =
         "check")
     {
+        if($oilType=="receive"){
+            $oilIsType = 1;
+        }else{
+            $oilIsType = 2;
+        }
+        
 
-        if ($factory == "All") {
-            if ($oilType == "receive") {
-
-                if ($customer_id == "All") {
-                    if ($car_id == "All") {
-                        #1  Customer=All and car_id=All                       
-                        $str = "SELECT
+        if ($factory == "All"){
+            if($customer_id=="All"){
+                if($car_id=="All"){
+                    #1 factory=All,customer_id=All,car_id=All
+                    $str = "SELECT
 	stock_id,
 	stock_date,
 	ref_number,
@@ -851,6 +855,9 @@ ORDER BY
 	receive_oil,
 	receive_price,
 	receive_amount,
+    sell_oil,
+    sell_price,
+    sell_amount,
 	factory_code,
 	factory_name,
 	cus.customer_name,
@@ -870,13 +877,12 @@ LEFT JOIN transport_oilcars AS car ON (o_s.car_id = car.car_id)
 WHERE
 	stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = 1";
-
-
-                    } else {                        
-                        #2 customer=All and car_id = $car_id
-                        //$str = "SELECT * FROM oilstock WHERE customer_id=$customer_id AND stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type =1";
-                        $str = "SELECT
+AND oil_type = '$oilIsType'";
+                    
+                }else{
+                    #2 factory=All,customer_id=All,car_id=custom
+                 // Add Code 
+                 $str = "SELECT
 	stock_id,
 	stock_date,
 	ref_number,
@@ -884,9 +890,12 @@ AND oil_type = 1";
 	receive_oil,
 	receive_price,
 	receive_amount,
+    sell_oil,
+    sell_price,
+    sell_amount,
 	factory_code,
 	factory_name,
-	cus.customers_name,
+	cus.customer_name,
 	o_s.customer_id,
 	o_s.note,
 	car_number,
@@ -896,7 +905,7 @@ FROM
 LEFT JOIN transport_factory AS fac ON (
 	o_s.factory_id = fac.factory_id
 )
-LEFT JOIN transport_customers AS cus ON (
+LEFT JOIN transport_oilcustomers AS cus ON (
 	o_s.customer_id = cus.customer_id
 )
 LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
@@ -904,16 +913,16 @@ WHERE
 	o_s.car_id = $car_id
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = 1";
-
-                    } // end if $car_id
-
-                } else {
-                    // $customer_id = $customer_id
-                    if ($car_id == "All") {
-                        #3 customer = custome and car_id =All
-                        //$str = "SELECT * FROM oilstock WHERE car_id =$car_id AND stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type=1";
-                        $str = "SELECT
+AND oil_type = '$oilIsType'";  
+                    
+                }// end  if $car_id=ALL
+                
+            }else{
+                /*Select custom Customer*/
+                if($car_id=="All"){
+                    #3 factory=All,customer_id=custom,car_id=All
+                    //Add Code
+                    $str = "SELECT
 	stock_id,
 	stock_date,
 	ref_number,
@@ -921,9 +930,12 @@ AND oil_type = 1";
 	receive_oil,
 	receive_price,
 	receive_amount,
+    sell_oil,
+    sell_price,
+    sell_amount,
 	factory_code,
 	factory_name,
-	cus.customers_name,
+	cus.customer_name,
 	o_s.customer_id,
 	o_s.note,
 	car_number,
@@ -933,20 +945,19 @@ FROM
 LEFT JOIN transport_factory AS fac ON (
 	o_s.factory_id = fac.factory_id
 )
-LEFT JOIN transport_customers AS cus ON (
+LEFT JOIN transport_oilcustomers AS cus ON (
 	o_s.customer_id = cus.customer_id
 )
 LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
 WHERE
-	o_s.customer_id = $customer_id
+o_s.customer_id = $customer_id
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = 1";
-
-                    } else {
-                        #4 customer =custmoe and car_id = custom
-                        //$str ="SELECT * FROM oilstock WHERE car_id =$car_id AND customer_id=$customer_id AND stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type=1";
-                        $str = "SELECT
+AND oil_type = '$oilIsType'";
+                }else{
+                    #4 fctory=All,customer_id=custom,car_id=custom
+                    // Add Code
+                    $str = "SELECT
 	stock_id,
 	stock_date,
 	ref_number,
@@ -954,9 +965,12 @@ AND oil_type = 1";
 	receive_oil,
 	receive_price,
 	receive_amount,
+    sell_oil,
+    sell_price,
+    sell_amount,
 	factory_code,
 	factory_name,
-	cus.customers_name,
+	cus.customer_name,
 	o_s.customer_id,
 	o_s.note,
 	car_number,
@@ -966,7 +980,7 @@ FROM
 LEFT JOIN transport_factory AS fac ON (
 	o_s.factory_id = fac.factory_id
 )
-LEFT JOIN transport_customers AS cus ON (
+LEFT JOIN transport_oilcustomers AS cus ON (
 	o_s.customer_id = cus.customer_id
 )
 LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
@@ -975,22 +989,20 @@ WHERE
 AND o_s.customer_id = $customer_id
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = 1";
-
-
-                    } // end if $customer_id
-
-                } // End if $car_id
-
-
-            } else {
-                //oilType pay
-
-                if ($car_id == "All") {
-                    if ($customer_id == "All") {
-                        #1
-                        //$str = "SELECT * FROM oilstock WHERE stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type =2";
-                        $str = "SELECT
+AND oil_type = '$oilIsType'";
+                    
+                } // end if $car_id=All
+                
+                
+            } // end if $customer_id==All
+            
+        }else{
+            // Select Custom Factory
+            if($customer_id=="All"){
+                if($car_id=="All"){
+                    #5 factory=custom,customer_id=All,car_id==All
+                    //Add Code
+                    $str = "SELECT
 	stock_id,
 	stock_date,
 	ref_number,
@@ -999,11 +1011,11 @@ AND oil_type = 1";
 	receive_price,
 	receive_amount,
     sell_oil,
-	sell_price,
-	sell_amount,	
+    sell_price,
+    sell_amount,
 	factory_code,
 	factory_name,
-	cus.customers_name,
+	cus.customer_name,
 	o_s.customer_id,
 	o_s.note,
 	car_number,
@@ -1013,21 +1025,20 @@ FROM
 LEFT JOIN transport_factory AS fac ON (
 	o_s.factory_id = fac.factory_id
 )
-LEFT JOIN transport_customers AS cus ON (
+LEFT JOIN transport_oilcustomers AS cus ON (
 	o_s.customer_id = cus.customer_id
 )
 LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
 WHERE
-	stock_date BETWEEN '$start_date'
+o_s.factory_id = '$factory'
+AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = 2";
-
-
-                    } else {
-                        //Select Customer_id custom
-                        #2
-                        //$str = "SELECT * FROM oilstock WHERE customer_id=$customer_id AND stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type =2";
-                        $str = "SELECT
+AND oil_type = '$oilIsType'";
+                    
+                }else{
+                    #6 factory=custom,customer_id=All,car_id=custom
+                    //Add Code
+                     $str = "SELECT
 	stock_id,
 	stock_date,
 	ref_number,
@@ -1036,11 +1047,11 @@ AND oil_type = 2";
 	receive_price,
 	receive_amount,
     sell_oil,
-	sell_price,
-	sell_amount,
+    sell_price,
+    sell_amount,
 	factory_code,
 	factory_name,
-	cus.customers_name,
+	cus.customer_name,
 	o_s.customer_id,
 	o_s.note,
 	car_number,
@@ -1050,215 +1061,25 @@ FROM
 LEFT JOIN transport_factory AS fac ON (
 	o_s.factory_id = fac.factory_id
 )
-LEFT JOIN transport_customers AS cus ON (
+LEFT JOIN transport_oilcustomers AS cus ON (
 	o_s.customer_id = cus.customer_id
 )
 LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
 WHERE
-	o_s.customer_id = '$customer_id'
-AND stock_date BETWEEN '$start_date'
-AND '$end_date'
-AND oil_type = 2";
-
-                    } // end if $customer_id
-
-                } else {
-                    // select car_id custom
-                    if ($customer_id == "All") {
-                        #3
-                        //$str = "SELECT * FROM oilstock WHERE car_id =$car_id AND stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type=2";
-                        $str = "SELECT
-	stock_id,
-	stock_date,
-	ref_number,
-	stock_details,
-	receive_oil,
-	receive_price,
-	receive_amount,
-    sell_oil,
-	sell_price,
-	sell_amount,
-	factory_code,
-	factory_name,
-	cus.customers_name,
-	o_s.customer_id,
-	o_s.note,
-	car_number,
-	oil_type
-FROM
-	oilstock AS o_s
-LEFT JOIN transport_factory AS fac ON (
-	o_s.factory_id = fac.factory_id
-)
-LEFT JOIN transport_customers AS cus ON (
-	o_s.customer_id = cus.customer_id
-)
-LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
-WHERE
-	o_s.car_id = '$car_id'
-AND stock_date BETWEEN '$start_date'
-AND '$end_date'
-AND oil_type = 2";
-
-
-                    } else {
-                        #4
-                        //$str ="SELECT * FROM oilstock WHERE car_id =$car_id AND customer_id=$customer_id AND stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type=2";
-                        $str = "SELECT
-	stock_id,
-	stock_date,
-	ref_number,
-	stock_details,
-	receive_oil,
-	receive_price,
-	receive_amount,
-    sell_oil,
-	sell_price,
-	sell_amount,
-	factory_code,
-	factory_name,
-	cus.customers_name,
-	o_s.customer_id,
-	o_s.note,
-	car_number,
-	oil_type
-FROM
-	oilstock AS o_s
-LEFT JOIN transport_factory AS fac ON (
-	o_s.factory_id = fac.factory_id
-)
-LEFT JOIN transport_customers AS cus ON (
-	o_s.customer_id = cus.customer_id
-)
-LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
-WHERE
-	o_s.car_id = '$car_id'
-AND o_s.customer_id = '$customer_id'
-AND stock_date BETWEEN '$start_date'
-AND '$end_date'
-AND oil_type = 2";
-                    } // end if $customer_id
-
-                } // End if $car_id
-
-
-            } // end if oilType
-
-        } else {
-            // Select factory custom
-
-            if ($oilType == "receive") {
-
-                if ($car_id == "All") {
-                    if ($customer_id == "All") {
-                        #1
-                        //$str = "SELECT * FROM oilstock WHERE factory_id=$factory AND stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type =1";
-                        $str = "SELECT
-	stock_id,
-	stock_date,
-	ref_number,
-	stock_details,
-	receive_oil,
-	receive_price,
-	receive_amount,
-	factory_code,
-	factory_name,
-	cus.customers_name,
-	o_s.customer_id,
-	o_s.note,
-	car_number,
-	oil_type
-FROM
-	oilstock AS o_s
-LEFT JOIN transport_factory AS fac ON (
-	o_s.factory_id = fac.factory_id
-)
-LEFT JOIN transport_customers AS cus ON (
-	o_s.customer_id = cus.customer_id
-)
-LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
-WHERE
-	o_s.factory_id = '$factory'
-AND stock_date BETWEEN '$start_date'
-AND '$end_date'
-AND oil_type = 1";
-                    } else {
-                        //Select Customer_id custom
-                        #2
-                        //$str = "SELECT * FROM oilstock WHERE factory_id=$factory AND customer_id=$customer_id AND stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type =1";
-                        $str = "SELECT
-	stock_id,
-	stock_date,
-	ref_number,
-	stock_details,
-	receive_oil,
-	receive_price,
-	receive_amount,
-	factory_code,
-	factory_name,
-	cus.customers_name,
-	o_s.customer_id,
-	o_s.note,
-	car_number,
-	oil_type
-FROM
-	oilstock AS o_s
-LEFT JOIN transport_factory AS fac ON (
-	o_s.factory_id = fac.factory_id
-)
-LEFT JOIN transport_customers AS cus ON (
-	o_s.customer_id = cus.customer_id
-)
-LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
-WHERE
-	o_s.factory_id = '$factory'
-AND o_s.customer_id = '$customer_id'
-AND stock_date BETWEEN '$start_date'
-AND '$end_date'
-AND oil_type = 1";
-
-                    } // end if $customer_id
-
-                } else {
-                    // select car_id custom
-                    if ($customer_id == "All") {
-                        #3
-                        //$str = "SELECT * FROM oilstock WHERE factory_id=$factory AND car_id =$car_id AND stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type=1";
-                        $str = "SELECT
-	stock_id,
-	stock_date,
-	ref_number,
-	stock_details,
-	receive_oil,
-	receive_price,
-	receive_amount,
-	factory_code,
-	factory_name,
-	cus.customers_name,
-	o_s.customer_id,
-	o_s.note,
-	car_number,
-	oil_type
-FROM
-	oilstock AS o_s
-LEFT JOIN transport_factory AS fac ON (
-	o_s.factory_id = fac.factory_id
-)
-LEFT JOIN transport_customers AS cus ON (
-	o_s.customer_id = cus.customer_id
-)
-LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
-WHERE
-	o_s.factory_id = '$factory'
+o_s.factory_id = '$factory'
 AND o_s.car_id = '$car_id'
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = 1";
-
-                    } else {
-                        #4
-                        //$str ="SELECT * FROM oilstock WHERE factory_id=$factory AND car_id =$car_id AND customer_id=$customer_id AND stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type=1";
-                        $str = "SELECT
+AND oil_type = '$oilIsType'";
+                    
+                }//end if $car_id==All
+                
+            }else{
+                #Select custom Customer
+                if($car_id=="All"){
+                    #7 factory=custom,customer=custom,car_id=All
+                    //Add Code
+                    $str = "SELECT
 	stock_id,
 	stock_date,
 	ref_number,
@@ -1266,9 +1087,12 @@ AND oil_type = 1";
 	receive_oil,
 	receive_price,
 	receive_amount,
+    sell_oil,
+    sell_price,
+    sell_amount,
 	factory_code,
 	factory_name,
-	cus.customers_name,
+	cus.customer_name,
 	o_s.customer_id,
 	o_s.note,
 	car_number,
@@ -1278,31 +1102,21 @@ FROM
 LEFT JOIN transport_factory AS fac ON (
 	o_s.factory_id = fac.factory_id
 )
-LEFT JOIN transport_customers AS cus ON (
+LEFT JOIN transport_oilcustomers AS cus ON (
 	o_s.customer_id = cus.customer_id
 )
 LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
 WHERE
-	o_s.factory_id = '$factory'
-AND o_s.car_id = '$car_id'
+o_s.factory_id = '$factory'
 AND o_s.customer_id = '$customer_id'
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = 1";
-
-                    } // end if $customer_id
-
-                } // End if $car_id
-
-
-            } else {
-                //oilType pay
-
-                if ($car_id == "All") {
-                    if ($customer_id == "All") {
-                        #1
-                        //$str = "SELECT * FROM oilstock WHERE factory_id=$factory AND stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type =2";
-                        $str = "SELECT
+AND oil_type = '$oilIsType'";
+                    
+                }else{
+                    #8 factory=custom,customer_id=custom,car_id=custom
+                    //Add Code
+                    $str = "SELECT
 	stock_id,
 	stock_date,
 	ref_number,
@@ -1311,11 +1125,11 @@ AND oil_type = 1";
 	receive_price,
 	receive_amount,
     sell_oil,
-	sell_price,
-	sell_amount,
+    sell_price,
+    sell_amount,
 	factory_code,
 	factory_name,
-	cus.customers_name,
+	cus.customer_name,
 	o_s.customer_id,
 	o_s.note,
 	car_number,
@@ -1325,145 +1139,25 @@ FROM
 LEFT JOIN transport_factory AS fac ON (
 	o_s.factory_id = fac.factory_id
 )
-LEFT JOIN transport_customers AS cus ON (
+LEFT JOIN transport_oilcustomers AS cus ON (
 	o_s.customer_id = cus.customer_id
 )
 LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
 WHERE
-	o_s.factory_id = '$factory'
-AND stock_date BETWEEN '$start_date'
-AND '$end_date'
-AND oil_type = 2";
-
-
-                    } else {
-                        //Select Customer_id custom
-                        #2
-                        //$str = "SELECT * FROM oilstock WHERE factory_id=$factory AND customer_id=$customer_id AND stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type =2";
-                        $str = "SELECT
-	stock_id,
-	stock_date,
-	ref_number,
-	stock_details,
-	receive_oil,
-	receive_price,
-	receive_amount,
-    sell_oil,
-	sell_price,
-	sell_amount,
-	factory_code,
-	factory_name,
-	cus.customers_name,
-	o_s.customer_id,
-	o_s.note,
-	car_number,
-	oil_type
-FROM
-	oilstock AS o_s
-LEFT JOIN transport_factory AS fac ON (
-	o_s.factory_id = fac.factory_id
-)
-LEFT JOIN transport_customers AS cus ON (
-	o_s.customer_id = cus.customer_id
-)
-LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
-WHERE
-	o_s.factory_id = '$factory'
+o_s.factory_id = '$factory'
 AND o_s.customer_id = '$customer_id'
-AND stock_date BETWEEN '$start_date'
-AND '$end_date'
-AND oil_type = 2";
-
-                    } // end if $customer_id
-
-                } else {
-                    // select car_id custom
-                    if ($customer_id == "All") {
-                        #3
-                        //$str = "SELECT * FROM oilstock WHERE factory_id=$factory AND car_id =$car_id AND stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type=2";
-                        $str = "SELECT
-	stock_id,
-	stock_date,
-	ref_number,
-	stock_details,
-	receive_oil,
-	receive_price,
-	receive_amount,
-    sell_oil,
-	sell_price,
-	sell_amount,
-	factory_code,
-	factory_name,
-	cus.customers_name,
-	o_s.customer_id,
-	o_s.note,
-	car_number,
-	oil_type
-FROM
-	oilstock AS o_s
-LEFT JOIN transport_factory AS fac ON (
-	o_s.factory_id = fac.factory_id
-)
-LEFT JOIN transport_customers AS cus ON (
-	o_s.customer_id = cus.customer_id
-)
-LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
-WHERE
-	o_s.factory_id = '$factory'
 AND o_s.car_id = '$car_id'
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = 2";
-
-
-                    } else {
-                        #4
-                        //$str ="SELECT * FROM oilstock WHERE factory_id=$factory AND car_id =$car_id AND customer_id=$customer_id AND stock_date BETWEEN '$start_date' AND '$end_date' AND oil_type=2";
-                        $str = "SELECT
-	stock_id,
-	stock_date,
-	ref_number,
-	stock_details,
-	receive_oil,
-	receive_price,
-	receive_amount,
-    sell_oil,
-	sell_price,
-	sell_amount,
-	factory_code,
-	factory_name,
-	cus.customers_name,
-	o_s.customer_id,
-	o_s.note,
-	car_number,
-	oil_type
-FROM
-	oilstock AS o_s
-LEFT JOIN transport_factory AS fac ON (
-	o_s.factory_id = fac.factory_id
-)
-LEFT JOIN transport_customers AS cus ON (
-	o_s.customer_id = cus.customer_id
-)
-LEFT JOIN transport_cars AS car ON (o_s.car_id = car.car_id)
-WHERE
-	o_s.factory_id = '$factory'
-AND o_s.car_id = '$car_id'
-AND o_s.customer_id = '$customer_id'
-AND stock_date BETWEEN '$start_date'
-AND '$end_date'
-AND oil_type = 2";
-
-
-                    } // end if $customer_id
-
-                } // End if $car_id
-
-
-            } // end if oilType
-
-
-        }
+AND oil_type = '$oilIsType'";
+                    
+                }//end if $car_id==All
+                
+                
+            } // end if $customer_id==All
+            
+            
+        } 
 
 
         $query = $this->db->query($str);

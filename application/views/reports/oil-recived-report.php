@@ -27,7 +27,7 @@ $this->load->helper('html');
         <form action="" method="POST" class="form-horizontal">
         
         <legend><?php echo $this->lang->line('oil_recive_report');?></legend>
-         <!--
+         
         <div class="control-group">
         <label class="control-label">เลือกประเภทรายงาน</label>
        
@@ -37,7 +37,7 @@ $this->load->helper('html');
         </div>
        
         </div>
-         -->
+         
          
         <div class="control-group">
         <label class="control-label"><?php echo $this->lang->line('factory');?></label>
@@ -150,9 +150,10 @@ if (isset($factory))
             if(isset($report_status)){
                 echo $report_status;
                 
-                foreach ($data as $rs){
+               /* foreach ($data as $rs){
                     echo $rs;
                 }
+                */
             }
             
             

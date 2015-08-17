@@ -1264,7 +1264,8 @@ function ajax_call() {
 
                 if (!empty($_POST['submit'])) {
                     //* Receive POST Value
-                    $oilType = "receive";#$this->input->post('oilType');
+                    #$oilType = "receive";#$this->input->post('oilType');
+                    $oilType = $this->input->post('oilType');
                     $factory = $this->input->post('factory');
                     $startDate = $this->input->post('startDate'); // d-m-Y
                     $endDate = $this->input->post('endDate'); // d-m-Y
@@ -1361,112 +1362,6 @@ function ajax_call() {
         }
 
     } //end of function oilrecive_report
-
-    public function report_oli()
-    {
-        $this->load->model('customers_model', 'customer');
-        $this->load->model('report_model', 'report');
-
-        if ($this->session->userdata('user_name')) {
-            $i_rule = $this->session->userdata('user_cizacl_role_id');
-
-            if ($this->cizacl->check_isAllowed($i_rule, 'ireport')) {
-                $h2_title = $this->lang->line('report_menu');
-
-                $this->session->set_userdata('oilType', "receive");
-
-
-                // Set fill form
-                $factory_form = $this->factory->getFactory();
-                $customer_form = $this->customer->getCustomer_oil();
-                $car_number_form = $this->car->get_Allcar();
-
-
-                if (!empty($_POST['submit'])) {
-                    //* Receive POST Value
-                    $oilType = $this->input->post('oilType');
-                    $factory = $this->input->post('factory');
-                    $startDate = $this->input->post('startDate'); // d-m-Y
-                    $endDate = $this->input->post('endDate'); // d-m-Y
-                    $customer = $this->input->post('customer');
-                    $car_number = $this->input->post('car_number');
-
-                    //Convert Date y-m-d
-                    $start_date = $this->conv_date->eng2engDate($startDate);
-                    $end_date = $this->conv_date->eng2engDate($endDate);
-
-                    $method = "check";
-
-
-                    $data = array(
-                        'oiltype' => $oilType,
-                        'factory' => $factory,
-                        'startdate' => $start_date,
-                        'enddate' => $end_date,
-                        'customer' => $customer,
-                        'car_number' => $car_number,
-                        'method' => "report");
-
-
-                    $check = $this->report->check_oil_receive_sell_number($factory, $oilType, $car_number,
-                        $customer, $start_date, $end_date);
-                    if ($check == '0') {
-                        $data = array(
-                            'oiltype' => "",
-                            'factory' => "",
-                            'startdate' => "",
-                            'enddate' => "",
-                            'customer' => "",
-                            'car_number' => "",
-                            'method' => "");
-
-                        $this->session->unset_userdata($data);
-
-                        $report_status = "<div class=\"alert\">
-  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
-  <strong>Warning!</strong> ไม่มีข้อมูลที่ร้องขอ.
-</div>";
-                    } else {
-
-                        $this->session->set_userdata($data);
-
-
-                        $report_status = "<div class=\"alert alert-success\">
-  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
-  <strong>Warning!</strong> มีข้อมูลที่ร้องขอทั้งหมด $check รายการ <a href=\"print_receive_pay_oil\" target=\"_blank\">" .
-                            img('Printer-icon32.png', array("title" => "Click เพื่อพิมพ์รายงาน")) . "</a>.
-</div>";
-                    } // End if else check
-
-
-                    // $report_status ="OK".$oilType;
-
-                    $this->session->set_userdata('oilType', $oilType);
-
-                }
-
-
-                //display
-                $viewpage = "oil-income-expense";
-                $this->show_report_form($viewpage, (object)array(
-                    'output' => "order_report",
-                    'h2_title' => $h2_title,
-                    'report_status' => $report_status,
-                    'factory' => $factory_form,
-                    'customer' => $customer_form,
-                    'car_number' => $car_number_form,
-                    'data' => $data,
-                    'out' => $out));
-
-            } //end if
-
-
-        } else {
-            redirect('login', 'refresh');
-
-        }
-
-    } //end of report_oli
 
     public function oil_stock()
     {
@@ -1637,25 +1532,31 @@ function ajax_call() {
             $this->pdf->Cell(10, 10, iconv('utf-8', 'tis-620', $right_report), 'C');
             $this->pdf->Ln();
             /*Title Report*/
+
             $this->pdf->SetFillColor(95, 158, 160); //$this->pdf->SetFillColor(200,220,255);
-            $this->pdf->Cell(35, 5, iconv('utf-8', 'tis-620', $this->lang->line('date_time')),
+            $this->pdf->Cell(28, 5, iconv('utf-8', 'tis-620', $this->lang->line('date_time')),
                 1, 0, "C", true);
             $this->pdf->Cell(20, 5, iconv('utf-8', 'tis-620', $this->lang->line('ref.number')),
                 1, 0, "C", true);
-            $this->pdf->Cell(20, 5, iconv('utf-8', 'tis-620', $this->lang->line('car_number')),
+            $this->pdf->Cell(15, 5, iconv('utf-8', 'tis-620', $this->lang->line('car_number')),
                 1, 0, "C", true);
-            $this->pdf->Cell(30, 5, iconv('utf-8', 'tis-620', $this->lang->line('detail')),
+            $this->pdf->Cell(47, 5, iconv('utf-8', 'tis-620', $this->lang->line('detail')),
                 1, 0, "C", true);
-            $this->pdf->Cell(20, 5, iconv('utf-8', 'tis-620', $this->lang->line('oil_value')),
+            $this->pdf->Cell(15, 5, iconv('utf-8', 'tis-620', $this->lang->line('oil_value')),
                 1, 0, "C", true);
-            $this->pdf->Cell(20, 5, iconv('utf-8', 'tis-620', $this->lang->line('price_per_lits')),
+            $this->pdf->Cell(15, 5, iconv('utf-8', 'tis-620', $this->lang->line('price_per_lits')),
                 1, 0, "C", true);
-            $this->pdf->Cell(25, 5, iconv('utf-8', 'tis-620', $this->lang->line('price_amount')),
+            $this->pdf->Cell(20, 5, iconv('utf-8', 'tis-620', $this->lang->line('price_amount')),
                 1, 0, "C", true);
-            $this->pdf->Cell(35, 5, iconv('utf-8', 'tis-620', $this->lang->line('remark')),
+            $this->pdf->Cell(45, 5, iconv('utf-8', 'tis-620', $this->lang->line('remark')),
                 1, 0, "C", true);
             $this->pdf->Ln();
+            
+            
+                        
             /*Content*/
+            
+            
 
             $sub_oil = 0;
             $sub_price = 0;
@@ -1689,7 +1590,17 @@ function ajax_call() {
                 $total_amount = $total_amount + $amount;
 
                 $date = date('Y-m-d', strtotime($row['stock_date']));
-
+                $oil_date = $this->conv_date->thaiDate2($date);
+                $oil_time = date("H:i", strtotime($row['stock_date']));
+                $oil_ref = iconv('utf-8', 'tis-620', $row['ref_number']);
+                $oil_car = iconv('utf-8', 'tis-620', $row['car_number']);
+                $oil_detail = iconv('utf-8', 'tis-620', $row['stock_details']);
+                $oil_val = number_format($oil, 2, '.', ',');
+                $oil_price =number_format($price, 2, '.', ',');
+                $oil_amount = number_format($amount, 2, '.', ',');
+                $oil_note = iconv('utf-8', 'tis-620', $row['note']);
+                
+/*
                 $this->pdf->Cell(20, 5, $this->conv_date->thaiDate2($date), 1, 0, "L");
                 $this->pdf->Cell(15, 5, date("H:i:s", strtotime($row['stock_date'])), 1, 0, "L");
                 $this->pdf->Cell(20, 5, iconv('utf-8', 'tis-620', $row['ref_number']), 1, 0, "L");
@@ -1700,8 +1611,45 @@ function ajax_call() {
                 $this->pdf->Cell(20, 5, number_format($price, 2, '.', ','), 1, 0, "R");
                 $this->pdf->Cell(25, 5, number_format($amount, 2, '.', ','), 1, 0, "R");
                 //$this->pdf->Cell(35, 5, iconv('utf-8','tis-620',$row['oil_type']), 1, 0, "C");
-                $this->pdf->Cell(35, 5, $i, 1, 0, "C");
+                $this->pdf->Cell(35, 5, iconv('utf-8', 'tis-620', $row['note']), 1, 0, "C");
                 $this->pdf->Ln();
+    */            
+                /*Update Code Multi Cell*/
+                        $this->pdf->SetWidths(array(
+                            18,
+                            10,
+                            20,
+                            15,
+                            47,
+                            15,
+                            15,
+                            20,
+                            45                            
+                            ));
+
+                        $this->pdf->SetAligns(array(
+                            "L",                           
+                            "L",
+                            "L",
+                            "C",
+                            "L",
+                            "R",
+                            "R",
+                            "R",
+                            "L"));
+                        $this->pdf->mRows(array(
+                            "$oil_date",
+                            "$oil_time",
+                            "$oil_ref",
+                            "$oil_car",
+                            "$oil_detail",
+                            "$oil_val",
+                            "$oil_price",
+                            "$oil_amount",
+                            "$oil_note"));
+                
+                
+                
 
                 if ($i == 48) {
                     $i = 0;
@@ -1767,13 +1715,13 @@ function ajax_call() {
                 // Total
                 $this->pdf->Ln(1);
                 $this->pdf->SetFillColor(192, 192, 192);
-                $this->pdf->Cell(105, 5, iconv('utf-8', 'tis-620', $this->lang->line('sub_total')),
+                $this->pdf->Cell(110, 5, iconv('utf-8', 'tis-620', $this->lang->line('sub_total')),
                     1, 0, "C", true);
-                $this->pdf->Cell(20, 5, number_format($sub_oil, 2, '.', ','), 1, 0, "C");
-                $this->pdf->Cell(20, 5, number_format($sub_price, 2, '.', ','), 1, 0, "R");
-                $this->pdf->Cell(25, 5, number_format($sub_amount, 2, '.', ','), 1, 0, "R");
-                //$this->pdf->Cell(35, 5, iconv('utf-8','tis-620',$row['oil_type']), 1, 0, "C");
-                $this->pdf->Cell(35, 5, "", 1, 0, "C");
+                $this->pdf->Cell(15, 5, number_format($sub_oil, 2, '.', ','), 1, 0, "C");
+                $this->pdf->Cell(15, 5, number_format($sub_price, 2, '.', ','), 1, 0, "R");
+                $this->pdf->Cell(20, 5, number_format($sub_amount, 2, '.', ','), 1, 0, "R");
+                
+                $this->pdf->Cell(45, 5, "", 1, 0, "C");
                 $this->pdf->Ln();
             }
 
@@ -1781,13 +1729,13 @@ function ajax_call() {
             // Total
             $this->pdf->Ln(1);
             $this->pdf->SetFillColor(192, 192, 192);
-            $this->pdf->Cell(105, 5, iconv('utf-8', 'tis-620', $this->lang->line('totals')),
+            $this->pdf->Cell(110, 5, iconv('utf-8', 'tis-620', $this->lang->line('totals')),
                 1, 0, "C", true);
-            $this->pdf->Cell(20, 5, number_format($total_oil, 2, '.', ','), 1, 0, "C");
-            $this->pdf->Cell(20, 5, number_format($total_price, 2, '.', ','), 1, 0, "R");
-            $this->pdf->Cell(25, 5, number_format($total_amount, 2, '.', ','), 1, 0, "R");
-            //$this->pdf->Cell(35, 5, iconv('utf-8','tis-620',$row['oil_type']), 1, 0, "C");
-            $this->pdf->Cell(35, 5, "", 1, 0, "C");
+            $this->pdf->Cell(15, 5, number_format($total_oil, 2, '.', ','), 1, 0, "C");
+            $this->pdf->Cell(15, 5, number_format($total_price, 2, '.', ','), 1, 0, "R");
+            $this->pdf->Cell(20, 5, number_format($total_amount, 2, '.', ','), 1, 0, "R");
+           
+            $this->pdf->Cell(45, 5, "", 1, 0, "C");
             $this->pdf->Ln();
 
 
