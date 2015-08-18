@@ -2464,6 +2464,7 @@ function ajax_call() {
             $right_report = "เริ่มวันที่ $s_date ถึง $e_date";
 
             #lang Title
+            /*
             $title_index = iconv('utf-8', 'tis-620', $this->lang->line('index'));
             $dp_number = $this->lang->line('dp_number');
             $customer_site = $this->lang->line('customer_site');
@@ -2475,6 +2476,18 @@ function ajax_call() {
             $car_driver = $this->lang->line('car_driver');
             $oil_recived = $this->lang->line('oil_recived');
             $remark = $this->lang->line('remark');
+            */
+            $title_index =  iconv('utf-8', 'tis-620', $this->lang->line('index'));
+            $title_date = iconv('utf-8', 'tis-620', $this->lang->line('date'));
+            $title_time = iconv('utf-8', 'tis-620', $this->lang->line('time'));
+            $title_dp = iconv('utf-8', 'tis-620', $this->lang->line('dp_number'));
+            $title_customer = iconv('utf-8', 'tis-620', $this->lang->line('customer'));
+            $title_distance = iconv('utf-8', 'tis-620', $this->lang->line('distance_code'));
+            $title_cubic = iconv('utf-8', 'tis-620', $this->lang->line('cubic_value'));
+            $title_carNumber = iconv('utf-8', 'tis-620', $this->lang->line('car_number'));
+            $title_driver = iconv('utf-8', 'tis-620', $this->lang->line('car_driver'));
+            $title_oilRecive = iconv('utf-8', 'tis-620', $this->lang->line('oil_recived'));
+            $title_note = iconv('utf-8', 'tis-620', $this->lang->line('remark'));
 
 
             // Create PDf Report
@@ -2495,39 +2508,82 @@ function ajax_call() {
             //$this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
             //$this->pdf->SetFont('THNiramitAS', '', 12);
             $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
-            $this->pdf->SetFont('THNiramitAS-Bold', '', 12);
+            $this->pdf->SetFont('THNiramitAS-Bold', '', 11);
             //$this->pdf->SetX(3);
             $this->pdf->Cell(10, 10, iconv('utf-8', 'tis-620', $left_report), 'C');
             $this->pdf->SetX(-60);
             $this->pdf->Cell(10, 10, iconv('utf-8', 'tis-620', $right_report), 'C');
             $this->pdf->Ln();
             /*Title Report*/
+            /*
             $this->pdf->SetFillColor(200, 220, 255); //$this->pdf->SetFillColor(200,220,255);
-            $this->pdf->Cell(15, 6, iconv('utf-8', 'tis-620', $this->lang->line('index')), 1,
+            $this->pdf->Cell(10, 6, iconv('utf-8', 'tis-620', $this->lang->line('index')), 1,
                 0, "C", true);
-            $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', $this->lang->line('date')), 1,
+            $this->pdf->Cell(19, 6, iconv('utf-8', 'tis-620', $this->lang->line('date')), 1,
                 0, "C", true);
-            $this->pdf->Cell(15, 6, iconv('utf-8', 'tis-620', $this->lang->line('time')), 1,
+            $this->pdf->Cell(14, 6, iconv('utf-8', 'tis-620', $this->lang->line('time')), 1,
                 0, "C", true);
-            $this->pdf->Cell(25, 6, iconv('utf-8', 'tis-620', $this->lang->line('dp_number')),
+            $this->pdf->Cell(19, 6, iconv('utf-8', 'tis-620', $this->lang->line('dp_number')),
                 1, 0, "C", true);
-            $this->pdf->Cell(55, 6, iconv('utf-8', 'tis-620', $this->lang->line('customer')),
+            $this->pdf->Cell(76, 6, iconv('utf-8', 'tis-620', $this->lang->line('customer')),
                 1, 0, "C", true);
-            $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', $this->lang->line('distance_code')),
+            $this->pdf->Cell(18, 6, iconv('utf-8', 'tis-620', $this->lang->line('distance_code')),
                 1, 0, "C", true);
-            $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', $this->lang->line('cubic_value')),
+            $this->pdf->Cell(14, 6, iconv('utf-8', 'tis-620', $this->lang->line('cubic_value')),
                 1, 0, "C", true);
-            $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', $this->lang->line('car_number')),
+            $this->pdf->Cell(17, 6, iconv('utf-8', 'tis-620', $this->lang->line('car_number')),
                 1, 0, "C", true);
-            $this->pdf->Cell(30, 6, iconv('utf-8', 'tis-620', $this->lang->line('car_driver')),
+            $this->pdf->Cell(32, 6, iconv('utf-8', 'tis-620', $this->lang->line('car_driver')),
                 1, 0, "C", true);
-            $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', $this->lang->line('oil_recived')),
+            $this->pdf->Cell(16, 6, iconv('utf-8', 'tis-620', $this->lang->line('oil_recived')),
                 1, 0, "C", true);
-            $this->pdf->Cell(45, 6, iconv('utf-8', 'tis-620', $this->lang->line('remark')),
+            $this->pdf->Cell(56, 6, iconv('utf-8', 'tis-620', $this->lang->line('remark')),
                 1, 0, "C", true);
             $this->pdf->Ln();
+            */
+            
+           
+            $this->pdf->SetWidths(array(
+                            10,
+                            19,
+                            14,
+                            19,
+                            76,
+                            18,
+                            14,
+                            17,
+                            32,
+                            16,
+                            56                            
+                            ));
+
+                        $this->pdf->SetAligns(array(
+                            "C",                           
+                            "C",
+                            "C",
+                            "C",
+                            "C",
+                            "C",
+                            "R",
+                            "R",
+                            "C",
+                            "R",
+                            "L"));
+                        $this->pdf->mRows(array(
+                            "$title_index",                           
+                            "$title_date",
+                            "$title_time",
+                            "$title_dp",
+                            "$title_customer",
+                            "$title_distance",
+                            "$title_cubic",
+                            "$title_carNumber",
+                            "$title_driver",
+                            "$title_oilRecive",
+                            "$title_note"));
+            
             $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
-            $this->pdf->SetFont('THNiramitAS', '', 12);
+            $this->pdf->SetFont('THNiramitAS', '', 11);
 
             // Get Result Report
             $result = $this->report->check_order_report($factory_id, $car_id, $start_date, $end_date);
@@ -2549,46 +2605,118 @@ function ajax_call() {
                 //$d_name = $row['driver_name'];
                 $d_name = iconv('utf-8', 'tis-620', "{$row['driver_name']}");
                 $driver_name = $this->conv_date->truncateStr($d_name, 18, '...');
+                
+                /*Data for show on report*/
+                $ir_date = $this->conv_date->eng2engDate($order_date);
+                $ir_dp = iconv('utf-8', 'tis-620', "{$row['dp_number']}");
+                $ir_customer = iconv('utf-8', 'tis-620', "{$row['customers_name']}");
+                $ir_note = iconv('utf-8', 'tis-620', "{$row['remark']}");
+                $ir_oil = number_format($row['use_oil'],2,'.',',');
+                $ir_subOil = number_format($sub_usedoil,2,'.',',');
+                $ir_totalOil = number_format($total_usedoil,2,'.',',');
+                $ir_subtotal = iconv('utf-8', 'tis-620', "ผลรวมหน้านี้");
+                $ir_subcubicvalue = number_format($sub_cubicvalue, 2, '.', ',');
+                $ir_totalcubicValue = number_format($total_cubicvalue,2,'.',',');
+                $ir_txtTotal =iconv('utf-8', 'tis-620', "รวมทั้งหมด");
 
-
-                // $this->pdf->Cell(50, 10, "{$row['dp_number']}", 'C');
-                $this->pdf->Cell(15, 6, iconv('utf-8', 'tis-620', $i), 1, 0, "C");
-                $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', $this->conv_date->eng2engDate
-                    ($order_date)), 1, 0, "C");
-                $this->pdf->Cell(15, 6, iconv('utf-8', 'tis-620', $order_time), 1, 0, "C");
-                $this->pdf->Cell(25, 6, iconv('utf-8', 'tis-620', "{$row['dp_number']}"), 1, 0,
-                    "C");
-                $this->pdf->Cell(55, 6, iconv('utf-8', 'tis-620', "{$row['customers_name']}"), 1,
+              /*
+                $this->pdf->Cell(10, 6, iconv('utf-8', 'tis-620', $i), 1, 0, "C");
+                $this->pdf->Cell(18, 6, iconv('utf-8', 'tis-620', $this->conv_date->eng2engDate
+                    ($order_date)), 1, 0, "L");
+                $this->pdf->Cell(13, 6, iconv('utf-8', 'tis-620', $order_time), 1, 0, "L");
+                $this->pdf->Cell(18, 6, iconv('utf-8', 'tis-620', "{$row['dp_number']}"), 1, 0,
+                    "L");
+                $this->pdf->Cell(80, 6, iconv('utf-8', 'tis-620', "{$row['customers_name']}"), 1,
                     0, "L");
-                $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "{$row['distance_code']}"), 1,
+                $this->pdf->Cell(18, 6, iconv('utf-8', 'tis-620', "{$row['distance_code']}"), 1,
                     0, "C");
-                $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "{$row['cubic_value']}"), 1, 0,
+                $this->pdf->Cell(14, 6, iconv('utf-8', 'tis-620', "{$row['cubic_value']}"), 1, 0,
                     "C");
-                $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "{$row['car_number']}"), 1, 0,
-                    "C");
-                /*
-                $this->pdf->Cell(25, 6, iconv('utf-8', 'tis-620', $driver_name), 1, 0,
-                "L");
-                */
-
+                $this->pdf->Cell(17, 6, iconv('utf-8', 'tis-620', "{$row['car_number']}"), 1, 0,
+                    "C");              
                 $this->pdf->Cell(30, 6, $driver_name, 1, 0, "L");
-
-                $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "{$row['use_oil']}"), 1, 0,
-                    "C");
-                //$this->pdf->Cell(45, 6, iconv('utf-8', 'tis-620', "{$row['remark']}"), 1, 0, "C");
-                $this->pdf->Cell(45, 6, iconv('utf-8', 'tis-620', "{$row['remark']}"), 1, 0, "C");
-
+                $this->pdf->Cell(16, 6, iconv('utf-8', 'tis-620', "{$row['use_oil']}"), 1, 0,
+                    "C");              
+                $this->pdf->Cell(56, 6, iconv('utf-8', 'tis-620', "{$row['remark']}"), 1, 0, "L");
                 $this->pdf->Ln();
+                */
+                /*Update Code Multi Cell*/
+                        $this->pdf->SetWidths(array(
+                            10,
+                            19,
+                            14,
+                            19,
+                            76,
+                            18,
+                            14,
+                            17,
+                            32,
+                            16,
+                            56                            
+                            ));
+
+                        $this->pdf->SetAligns(array(
+                            "C",                           
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "C",
+                            "R",
+                            "C",
+                            "L",
+                            "R",
+                            "L"));
+                        $this->pdf->mRows(array(
+                            "$i",                           
+                            "$ir_date",
+                            "$order_time",
+                            "$ir_dp",
+                            "$ir_customer",
+                            "{$row['distance_code']}",
+                            "{$row['cubic_value']}",
+                            "{$row['car_number']}",
+                            "$d_name",
+                            "$ir_oil",
+                            "$ir_note"));
 
 
-                if ($r == 25) {
+                if ($r == 30) {
+                    /*
+                    $this->pdf->Cell(138, 6, iconv('utf-8', 'tis-620', "ผลรวมหน้านี้"), 1, 0, "C");
+                    $this->pdf->Cell(18, 6, iconv('utf-8', 'tis-620', "$sub_cubicvalue"), 1, 0, "C");
+                    $this->pdf->Cell(14, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
+                    $this->pdf->Cell(17, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
+                    $this->pdf->Cell(32, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
+                    $this->pdf->Cell(16, 6, iconv('utf-8', 'tis-620', "$sub_usedoil"), 1, 0, "C");
+                    $this->pdf->Cell(56, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
+                    */
+                    $this->pdf->SetWidths(array(
+                            138,
+                            18,
+                            14,
+                            17,
+                            32,
+                            16,
+                            56                          
+                            ));
 
-                    $this->pdf->Cell(150, 6, iconv('utf-8', 'tis-620', "ผลรวมหน้านี้"), 1, 0, "C");
-                    $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "$sub_cubicvalue"), 1, 0, "C");
-                    $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
-                    $this->pdf->Cell(30, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
-                    $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "$sub_usedoil"), 1, 0, "C");
-                    $this->pdf->Cell(45, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
+                        $this->pdf->SetAligns(array(                            
+                            "C",
+                            "C",
+                            "R",
+                            "C",
+                            "L",
+                            "R",
+                            "L"));
+                        $this->pdf->mRows(array(                            
+                            "$ir_subtotal",
+                            "-",
+                            "$ir_subcubicvalue",
+                            "-",
+                            "-",
+                            "$ir_subOil",
+                            "-"));                    
 
                     $this->pdf->AddPage('L', 'A4');
                     //Header Report
@@ -2601,39 +2729,81 @@ function ajax_call() {
                     //$this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
                     //$this->pdf->SetFont('THNiramitAS', '', 12);
                     $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
-                    $this->pdf->SetFont('THNiramitAS-Bold', '', 12);
+                    $this->pdf->SetFont('THNiramitAS-Bold', '', 11);
                     //$this->pdf->SetX(3);
                     $this->pdf->Cell(10, 10, iconv('utf-8', 'tis-620', $left_report), 'C');
                     $this->pdf->SetX(-60);
                     $this->pdf->Cell(10, 10, iconv('utf-8', 'tis-620', $right_report), 'C');
                     $this->pdf->Ln();
                     /*Title Report*/
+                    /*
                     $this->pdf->SetFillColor(200, 220, 255); //$this->pdf->SetFillColor(200,220,255);
-                    $this->pdf->Cell(15, 6, iconv('utf-8', 'tis-620', $this->lang->line('index')), 1,
+                    $this->pdf->Cell(10, 6, iconv('utf-8', 'tis-620', $this->lang->line('index')), 1,
                         0, "C", true);
-                    $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', $this->lang->line('date')), 1,
+                    $this->pdf->Cell(19, 6, iconv('utf-8', 'tis-620', $this->lang->line('date')), 1,
                         0, "C", true);
-                    $this->pdf->Cell(15, 6, iconv('utf-8', 'tis-620', $this->lang->line('time')), 1,
+                    $this->pdf->Cell(14, 6, iconv('utf-8', 'tis-620', $this->lang->line('time')), 1,
                         0, "C", true);
-                    $this->pdf->Cell(25, 6, iconv('utf-8', 'tis-620', $this->lang->line('dp_number')),
+                    $this->pdf->Cell(19, 6, iconv('utf-8', 'tis-620', $this->lang->line('dp_number')),
                         1, 0, "C", true);
-                    $this->pdf->Cell(55, 6, iconv('utf-8', 'tis-620', $this->lang->line('customer')),
+                    $this->pdf->Cell(76, 6, iconv('utf-8', 'tis-620', $this->lang->line('customer')),
                         1, 0, "C", true);
-                    $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', $this->lang->line('distance_code')),
+                    $this->pdf->Cell(18, 6, iconv('utf-8', 'tis-620', $this->lang->line('distance_code')),
                         1, 0, "C", true);
-                    $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', $this->lang->line('cubic_value')),
+                    $this->pdf->Cell(14, 6, iconv('utf-8', 'tis-620', $this->lang->line('cubic_value')),
                         1, 0, "C", true);
-                    $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', $this->lang->line('car_number')),
+                    $this->pdf->Cell(17, 6, iconv('utf-8', 'tis-620', $this->lang->line('car_number')),
                         1, 0, "C", true);
-                    $this->pdf->Cell(30, 6, iconv('utf-8', 'tis-620', $this->lang->line('car_driver')),
+                    $this->pdf->Cell(32, 6, iconv('utf-8', 'tis-620', $this->lang->line('car_driver')),
                         1, 0, "C", true);
-                    $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', $this->lang->line('oil_recived')),
+                    $this->pdf->Cell(16, 6, iconv('utf-8', 'tis-620', $this->lang->line('oil_recived')),
                         1, 0, "C", true);
-                    $this->pdf->Cell(45, 6, iconv('utf-8', 'tis-620', $this->lang->line('remark')),
+                    $this->pdf->Cell(56, 6, iconv('utf-8', 'tis-620', $this->lang->line('remark')),
                         1, 0, "C", true);
                     $this->pdf->Ln();
                     $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
                     $this->pdf->SetFont('THNiramitAS', '', 12);
+                    */
+                     $this->pdf->SetWidths(array(
+                            10,
+                            19,
+                            14,
+                            19,
+                            76,
+                            18,
+                            14,
+                            17,
+                            32,
+                            16,
+                            56                            
+                            ));
+
+                        $this->pdf->SetAligns(array(
+                            "C",                           
+                            "C",
+                            "C",
+                            "C",
+                            "C",
+                            "C",
+                            "R",
+                            "R",
+                            "C",
+                            "R",
+                            "L"));
+                        $this->pdf->mRows(array(
+                            "$title_index",                           
+                            "$title_date",
+                            "$title_time",
+                            "$title_dp",
+                            "$title_customer",
+                            "$title_distance",
+                            "$title_cubic",
+                            "$title_carNumber",
+                            "$title_driver",
+                            "$title_oilRecive",
+                            "$title_note"));
+                    
+                    
                     $r = 0;
                     $sub_cubicvalue = 0;
                     $sub_usedoil = 0;
@@ -2646,26 +2816,85 @@ function ajax_call() {
             } //foreach
 
             if ('{nb}' == $p) {
-                $this->pdf->Cell(150, 6, iconv('utf-8', 'tis-620', "ผลรวมหน้านี้"), 1, 0, "C");
-                $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "$sub_cubicvalue"), 1, 0, "C");
-                $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
+                /*
+                $this->pdf->Cell(139, 6, iconv('utf-8', 'tis-620', "ผลรวมหน้านี้"), 1, 0, "C");
+                $this->pdf->Cell(18, 6, iconv('utf-8', 'tis-620', "$sub_cubicvalue"), 1, 0, "C");
+                $this->pdf->Cell(14, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
+                $this->pdf->Cell(17, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
                 $this->pdf->Cell(30, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
-                $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "$sub_usedoil"), 1, 0, "C");
-                $this->pdf->Cell(45, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
+                $this->pdf->Cell(16, 6, iconv('utf-8', 'tis-620', "$sub_usedoil"), 1, 0, "C");
+                $this->pdf->Cell(56, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
                 $this->pdf->Ln();
+                */
+                
+                $this->pdf->SetWidths(array(
+                            138,
+                            18,
+                            14,
+                            17,
+                            32,
+                            16,
+                            56                          
+                            ));
+
+                        $this->pdf->SetAligns(array(                            
+                            "C",
+                            "C",
+                            "R",
+                            "C",
+                            "L",
+                            "R",
+                            "L"));
+                        $this->pdf->mRows(array(                            
+                            "$ir_subtotal",
+                            "-",
+                            "$ir_subcubicvalue",
+                            "-",
+                            "-",
+                            "$ir_subOil",
+                            "-")); 
             }
             /*Sum footer*/
             /*ยอดยกมา*/
             $this->pdf->SetXY(3, 183);
             $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
-            $this->pdf->SetFont('THNiramitAS-Bold', '', 14);
-            $this->pdf->Cell(150, 6, iconv('utf-8', 'tis-620', "รวมทั้งหมด"), 1, 'C');
-            $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "$total_cubicvalue"), 1, 0,
+            $this->pdf->SetFont('THNiramitAS-Bold', '', 11);
+            /*
+            $this->pdf->Cell(139, 6, iconv('utf-8', 'tis-620', "รวมทั้งหมด"), 1, 'C');
+            $this->pdf->Cell(18, 6, iconv('utf-8', 'tis-620', "$total_cubicvalue"), 1, 0,
                 "C");
-            $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
+            $this->pdf->Cell(14, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
+            $this->pdf->Cell(17, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
             $this->pdf->Cell(30, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
-            $this->pdf->Cell(20, 6, iconv('utf-8', 'tis-620', "$total_usedoil"), 1, 0, "C");
-            $this->pdf->Cell(45, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
+            $this->pdf->Cell(16, 6, iconv('utf-8', 'tis-620', "$total_usedoil"), 1, 0, "C");
+            $this->pdf->Cell(56, 6, iconv('utf-8', 'tis-620', "-"), 1, 0, "C");
+            */
+             $this->pdf->SetWidths(array(
+                            138,
+                            18,
+                            14,
+                            17,
+                            32,
+                            16,
+                            56                          
+                            ));
+
+                        $this->pdf->SetAligns(array(                            
+                            "C",
+                            "C",
+                            "R",
+                            "C",
+                            "L",
+                            "R",
+                            "L"));
+                        $this->pdf->mRows(array(                            
+                            "$ir_subtotal",
+                            "-",
+                            "$ir_totalcubicValue",
+                            "-",
+                            "-",
+                            "$ir_totalOil",
+                            "-")); 
 
 
             #display
