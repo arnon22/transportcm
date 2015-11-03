@@ -187,12 +187,14 @@ class Cardetail extends CI_Controller
             $col["name"] = "ReciveAmount";
             $col["width"] = "40";
             $col['align'] = "right";
-            $col["formatter"] = "number";
+            $col['formatter'] = "currency";
             $col["formatoptions"] = array(
                 "thousandsSeparator" => ",",
                 "decimalSeparator" => ".",
-                "decimalPlaces" => '2');
-            $cols[] = $col;
+                //"decimalPlaces" => '2'
+                );
+                         
+             $cols[] = $col;
 
             $col = array();
             $col["title"] = $this->lang->line('expenseAmount');

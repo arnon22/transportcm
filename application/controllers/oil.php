@@ -36,8 +36,7 @@ class Oil extends CI_Controller
     {
 
         //check login
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
 
             $g = new jqgrid();
 
@@ -81,13 +80,11 @@ class Oil extends CI_Controller
             $col['title'] = $this->lang->line('sum_recived_oil');
             $col['name'] = "receive_oil";
             $col["search"] = false;
-            $col['formatter'] = "currency";
+            $col["formatter"] = "number";
             $col["formatoptions"] = array(
-                "prefix" => "",
-                "suffix" => '',
                 "thousandsSeparator" => ",",
                 "decimalSeparator" => ".",
-                "decimalPlaces" => '2');
+                "decimalPlaces" => 2);
             $cols[] = $col;
 
             #Sell Oil
@@ -95,13 +92,11 @@ class Oil extends CI_Controller
             $col['title'] = $this->lang->line('sum_sell_oil');
             $col['name'] = "sell_oil";
             $col["search"] = false;
-            $col['formatter'] = "currency";
+            $col["formatter"] = "number";
             $col["formatoptions"] = array(
-                "prefix" => "",
-                "suffix" => '',
                 "thousandsSeparator" => ",",
                 "decimalSeparator" => ".",
-                "decimalPlaces" => '2');
+                "decimalPlaces" => 2);
             $cols[] = $col;
 
             #Total Amount
@@ -110,13 +105,11 @@ class Oil extends CI_Controller
             ;
             $col['name'] = "total_amount";
             $col["search"] = false;
-            $col['formatter'] = "currency";
+            $col["formatter"] = "number";
             $col["formatoptions"] = array(
-                "prefix" => "",
-                "suffix" => '',
                 "thousandsSeparator" => ",",
                 "decimalSeparator" => ".",
-                "decimalPlaces" => '2');
+                "decimalPlaces" => 2);
             $cols[] = $col;
 
 
@@ -252,7 +245,7 @@ HAVING factory_status =1";
             $col2['editable'] = true;
             $col2["editrules"] = array("required" => true); // and is required
             //$col2["editoptions"] = array("size" => 20, "defaultValue" => date("d-m-Y H:i")); // with default display of textbox with size 20
-            
+
             $col2["searchoptions"]["sopt"] = array("cn"); // contains search for easy searching
             # to make it date time
             $col2["formatter"] = "datetime";
@@ -311,8 +304,9 @@ HAVING factory_status =1";
                         "SELECT DISTINCT car_id AS k,car_number AS v FROM `transport_oilcars` WHERE customer_id ='{customer_id}' AND `status`=1",
                         "update_field" => "car_id"));
 
-            $col2["editoptions"]["onload"]["sql"] = "SELECT DISTINCT customer_id AS k , customer_name AS v FROM transport_oilcustomers WHERE customer_type_id ='{customer_type_id}' AND `status` =1";
-            
+            $col2["editoptions"]["onload"]["sql"] =
+                "SELECT DISTINCT customer_id AS k , customer_name AS v FROM transport_oilcustomers WHERE customer_type_id ='{customer_type_id}' AND `status` =1";
+
             $col2["formatter"] = "select"; // display label, not value
             $col2["stype"] = "select"; // enable dropdown search
             $col2["searchoptions"] = array("value" => ":;" . $str);
@@ -327,16 +321,17 @@ HAVING factory_status =1";
             $col2["edittype"] = "select";
             $col2["editrules"] = array("required" => true);
             $str = $g2->get_dropdown_values("SELECT DISTINCT car_id AS k, car_number AS v FROM transport_oilcars WHERE  `status` =1");
-            $col2["editoptions"] = array("value" => ":;" . $str);   
-            
+            $col2["editoptions"] = array("value" => ":;" . $str);
+
             // initially load 'note' of that
-            $col2["editoptions"]["onload"]["sql"] = "SELECT DISTINCT car_id AS k, car_number AS v FROM transport_oilcars WHERE customer_id = '{customer_id}' AND `status` =1";
+            $col2["editoptions"]["onload"]["sql"] =
+                "SELECT DISTINCT car_id AS k, car_number AS v FROM transport_oilcars WHERE customer_id = '{customer_id}' AND `status` =1";
 
             $col2["formatter"] = "select"; // display label, not value
             $col2["stype"] = "select"; // enable dropdown search
             $col2["searchoptions"] = array("value" => ":;" . $str);
             $cols2[] = $col2;
-            
+
             #stock_details
             $col2 = array();
             $col2['title'] = $this->lang->line('stock_details');
@@ -346,9 +341,9 @@ HAVING factory_status =1";
             $col2["editoptions"] = array("rows" => 2, "cols" => 20);
             $col2["formatter"] = "autocomplete"; // autocomplete
             $col2["formatoptions"] = array(
-            "sql" => "SELECT DISTINCT stock_details as k, stock_details as v FROM oilstock",
-            "search_on" => "stock_details",
-            "update_field" => "stock_details");
+                "sql" => "SELECT DISTINCT stock_details as k, stock_details as v FROM oilstock",
+                "search_on" => "stock_details",
+                "update_field" => "stock_details");
 
             $cols2[] = $col2;
 
@@ -538,7 +533,7 @@ AND oil_type = 1";
             $opt3["add_options"]["afterShowForm"] =
             'function(formid) { jQuery("#ref_number").focus(); }';
             */
-            
+
             // Check if master record is selected before detail addition
             $opt3["add_options"]["beforeInitData"] = "function(formid){ var selr = jQuery('#list1').jqGrid('getGridParam','selrow'); if (!selr) { alert('คุณยังไม่ได้เลือกโรงงาน'); return false; } }";
             // reload master after detail update
@@ -562,7 +557,7 @@ AND oil_type = 1";
             $col3['editable'] = true;
             $col3["editrules"] = array("required" => true); // and is required
             //$col2["editoptions"] = array("size" => 20, "defaultValue" => date("d-m-Y H:i")); // with default display of textbox with size 20
-            
+
             $col3["searchoptions"]["sopt"] = array("cn"); // contains search for easy searching
             # to make it date time
             $col3["formatter"] = "datetime";
@@ -621,8 +616,9 @@ AND oil_type = 1";
                         "SELECT DISTINCT car_id AS k,car_number AS v FROM `transport_oilcars` WHERE customer_id ='{customer_id}' AND `status`=1",
                         "update_field" => "car_id"));
 
-            $col3["editoptions"]["onload"]["sql"] = "SELECT DISTINCT customer_id AS k , customer_name AS v FROM transport_oilcustomers WHERE customer_type_id ='{customer_type_id}' AND `status` =1";
-            
+            $col3["editoptions"]["onload"]["sql"] =
+                "SELECT DISTINCT customer_id AS k , customer_name AS v FROM transport_oilcustomers WHERE customer_type_id ='{customer_type_id}' AND `status` =1";
+
             $col3["formatter"] = "select"; // display label, not value
             $col3["stype"] = "select"; // enable dropdown search
             $col3["searchoptions"] = array("value" => ":;" . $str);
@@ -637,10 +633,11 @@ AND oil_type = 1";
             $col3["edittype"] = "select";
             $col3["editrules"] = array("required" => true);
             $str = $g3->get_dropdown_values("SELECT DISTINCT car_id AS k, car_number AS v FROM transport_oilcars WHERE  `status` =1");
-            $col3["editoptions"] = array("value" => ":;" . $str);   
-            
+            $col3["editoptions"] = array("value" => ":;" . $str);
+
             // initially load 'note' of that
-            $col3["editoptions"]["onload"]["sql"] = "SELECT DISTINCT car_id AS k, car_number AS v FROM transport_oilcars WHERE customer_id = '{customer_id}' AND `status` =1";
+            $col3["editoptions"]["onload"]["sql"] =
+                "SELECT DISTINCT car_id AS k, car_number AS v FROM transport_oilcars WHERE customer_id = '{customer_id}' AND `status` =1";
 
             $col3["formatter"] = "select"; // display label, not value
             $col3["stype"] = "select"; // enable dropdown search
@@ -674,8 +671,8 @@ AND oil_type = 1";
                     '0');
             $col3['formatter'] = "number";
             $col3["formatoptions"] = array(
-                "prefix" => "",
-                "suffix" => '',
+               # "prefix" => "",
+                #"suffix" => '',
                 "thousandsSeparator" => ",",
                 "decimalSeparator" => ".",
                 "decimalPlaces" => '2');
@@ -693,8 +690,8 @@ AND oil_type = 1";
                     '0');
             $col3['formatter'] = "currency";
             $col3["formatoptions"] = array(
-                "prefix" => "",
-                "suffix" => '',
+                #"prefix" => "",
+               # "suffix" => '',
                 "thousandsSeparator" => ",",
                 "decimalSeparator" => ".",
                 "decimalPlaces" => '2');
@@ -711,8 +708,8 @@ AND oil_type = 1";
             #$col3['editoptions'] = array("readonly" => "readonly");
             $col3['formatter'] = "currency";
             $col3["formatoptions"] = array(
-                "prefix" => "",
-                "suffix" => '',
+               # "prefix" => "",
+               # "suffix" => '',
                 "thousandsSeparator" => ",",
                 "decimalSeparator" => ".",
                 "decimalPlaces" => '2');
@@ -722,34 +719,34 @@ AND oil_type = 1";
 
             /*
             $g3->select_command = "SELECT
-	stock_id,
-	stock_date,
-	ref_number,
-	oil.customer_type_id,
-	cus_type.customer_type_title,
-	oil.customer_id,
-	cus.customers_name,
-	oil.car_id,
-	car.car_number,
-	stock_details,
-	sell_oil,
-	sell_price,
-	sell_amount
-FROM
-	oilstock AS oil
-LEFT JOIN transport_cars AS car ON (oil.car_id = car.car_id)
-LEFT JOIN transport_customers AS cus ON (
-	oil.customer_id = cus.customer_id
-)
-LEFT JOIN transport_customer_type AS cus_type ON (
-	cus.customer_type_id = cus_type.customer_type_id
-)
-WHERE
-	oil.factory_id = '$fac_id'
-AND oil_type = 2";
+            stock_id,
+            stock_date,
+            ref_number,
+            oil.customer_type_id,
+            cus_type.customer_type_title,
+            oil.customer_id,
+            cus.customers_name,
+            oil.car_id,
+            car.car_number,
+            stock_details,
+            sell_oil,
+            sell_price,
+            sell_amount
+            FROM
+            oilstock AS oil
+            LEFT JOIN transport_cars AS car ON (oil.car_id = car.car_id)
+            LEFT JOIN transport_customers AS cus ON (
+            oil.customer_id = cus.customer_id
+            )
+            LEFT JOIN transport_customer_type AS cus_type ON (
+            cus.customer_type_id = cus_type.customer_type_id
+            )
+            WHERE
+            oil.factory_id = '$fac_id'
+            AND oil_type = 2";
             */
-            
-            $g3->select_command ="SELECT
+
+            $g3->select_command = "SELECT
 	stock_id,
 	stock_date,
 	ref_number,
@@ -811,20 +808,17 @@ AND oil_type = 2";
             $out_list3 = $g3->render("list3");
 
 
-            
-
             //display
             $this->_example_output((object)array(
                 'output' => '',
                 'out_master' => $out_master,
-                'out_list2' => $out_list2,                
+                'out_list2' => $out_list2,
                 'out_list3' => $out_list3));
 
             //$this->load->view('oil/oil-view');
 
 
-        } else
-        {
+        } else {
             //If no session, redirect to login page
             redirect('login', 'refresh');
         }
