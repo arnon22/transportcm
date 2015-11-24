@@ -32,8 +32,7 @@ class Customeroil2 extends CI_Controller
     {
 
         //check login
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
 
             $i_rule = $this->session->userdata('user_cizacl_role_id');
 
@@ -62,10 +61,7 @@ class Customeroil2 extends CI_Controller
             $col["editoptions"] = array("value" => ":;" . $str);
             $col["formatter"] = "select"; // display label, not value
             $col["editrules"] = array("required" => true);
-
             $col["editoptions"] = array("value" => $str);
-
-
             $col["formatter"] = "select"; // display label, not value
             $col["stype"] = "select"; // enable dropdown search
             $col["searchoptions"] = array("value" => ":;" . $str);
@@ -107,13 +103,11 @@ class Customeroil2 extends CI_Controller
             $col['editable'] = true;
             $col['edittype'] = "textarea";
             $col["viewable"] = false;
-
             $col['editoptions'] = array("rows" => "2", "cols" => "20");
             $cols[] = $col;
 
 
             // $cols[] = $col;
-
             $e["on_insert"] = array(
                 "add_client",
                 null,
@@ -145,16 +139,15 @@ LEFT JOIN transport_customer_type AS cus_type ON (
 WHERE
 	o_c.`status` = 1";
 
-
             function add_client(&$data)
             {
-                $check_sql = "SELECT count(*) as c from transport_oilcustomers where factory_id =".$data["params"]["factory_id"]." AND LOWER(`customer_name`) = '" .
-                    strtolower($data["params"]["customer_name"]) . "'";
+                $check_sql = "SELECT count(*) as c from transport_oilcustomers where factory_id =" .
+                    $data["params"]["factory_id"] . " AND LOWER(`customer_name`) = '" . strtolower($data["params"]["customer_name"]) .
+                    "'";
 
                 $rs = mysql_fetch_assoc(mysql_query($check_sql));
 
-                if ($rs["c"] > 0)
-                {
+                if ($rs["c"] > 0) {
                     phpgrid_error("ข้อมูลลูกค้าซ้ำ");
                 }
 
@@ -182,7 +175,6 @@ WHERE
 
 
             $g->set_columns($cols);
-
             $opt["sortname"] = 'customer_name';
             $opt["sortorder"] = "asc";
             $opt["detail_grid_id"] = "list2";
@@ -314,17 +306,16 @@ WHERE
             {
                 $id = intval($_GET["rowid"]);
                 $data["params"]["customer_id"] = $id;
-                
-                    $check_sql = "SELECT count(*) as c from transport_oilcars WHERE customer_id = $id and LOWER(`car_number`) = '" .
+
+                $check_sql = "SELECT count(*) as c from transport_oilcars WHERE customer_id = $id and LOWER(`car_number`) = '" .
                     strtolower($data["params"]["car_number"]) . "'";
 
                 $rs = mysql_fetch_assoc(mysql_query($check_sql));
 
-                if ($rs["c"] > 0)
-                {
+                if ($rs["c"] > 0) {
                     phpgrid_error("หมายเลขรถซ้ำ");
                 }
-                
+
             }
 
             function after_insert($data)
@@ -350,17 +341,14 @@ WHERE
                 $str = ob_get_clean(); 
                 phpgrid_error($str); 
                 */
-                
+
                 $car_number = $data['params']['car_number'];
-                
-                
-                
-                
-                
+
+
             }
 
 
-           $out_detail = $grid->render("list2");
+            $out_detail = $grid->render("list2");
 
 
             $h2_title = $this->lang->line('customeroils');
@@ -375,8 +363,7 @@ WHERE
                 'css_files' => array()));
 
 
-        } else
-        {
+        } else {
             //If no session, redirect to login page
             redirect('login', 'refresh');
         }

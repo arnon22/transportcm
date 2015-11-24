@@ -32,8 +32,7 @@ class Cardetail extends CI_Controller
     {
 
         //check login
-        if ($this->session->userdata('user_name'))
-        {
+        if ($this->session->userdata('user_name')) {
 
 
             $car = $this->car->get_Allcar();
@@ -43,14 +42,13 @@ class Cardetail extends CI_Controller
 
             $carNumber = $this->input->post('carNumber');
 
-            if (!empty($carNumber))
-            {
+            if (!empty($carNumber)) {
 
                 //print_r($_POST);
 
                 $dateStart = $this->input->post('startDate');
                 $dateEnd = $this->input->post('endDate');
-                
+
                 /*Old*/
                 #$startDate = $this->engDate($dateStart);
                 #$endDate = $this->engDate($dateEnd);
@@ -61,12 +59,12 @@ class Cardetail extends CI_Controller
 
 
                 $mktime = $date;
-                
-            
+
+
                 $totalReceive = $this->car->total_recive($carNumber, $startDate, $endDate);
                 $totalExpense = $this->car->total_expense($carNumber, $startDate, $endDate);
-                $totalOil_Expense = $this->car->expense_oil($carNumber, $startDate, $endDate);
-
+                $totalOil_Expense = $this->car->expense_oil($carNumber, $startDate, $endDate);  // เติมน้ำมัน price
+                $total_oilAmount = $this->car->expense_totalOil($carNumber, $startDate, $endDate); // เติมน้ำมัน
                 //
                 $Count_Order = $this->car->total_NumRecive($carNumber, $startDate, $endDate);
 
@@ -85,8 +83,7 @@ class Cardetail extends CI_Controller
                 $totalUseoil = 0;
 
                 $car_number = $this->car->getCar_number($carNumber);
-                foreach ($totalSummary as $rows)
-                {
+                foreach ($totalSummary as $rows) {
                     $totalDistance = $rows['total_distance'];
                     $totalCubic = $rows['total_cubic'];
                     $totalUseoil = $rows['total_useoil'];
@@ -94,14 +91,13 @@ class Cardetail extends CI_Controller
 
                 }
 
-                if ($totalDistance != "" and $totalCubic != "" and $Count_Order != "")
-                {
-                    $aver_oil_distance = ($totalUseoil / $totalDistance);
+                if ($totalDistance != "" and $totalCubic != "" and $Count_Order != "") {
+                    //$aver_oil_distance = ($totalUseoil / $totalDistance);
+                    $aver_oil_distance = ($totalDistance/$totalUseoil);
                     $aver_oil_cubic = ($totalUseoil / $totalCubic);
                     $aver_oil_countOrder = ($totalUseoil / $Count_Order);
                     $aver_cubic_countOrder = ($totalCubic / $Count_Order);
-                } else
-                {
+                } else {
                     $aver_oil_distance = 0;
                     $aver_oil_cubic = 0;
                     $aver_oil_countOrder = 0;
@@ -114,8 +110,7 @@ class Cardetail extends CI_Controller
 
             } //End if
 
-            if ($carNumber == "" || $startDate == "" || $endDate == "")
-            {
+            if ($carNumber == "" || $startDate == "" || $endDate == "") {
                 $carNumber = 0;
                 $startDate = date('Y-m-d');
                 $endDate = date('Y-m-d');
@@ -132,6 +127,7 @@ class Cardetail extends CI_Controller
                 "Count_Order" => $Count_Order,
                 "totalDistance" => $totalDistance,
                 "totalCubic" => $totalCubic,
+                "total_oilAmount"=>$total_oilAmount,
                 "totalUseoil" => $totalUseoil,
                 "aver_oil_distance" => $aver_oil_distance,
                 "aver_oil_cubic" => $aver_oil_cubic,
@@ -193,8 +189,8 @@ class Cardetail extends CI_Controller
                 "decimalSeparator" => ".",
                 //"decimalPlaces" => '2'
                 );
-                         
-             $cols[] = $col;
+
+            $cols[] = $col;
 
             $col = array();
             $col["title"] = $this->lang->line('expenseAmount');
@@ -216,8 +212,9 @@ class Cardetail extends CI_Controller
             $col["formatter"] = "number";
             $col["formatoptions"] = array(
                 "thousandsSeparator" => ",",
-                "decimalSeparator" => ".",
-                "decimalPlaces" => '2');
+                "decimalSeparator" => "."
+                //"decimalPlaces" => '2'
+                );
             $cols[] = $col;
 
             $col = array();
@@ -268,6 +265,18 @@ class Cardetail extends CI_Controller
                 "decimalPlaces" => '2');
             $cols[] = $col;
 
+            $col = array();
+            $col["title"] = $this->lang->line('total_oil');
+            $col["name"] = "total_oilAmount";
+            $col["width"] = "40";
+            $col['align'] = "center";
+            $col["formatter"] = "number";
+            $col["formatoptions"] = array(
+                "thousandsSeparator" => ",",
+                "decimalSeparator" => ".",
+                "decimalPlaces" => '2');
+            $cols[] = $col;
+            
             $col = array();
             $col["title"] = $this->lang->line('totalUseoil');
             $col["name"] = "totalUseoil";
@@ -341,8 +350,7 @@ class Cardetail extends CI_Controller
             $out_master = $g->render("list1");
 
 
-            if (isset($order_all))
-            {
+            if (isset($order_all)) {
                 $g2 = new jqgrid();
 
                 //Column Option
@@ -429,8 +437,7 @@ class Cardetail extends CI_Controller
             }
 
             //Oil Detail
-            if (isset($SellOil_List))
-            {
+            if (isset($SellOil_List)) {
                 $g3 = new jqgrid();
 
                 #set Column
@@ -470,8 +477,6 @@ class Cardetail extends CI_Controller
                 $col3['align'] = "center";
                 $col3['formatter'] = "number";
                 $col3["formatoptions"] = array(
-                    "prefix" => "",
-                    "suffix" => '',
                     "thousandsSeparator" => ",",
                     "decimalSeparator" => ".",
                     "decimalPlaces" => '2');
@@ -539,8 +544,7 @@ class Cardetail extends CI_Controller
             }
 
             // Other Expense for car
-            if (isset($expensecar_list))
-            {
+            if (isset($expensecar_list)) {
                 $g4 = new jqgrid();
 
                 $col4 = array();
@@ -606,8 +610,7 @@ class Cardetail extends CI_Controller
                 "out_order" => $out_order));
 
 
-        } else
-        {
+        } else {
             //If no session, redirect to login page
             redirect('login', 'refresh');
         }
@@ -658,10 +661,8 @@ class Cardetail extends CI_Controller
             'mon' => 0,
             'year' => 0,
             'timestamp' => 0);
-        foreach ($date as $key => $val)
-        {
-            switch ($key)
-            {
+        foreach ($date as $key => $val) {
+            switch ($key) {
                 case 'd':
                 case 'j':
                     $dateTime['day'] = intval($val);
@@ -723,11 +724,11 @@ class Cardetail extends CI_Controller
 
     public function str2Datetime($datetime)
     {
-        
-        $d1 = str_replace(" ","/",$datetime);
-        $d2 = str_replace(":","/",$d1);
-        
-        
+
+        $d1 = str_replace(" ", "/", $datetime);
+        $d2 = str_replace(":", "/", $d1);
+
+
         $dt = explode('/', $d2);
         //$today =array('date'=>$dt[0],'mo'=>$dt[1],'Year'=>$dt['2']);
         $date = $dt[0];
@@ -736,7 +737,7 @@ class Cardetail extends CI_Controller
         $h = $dt[3];
         $m = $dt[4];
 
-        $dateEng = $year . "-" . $mouht . "-" . $date." ".$h.":".$m;
+        $dateEng = $year . "-" . $mouht . "-" . $date . " " . $h . ":" . $m;
 
         return $dateEng;
 

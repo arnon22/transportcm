@@ -259,21 +259,65 @@ car_id =(SELECT
 
 
     } //End of function expense_oil
+    
+    public function expense_totalOil($cars_id = 0, $startDate = '000-00-00', $endDate =
+        '0000-00-00')
+    {
+        /*
+        $str_sql = "SELECT	
+	SUM(sell_amount) AS OilsellAmount
+FROM
+	oilstock AS oil
+WHERE
+car_id =$cars_id AND oil_type = 2 AND stock_date BETWEEN '$startDate' AND '$endDate' ";
+*/
+
+    $str_sql ="SELECT	
+	SUM(sell_oil) AS OilslTotal
+FROM
+	oilstock AS oil
+WHERE
+oil_type = 2 AND stock_date BETWEEN '$startDate' AND '$endDate' AND
+car_id =(SELECT
+			c1.car_id
+		FROM
+			transport_oilcars AS c1
+		LEFT JOIN transport_cars AS c2 ON (
+			c1.car_number = c2.car_number
+		)
+		WHERE
+			c2.car_id =$cars_id)";
+
+    
+
+
+        $query = $this->db->query($str_sql);
+
+        if ($query->num_rows() > 0)
+        {
+            foreach ($query->result() as $row)
+            {
+                $oil_expense = $row->OilslTotal;
+
+            } //end foreach
+        }
+        if ($oil_expense == "")
+        {
+            $oil_expense = 0;
+        }
+
+
+        return $oil_expense;
+
+
+    } //End of function expense_oil
 
 
     public function Cardetail_oilsellList($cars_id = 0, $startDate = '000-00-00', $endDate =
         '0000-00-00')
     {
-        /*
-        $str_sql = "SELECT
-        stock_date,stock_details,Oils.ref_number,factory_code,factory_name,sell_oil,sell_price,sell_amount,car_number,Oils.note As Note
-        FROM
-        oilstock AS Oils
-        LEFT JOIN transport_factory AS fac ON(Oils.factory_id = fac.factory_id)
-        LEFT JOIN transport_cars AS car ON(Oils.car_id = car.car_id)
-        WHERE Oils.car_id = $cars_id AND oil_type =2 AND stock_date BETWEEN '$startDate' AND '$endDate' ";
-        */
-        
+        /*backup 24-11-2015*/
+        /*        
         $str_sql ="SELECT
 	stock_date,
 	stock_details,
@@ -304,7 +348,88 @@ WHERE
 AND oil_type = 2
 AND stock_date BETWEEN '$startDate'
 AND '$endDate'";
-
+            */
+            
+       $str_sql = "SELECT
+	stock_date,
+	stock_details,
+	Oils.ref_number,
+	factory_code,
+	factory_name,
+	sell_oil,
+	sell_price,
+	sell_amount,
+	Oils.note AS Note,
+	(
+		SELECT
+			SUM(sell_amount)
+		FROM
+			oilstock AS Oils
+		LEFT JOIN transport_factory AS fac ON (
+			Oils.factory_id = fac.factory_id
+		)
+		WHERE
+			Oils.car_id = (
+				SELECT
+					c1.car_id
+				FROM
+					transport_oilcars AS c1
+				LEFT JOIN transport_cars AS c2 ON (
+					c1.car_number = c2.car_number
+				)
+				WHERE
+					c2.car_id = '$cars_id'
+			)
+		AND oil_type = 2
+		AND stock_date BETWEEN '$startDate'
+		AND '$endDate'
+	) AS total_Amount,
+	(
+		SELECT
+			SUM(sell_oil)
+		FROM
+			oilstock AS Oils
+		LEFT JOIN transport_factory AS fac ON (
+			Oils.factory_id = fac.factory_id
+		)
+		WHERE
+			Oils.car_id = (
+				SELECT
+					c1.car_id
+				FROM
+					transport_oilcars AS c1
+				LEFT JOIN transport_cars AS c2 ON (
+					c1.car_number = c2.car_number
+				)
+				WHERE
+					c2.car_id = '$cars_id'
+			)
+		AND oil_type = 2
+		AND stock_date BETWEEN '$startDate'
+		AND '$endDate'
+	) AS total_Oil
+FROM
+	oilstock AS Oils
+LEFT JOIN transport_factory AS fac ON (
+	Oils.factory_id = fac.factory_id
+)
+WHERE
+	Oils.car_id = (
+		SELECT
+			c1.car_id
+		FROM
+			transport_oilcars AS c1
+		LEFT JOIN transport_cars AS c2 ON (
+			c1.car_number = c2.car_number
+		)
+		WHERE
+			c2.car_id = '$cars_id'
+	)
+AND oil_type = 2
+AND stock_date BETWEEN '$startDate'
+AND '$endDate'";     
+            
+            
 
         $query = $this->db->query($str_sql);
 
