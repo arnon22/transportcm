@@ -170,14 +170,7 @@
                 </ul>
               </div><!-- /btn-group -->
               
-            </div>
-                
-                
-                
-                
-                
-                
-                <ul class="dropdown-menu">
+            </div><ul class="dropdown-menu">
                 <li><a></a></li>
     
             </ul>
