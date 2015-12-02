@@ -51,127 +51,12 @@
                     
       }?>
         
-       <!-- 
-        <div style="margin: 10px; background: #CABA7E;">
-        
-        
-        <style>
-        .car_detail{
-           width: 700px;
-           
-        
-        }
-        
-        
-        </style>
-     
-        <table class="car_detail" >
-        
-           <?php if(isset($car_detail)){  foreach ($car_detail as $row) { ?>  
-<tr>
-	<td>หมายเลขรถ :</td>
-	<td></td>
-	<td></td>
-	<td></td>
-	<td width="30px"></td>
-	<td>ค่าเฉลี่ยต่างๆ</td>
-	<td></td>
-	<td></td>
-</tr>
-<tr>
-    <td></td>
-	<td>จากวันที่ </td>
-
-	<td>ถึง</td>
-	<td></td> 
-	<td></td>
-	<td>  จำนวนเที่ยว</td>
-	<td><?php echo  $row['Count_Order'];?></td>
-	<td>เที่ยว</td>
-</tr>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-	<td></td>
-	<td> </td>
-	<td>  จำนวน กม.</td>
-	<td><?php echo number_format($row['totalDistance'],2,'.',',');?></td>
-	<td>กม.</td>
-</tr>
-<tr>
-	<td>รายได้</td>
-	<td></td>
-	<td></td>
-	<td></td>
-	<td></td>
-	<td>  จำนวนคิว</td>
-	<td><?php echo number_format($row['totalCubic'],2,'.',',');?></td>
-	<td>คิว</td>
-</tr>
-<tr>
-	<td width="20px"></td>
-	<td>รายได้รวม</td>
-	<td><?php echo number_format($row['ReciveAmount'],2,'.',',');?></td>
-	<td>บาท</td>
-	<td></td>
-	<td>  น้ำมันที่ใช้ไป</td>
-	<td><?php echo number_format($row['totalUseoil'],2,'.',',');?></td>
-	<td>ลิตร</td>
-</tr>
-<tr>
-	<td>รายจ่าย</td>
-	<td></td>
-	<td></td>
-	<td></td>
-	<td></td>
-	<td>  เฉลี่ยน้ำมัน</td>
-	<td><?php echo number_format($row['aver_oil_distance'],2,'.',',');?></td>
-	<td>กม./ลิตร</td>
-</tr>
-<tr>
-	<td></td>
-	<td>ค่าน้ำมัน</td>
-	<td><?php echo number_format($row['OiltotalAmount'],2,'.',',');?></td>
-	<td>บาท</td>
-	<td> </td>
-	<td>  เฉลี่ยน้ำมัน</td>
-	<td><?php echo number_format($row['aver_oil_cubic'],2,'.',',');?></td>
-	<td>ลิตร/คิว</td>
-</tr>
-<tr>
-	<td></td>
-	<td>ค่าใช้จ่ายอื่นฯ</td>
-	<td><?php echo number_format($row['expenseAmount'],2,'.',',');?></td>
-	<td>บาท</td>
-	<td></td>
-	<td>  เฉลี่ยน้ำมัน</td>
-	<td><?php echo number_format($row['aver_oil_countOrder'],2,'.',',');?></td>
-	<td>ลิตร/เที่ยว</td>
-</tr>
-<tr>
-	<td></td>
-	<td>รายจ่ายรวม</td>
-	<td><?php echo number_format($row['sumTotalExpense'],2,'.',',');?></td>
-	<td>บาท</td>
-	<td></td>
-	<td>  เฉลี่ย</td>
-	<td><?php echo number_format($row['aver_cubic_countOrder'],2,'.',',');?></td>
-	<td>คิว/เที่ยว</td>
-</tr>
-
- <?php   }// end foreach
-            
-        }?>
-
-</table>
-       
-          </div>
-          -->
-        </div><!--/span-->
+       </div><!--/span-->
         </div>
         </div>
+        
         <div class="clear"></div>
+        <div class="container-fluid">
         <div class="row-fluid">
         <div class="span12">
         
@@ -204,7 +89,7 @@
   </div><!-- /profile -->
   <div class="tab-pane" id="messages">
   <!-- Oil-->
-  <div style="padding: 10px;"> 
+  <div> 
   <?php
     if(isset($out_expensecarList)){
         echo $out_expensecarList;
@@ -213,11 +98,7 @@
   ?>
   </div>
   </div>
-  <div class="tab-pane" id="settings">
-  <!-- car Expense List -->
   
-  
-  </div>
 </div>
 
 <script>
@@ -229,7 +110,7 @@
         
         </div>
         </div>
-        
+        </div>
         </div><!-- /containner -->
         
        <script>

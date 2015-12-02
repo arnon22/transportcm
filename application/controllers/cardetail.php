@@ -183,13 +183,10 @@ class Cardetail extends CI_Controller
             $col["name"] = "ReciveAmount";
             $col["width"] = "40";
             $col['align'] = "right";
-            $col['formatter'] = "currency";
+            $col["formatter"] = "number";
             $col["formatoptions"] = array(
                 "thousandsSeparator" => ",",
-                "decimalSeparator" => ".",
-                //"decimalPlaces" => '2'
-                );
-
+                "decimalSeparator" => ".");
             $cols[] = $col;
 
             $col = array();
@@ -200,8 +197,13 @@ class Cardetail extends CI_Controller
             $col["formatter"] = "number";
             $col["formatoptions"] = array(
                 "thousandsSeparator" => ",",
+                "decimalSeparator" => ".");
+            /*
+            $col["formatoptions"] = array(
+                "thousandsSeparator" => ",",
                 "decimalSeparator" => ".",
                 "decimalPlaces" => '2');
+                */
             $cols[] = $col;
 
             $col = array();
@@ -209,12 +211,10 @@ class Cardetail extends CI_Controller
             $col["name"] = "OiltotalAmount";
             $col["width"] = "40";
             $col['align'] = "right";
-            $col["formatter"] = "number";
+            $col["formatter"] = "number"; 
             $col["formatoptions"] = array(
                 "thousandsSeparator" => ",",
-                "decimalSeparator" => "."
-                //"decimalPlaces" => '2'
-                );
+                "decimalSeparator" => ".");           
             $cols[] = $col;
 
             $col = array();
@@ -225,8 +225,13 @@ class Cardetail extends CI_Controller
             $col["formatter"] = "number";
             $col["formatoptions"] = array(
                 "thousandsSeparator" => ",",
+                "decimalSeparator" => ".");
+            /*
+            $col["formatoptions"] = array(
+                "thousandsSeparator" => ",",
                 "decimalSeparator" => ".",
                 "decimalPlaces" => '2');
+                */
             $cols[] = $col;
 
             $col = array();
@@ -237,8 +242,13 @@ class Cardetail extends CI_Controller
             $col["formatter"] = "number";
             $col["formatoptions"] = array(
                 "thousandsSeparator" => ",",
+                "decimalSeparator" => ".");
+            /*
+            $col["formatoptions"] = array(
+                "thousandsSeparator" => ",",
                 "decimalSeparator" => ".",
                 "decimalPlaces" => '2');
+            */
             $cols[] = $col;
 
             $col = array();
@@ -249,8 +259,13 @@ class Cardetail extends CI_Controller
             $col["formatter"] = "number";
             $col["formatoptions"] = array(
                 "thousandsSeparator" => ",",
+                "decimalSeparator" => ".");
+            /*
+            $col["formatoptions"] = array(
+                "thousandsSeparator" => ",",
                 "decimalSeparator" => ".",
                 "decimalPlaces" => '2');
+            */    
             $cols[] = $col;
 
             $col = array();
@@ -261,8 +276,13 @@ class Cardetail extends CI_Controller
             $col["formatter"] = "number";
             $col["formatoptions"] = array(
                 "thousandsSeparator" => ",",
+                "decimalSeparator" => ".");
+            /*
+            $col["formatoptions"] = array(
+                "thousandsSeparator" => ",",
                 "decimalSeparator" => ".",
                 "decimalPlaces" => '2');
+            */
             $cols[] = $col;
 
             $col = array();
@@ -273,8 +293,13 @@ class Cardetail extends CI_Controller
             $col["formatter"] = "number";
             $col["formatoptions"] = array(
                 "thousandsSeparator" => ",",
+                "decimalSeparator" => ".");
+            /*
+            $col["formatoptions"] = array(
+                "thousandsSeparator" => ",",
                 "decimalSeparator" => ".",
                 "decimalPlaces" => '2');
+            */    
             $cols[] = $col;
             
             $col = array();
@@ -285,8 +310,13 @@ class Cardetail extends CI_Controller
             $col["formatter"] = "number";
             $col["formatoptions"] = array(
                 "thousandsSeparator" => ",",
+                "decimalSeparator" => ".");
+            /*
+            $col["formatoptions"] = array(
+                "thousandsSeparator" => ",",
                 "decimalSeparator" => ".",
                 "decimalPlaces" => '2');
+            */    
             $cols[] = $col;
 
             $col = array();
@@ -294,6 +324,9 @@ class Cardetail extends CI_Controller
             $col["name"] = "aver_oil_distance";
             $col["width"] = "40";
             $col["formatter"] = "number";
+            $col["formatoptions"] = array(
+                "thousandsSeparator" => ",",
+                "decimalSeparator" => ".");
             $col['align'] = "center";
             $cols[] = $col;
 
@@ -303,6 +336,9 @@ class Cardetail extends CI_Controller
             $col["width"] = "40";
             $col['align'] = "center";
             $col["formatter"] = "number";
+            $col["formatoptions"] = array(
+                "thousandsSeparator" => ",",
+                "decimalSeparator" => ".");
             $cols[] = $col;
 
             $col = array();
@@ -311,7 +347,9 @@ class Cardetail extends CI_Controller
             $col["width"] = "40";
             $col['align'] = "center";
             $col["formatter"] = "number";
-
+            $col["formatoptions"] = array(
+                "thousandsSeparator" => ",",
+                "decimalSeparator" => ".");
             $cols[] = $col;
 
             $col = array();
@@ -320,7 +358,9 @@ class Cardetail extends CI_Controller
             $col["width"] = "40";
             $col['align'] = "center";
             $col["formatter"] = "number";
-
+            $col["formatoptions"] = array(
+                "thousandsSeparator" => ",",
+                "decimalSeparator" => ".");
             $cols[] = $col;
 
             $g->set_columns($cols);
@@ -478,8 +518,7 @@ class Cardetail extends CI_Controller
                 $col3['formatter'] = "number";
                 $col3["formatoptions"] = array(
                     "thousandsSeparator" => ",",
-                    "decimalSeparator" => ".",
-                    "decimalPlaces" => '2');
+                    "decimalSeparator" => ".");
                 $cols3[] = $col3;
 
                 #oil_price
@@ -492,8 +531,7 @@ class Cardetail extends CI_Controller
                     "prefix" => "",
                     "suffix" => '',
                     "thousandsSeparator" => ",",
-                    "decimalSeparator" => ".",
-                    "decimalPlaces" => '2');
+                    "decimalSeparator" => ".");
                 $cols3[] = $col3;
 
                 #total_mount
@@ -506,8 +544,7 @@ class Cardetail extends CI_Controller
                     "prefix" => "",
                     "suffix" => '',
                     "thousandsSeparator" => ",",
-                    "decimalSeparator" => ".",
-                    "decimalPlaces" => '2');
+                    "decimalSeparator" => ".");
                 $cols3[] = $col3;
 
 
@@ -584,7 +621,8 @@ class Cardetail extends CI_Controller
                 $g4->set_columns($cols4);
 
                 $opt4['height'] = "250";
-                $opt4["width"] = "920";
+                $opt4["autowidth"] = true;
+                $opt4["autoresize"] = true;
                 $opt4['rowNum'] = 10;
                 $opt4['rowList'] = array(
                     10,
