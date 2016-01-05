@@ -877,7 +877,7 @@ LEFT JOIN transport_oilcars AS car ON (o_s.car_id = car.car_id)
 WHERE
 	stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = '$oilIsType'";
+AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
                     
                 }else{
                     #2 factory=All,customer_id=All,car_id=custom
@@ -913,7 +913,7 @@ WHERE
 	o_s.car_id = $car_id
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = '$oilIsType'";  
+AND oil_type = '$oilIsType' ORDER BY stock_date ASC";  
                     
                 }// end  if $car_id=ALL
                 
@@ -953,7 +953,7 @@ WHERE
 o_s.customer_id = $customer_id
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = '$oilIsType'";
+AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
                 }else{
                     #4 fctory=All,customer_id=custom,car_id=custom
                     // Add Code
@@ -989,7 +989,7 @@ WHERE
 AND o_s.customer_id = $customer_id
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = '$oilIsType'";
+AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
                     
                 } // end if $car_id=All
                 
@@ -1033,7 +1033,7 @@ WHERE
 o_s.factory_id = '$factory'
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = '$oilIsType'";
+AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
                     
                 }else{
                     #6 factory=custom,customer_id=All,car_id=custom
@@ -1070,7 +1070,7 @@ o_s.factory_id = '$factory'
 AND o_s.car_id = '$car_id'
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = '$oilIsType'";
+AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
                     
                 }//end if $car_id==All
                 
@@ -1111,7 +1111,7 @@ o_s.factory_id = '$factory'
 AND o_s.customer_id = '$customer_id'
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = '$oilIsType'";
+AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
                     
                 }else{
                     #8 factory=custom,customer_id=custom,car_id=custom
@@ -1149,7 +1149,7 @@ AND o_s.customer_id = '$customer_id'
 AND o_s.car_id = '$car_id'
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = '$oilIsType'";
+AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
                     
                 }//end if $car_id==All
                 

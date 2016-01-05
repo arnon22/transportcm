@@ -1459,19 +1459,7 @@ function ajax_call() {
         $this->load->model('customers_model', 'customer');
 
 
-        if ($this->session->userdata('method') == "report") {
-
-            /* Data from  Session
-            $data = array(
-            'oiltype'=>$oilType,
-            'factory'=>$factory,
-            'startdate'=>$start_date,
-            'enddate'=>$end_date,
-            'customer'=>$customer,
-            'car_number'=>$car_number,
-            'method'=>"report"                    
-            );
-            */
+        if ($this->session->userdata('method') == "report") {      
 
             $oiltype = $this->session->userdata('oiltype');
             $factory = $this->session->userdata('factory');
@@ -1519,45 +1507,67 @@ function ajax_call() {
             $this->pdf->AddPage('P', 'A4');
             //Header Report
             $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
-            $this->pdf->SetFont('THNiramitAS-Bold', '', 16);
+            $this->pdf->SetFont('THNiramitAS-Bold', '', 18);
             //$this->pdf->Header();
             $this->pdf->SetX(80);
             $this->pdf->Cell(50, 10, $head_report, 'C');
             $this->pdf->Ln();
             $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
-            $this->pdf->SetFont('THNiramitAS', '', 12);
+            $this->pdf->SetFont('THNiramitAS', '', 16);
             //$this->pdf->SetX(3);
             $this->pdf->Cell(10, 10, iconv('utf-8', 'tis-620', $left_report), 'C');
-            $this->pdf->SetX(-50);
+            $this->pdf->SetX(-60);
             $this->pdf->Cell(10, 10, iconv('utf-8', 'tis-620', $right_report), 'C');
             $this->pdf->Ln();
             /*Title Report*/
 
             $this->pdf->SetFillColor(95, 158, 160); //$this->pdf->SetFillColor(200,220,255);
-            $this->pdf->Cell(28, 5, iconv('utf-8', 'tis-620', $this->lang->line('date_time')),
-                1, 0, "C", true);
-            $this->pdf->Cell(20, 5, iconv('utf-8', 'tis-620', $this->lang->line('ref.number')),
-                1, 0, "C", true);
-            $this->pdf->Cell(15, 5, iconv('utf-8', 'tis-620', $this->lang->line('car_number')),
-                1, 0, "C", true);
-            $this->pdf->Cell(47, 5, iconv('utf-8', 'tis-620', $this->lang->line('detail')),
-                1, 0, "C", true);
-            $this->pdf->Cell(15, 5, iconv('utf-8', 'tis-620', $this->lang->line('oil_value')),
-                1, 0, "C", true);
-            $this->pdf->Cell(15, 5, iconv('utf-8', 'tis-620', $this->lang->line('price_per_lits')),
-                1, 0, "C", true);
-            $this->pdf->Cell(20, 5, iconv('utf-8', 'tis-620', $this->lang->line('price_amount')),
-                1, 0, "C", true);
-            $this->pdf->Cell(45, 5, iconv('utf-8', 'tis-620', $this->lang->line('remark')),
-                1, 0, "C", true);
-            $this->pdf->Ln();
             
+            $dateTime = iconv('utf-8', 'tis-620', $this->lang->line('date_time'));
+            $refNum = iconv('utf-8', 'tis-620', $this->lang->line('ref.number'));
+            $carNumber = iconv('utf-8', 'tis-620', $this->lang->line('car_number'));
+            $details = iconv('utf-8', 'tis-620', $this->lang->line('detail'));
+            $oilValue = iconv('utf-8', 'tis-620', $this->lang->line('oil_value'));
+            $priceList = iconv('utf-8', 'tis-620', $this->lang->line('price_per_lits'));
+            $priceAmount = iconv('utf-8', 'tis-620', $this->lang->line('price_amount'));
+            $remark = iconv('utf-8', 'tis-620', $this->lang->line('remark'));
+            
+           /* Title */            
+            $this->pdf->SetWidths(array(
+                            38,
+                            22,
+                            18,
+                            47,
+                            15,
+                            15,
+                            20,
+                            30                            
+                            ));
+
+                        $this->pdf->SetAligns(array(
+                            "L",                           
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L"));
+                        $this->pdf->mRows(array(
+                            "$dateTime",
+                            "$refNum",
+                            "$carNumber",
+                            "$details",
+                            "$oilValue",
+                            "$priceList",
+                            "$priceAmount",
+                            "$remark"));
+
             
                         
-            /*Content*/
+            /*Content*/   
             
-            
-
             $sub_oil = 0;
             $sub_price = 0;
             $sub_amount = 0;
@@ -1600,38 +1610,25 @@ function ajax_call() {
                 $oil_amount = number_format($amount, 2, '.', ',');
                 $oil_note = iconv('utf-8', 'tis-620', $row['note']);
                 
-/*
-                $this->pdf->Cell(20, 5, $this->conv_date->thaiDate2($date), 1, 0, "L");
-                $this->pdf->Cell(15, 5, date("H:i:s", strtotime($row['stock_date'])), 1, 0, "L");
-                $this->pdf->Cell(20, 5, iconv('utf-8', 'tis-620', $row['ref_number']), 1, 0, "L");
-                $this->pdf->Cell(20, 5, iconv('utf-8', 'tis-620', $row['car_number']), 1, 0, "C");
-                $this->pdf->Cell(30, 5, iconv('utf-8', 'tis-620', $row['stock_details']), 1, 0,
-                    "L");
-                $this->pdf->Cell(20, 5, number_format($oil, 2, '.', ','), 1, 0, "C");
-                $this->pdf->Cell(20, 5, number_format($price, 2, '.', ','), 1, 0, "R");
-                $this->pdf->Cell(25, 5, number_format($amount, 2, '.', ','), 1, 0, "R");
-                //$this->pdf->Cell(35, 5, iconv('utf-8','tis-620',$row['oil_type']), 1, 0, "C");
-                $this->pdf->Cell(35, 5, iconv('utf-8', 'tis-620', $row['note']), 1, 0, "C");
-                $this->pdf->Ln();
-    */            
+           
                 /*Update Code Multi Cell*/
                         $this->pdf->SetWidths(array(
+                            24,
+                            14,
+                            22,
                             18,
-                            10,
-                            20,
-                            15,
                             47,
                             15,
                             15,
                             20,
-                            45                            
+                            30                            
                             ));
 
                         $this->pdf->SetAligns(array(
                             "L",                           
                             "L",
                             "L",
-                            "C",
+                            "L",
                             "L",
                             "R",
                             "R",
@@ -1669,37 +1666,50 @@ function ajax_call() {
                     $this->pdf->AddPage('P', 'A4');
                     //Header Report
                     $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
-                    $this->pdf->SetFont('THNiramitAS-Bold', '', 16);
+                    $this->pdf->SetFont('THNiramitAS-Bold', '', 18);
                     //$this->pdf->Header();
                     $this->pdf->SetX(80);
                     $this->pdf->Cell(50, 10, $head_report, 'C');
                     $this->pdf->Ln();
                     $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
-                    $this->pdf->SetFont('THNiramitAS', '', 12);
+                    $this->pdf->SetFont('THNiramitAS', '', 16);
                     //$this->pdf->SetX(3);
                     $this->pdf->Cell(10, 10, iconv('utf-8', 'tis-620', $left_report), 'C');
-                    $this->pdf->SetX(-50);
+                    $this->pdf->SetX(-60);
                     $this->pdf->Cell(10, 10, iconv('utf-8', 'tis-620', $right_report), 'C');
                     $this->pdf->Ln();
                     /*Title Report*/
-                    $this->pdf->SetFillColor(95, 158, 160); //$this->pdf->SetFillColor(200,220,255);
-                    $this->pdf->Cell(35, 5, iconv('utf-8', 'tis-620', $this->lang->line('date_time')),
-                        1, 0, "C", true);
-                    $this->pdf->Cell(20, 5, iconv('utf-8', 'tis-620', $this->lang->line('ref.number')),
-                        1, 0, "C", true);
-                    $this->pdf->Cell(20, 5, iconv('utf-8', 'tis-620', $this->lang->line('car_number')),
-                        1, 0, "C", true);
-                    $this->pdf->Cell(30, 5, iconv('utf-8', 'tis-620', $this->lang->line('detail')),
-                        1, 0, "C", true);
-                    $this->pdf->Cell(20, 5, iconv('utf-8', 'tis-620', $this->lang->line('oil_value')),
-                        1, 0, "C", true);
-                    $this->pdf->Cell(20, 5, iconv('utf-8', 'tis-620', $this->lang->line('price_per_lits')),
-                        1, 0, "C", true);
-                    $this->pdf->Cell(25, 5, iconv('utf-8', 'tis-620', $this->lang->line('price_amount')),
-                        1, 0, "C", true);
-                    $this->pdf->Cell(35, 5, iconv('utf-8', 'tis-620', $this->lang->line('remark')),
-                        1, 0, "C", true);
-                    $this->pdf->Ln();
+                    /* Title */            
+            $this->pdf->SetWidths(array(
+                            38,
+                            22,
+                            18,
+                            47,
+                            15,
+                            15,
+                            20,
+                            30                            
+                            ));
+
+                        $this->pdf->SetAligns(array(
+                            "L",                           
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L"));
+                        $this->pdf->mRows(array(
+                            "$dateTime",
+                            "$refNum",
+                            "$carNumber",
+                            "$details",
+                            "$oilValue",
+                            "$priceList",
+                            "$priceAmount",
+                            "$remark"));
 
                     $sub_oil = 0;
                     $sub_price = 0;
@@ -1715,9 +1725,9 @@ function ajax_call() {
                 // Total
                 $this->pdf->Ln(1);
                 $this->pdf->SetFillColor(192, 192, 192);
-                $this->pdf->Cell(110, 5, iconv('utf-8', 'tis-620', $this->lang->line('sub_total')),
+                $this->pdf->Cell(78, 5, iconv('utf-8', 'tis-620', $this->lang->line('sub_total')),
                     1, 0, "C", true);
-                $this->pdf->Cell(15, 5, number_format($sub_oil, 2, '.', ','), 1, 0, "C");
+                $this->pdf->Cell(47, 5, number_format($sub_oil, 2, '.', ','), 1, 0, "C");
                 $this->pdf->Cell(15, 5, number_format($sub_price, 2, '.', ','), 1, 0, "R");
                 $this->pdf->Cell(20, 5, number_format($sub_amount, 2, '.', ','), 1, 0, "R");
                 
@@ -1729,7 +1739,7 @@ function ajax_call() {
             // Total
             $this->pdf->Ln(1);
             $this->pdf->SetFillColor(192, 192, 192);
-            $this->pdf->Cell(110, 5, iconv('utf-8', 'tis-620', $this->lang->line('totals')),
+            $this->pdf->Cell(78, 5, iconv('utf-8', 'tis-620', $this->lang->line('totals')),
                 1, 0, "C", true);
             $this->pdf->Cell(15, 5, number_format($total_oil, 2, '.', ','), 1, 0, "C");
             $this->pdf->Cell(15, 5, number_format($total_price, 2, '.', ','), 1, 0, "R");
