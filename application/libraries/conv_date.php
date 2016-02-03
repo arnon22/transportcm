@@ -87,7 +87,7 @@ class Conv_date
         $mouht = $dt[1];
         $year = $dt[2];
 
-        $dateEng = $year . "-" . $mouht . "-" . $date;
+        $dateEng = $year . "." . $mouht . "." . $date;
 
         return $dateEng;
 
