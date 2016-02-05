@@ -7,11 +7,11 @@ class Report_model extends CI_Model
 {
 
     function report_income($factory_id = '0', $start_date = '0000-00-00', $end_date =
-        '0000-00-00',$remark=null)
+        '0000-00-00', $remark = null)
     {
         if ($factory_id == "All" || $factory_id == '0') {
-            
-            if($remark=="All" || $remark==null){
+
+            if ($remark == "All" || $remark == null) {
                 $str_sql = "SELECT
 	DATE(income_date) AS income_date,
 	factory_code,
@@ -27,7 +27,7 @@ LEFT JOIN transport_factory AS fac ON (
 )
 WHERE DATE(income_date) BETWEEN '$start_date'
 AND '$end_date' ORDER BY factory_code,income_date ASC ";
-            }else{
+            } else {
                 $str_sql = "SELECT
 	DATE(income_date) AS income_date,
 	factory_code,
@@ -44,11 +44,11 @@ LEFT JOIN transport_factory AS fac ON (
 WHERE DATE(income_date) BETWEEN '$start_date'
 AND '$end_date' AND note='$remark' ORDER BY factory_code,income_date ASC ";
             }
-            
+
 
         } else {
-            
-            if($remark=="All" || $remark==null){
+
+            if ($remark == "All" || $remark == null) {
                 $str_sql = "SELECT
 	DATE(income_date) AS income_date,
 	factory_code,
@@ -66,7 +66,7 @@ WHERE
 	income.factory_id = $factory_id
 AND DATE(income_date) BETWEEN '$start_date'
 AND '$end_date' ORDER BY factory_code,income_date ASC";
-            }else{
+            } else {
                 $str_sql = "SELECT
 	DATE(income_date) AS income_date,
 	factory_code,
@@ -85,7 +85,7 @@ WHERE
 AND DATE(income_date) BETWEEN '$start_date'
 AND '$end_date' AND note='$remark' ORDER BY factory_code,income_date ASC";
             }
-            
+
         }
 
 
@@ -836,16 +836,16 @@ ORDER BY
         $customer_id, $start_date = '0000-00-00', $end_date = '0000-00-00', $method =
         "check")
     {
-        if($oilType=="receive"){
+        if ($oilType == "receive") {
             $oilIsType = 1;
-        }else{
+        } else {
             $oilIsType = 2;
         }
-        
 
-        if ($factory == "All"){
-            if($customer_id=="All"){
-                if($car_id=="All"){
+
+        if ($factory == "All") {
+            if ($customer_id == "All") {
+                if ($car_id == "All") {
                     #1 factory=All,customer_id=All,car_id=All
                     $str = "SELECT
 	stock_id,
@@ -878,11 +878,11 @@ WHERE
 	stock_date BETWEEN '$start_date'
 AND '$end_date'
 AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
-                    
-                }else{
+
+                } else {
                     #2 factory=All,customer_id=All,car_id=custom
-                 // Add Code 
-                 $str = "SELECT
+                    // Add Code
+                    $str = "SELECT
 	stock_id,
 	stock_date,
 	ref_number,
@@ -913,13 +913,13 @@ WHERE
 	o_s.car_id = $car_id
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
-AND oil_type = '$oilIsType' ORDER BY stock_date ASC";  
-                    
-                }// end  if $car_id=ALL
-                
-            }else{
+AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
+
+                } // end  if $car_id=ALL
+
+            } else {
                 /*Select custom Customer*/
-                if($car_id=="All"){
+                if ($car_id == "All") {
                     #3 factory=All,customer_id=custom,car_id=All
                     //Add Code
                     $str = "SELECT
@@ -954,7 +954,7 @@ o_s.customer_id = $customer_id
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
 AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
-                }else{
+                } else {
                     #4 fctory=All,customer_id=custom,car_id=custom
                     // Add Code
                     $str = "SELECT
@@ -990,16 +990,16 @@ AND o_s.customer_id = $customer_id
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
 AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
-                    
+
                 } // end if $car_id=All
-                
-                
+
+
             } // end if $customer_id==All
-            
-        }else{
+
+        } else {
             // Select Custom Factory
-            if($customer_id=="All"){
-                if($car_id=="All"){
+            if ($customer_id == "All") {
+                if ($car_id == "All") {
                     #5 factory=custom,customer_id=All,car_id==All
                     //Add Code
                     $str = "SELECT
@@ -1034,11 +1034,11 @@ o_s.factory_id = '$factory'
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
 AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
-                    
-                }else{
+
+                } else {
                     #6 factory=custom,customer_id=All,car_id=custom
                     //Add Code
-                     $str = "SELECT
+                    $str = "SELECT
 	stock_id,
 	stock_date,
 	ref_number,
@@ -1071,12 +1071,12 @@ AND o_s.car_id = '$car_id'
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
 AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
-                    
-                }//end if $car_id==All
-                
-            }else{
+
+                } //end if $car_id==All
+
+            } else {
                 #Select custom Customer
-                if($car_id=="All"){
+                if ($car_id == "All") {
                     #7 factory=custom,customer=custom,car_id=All
                     //Add Code
                     $str = "SELECT
@@ -1112,8 +1112,8 @@ AND o_s.customer_id = '$customer_id'
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
 AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
-                    
-                }else{
+
+                } else {
                     #8 factory=custom,customer_id=custom,car_id=custom
                     //Add Code
                     $str = "SELECT
@@ -1150,14 +1150,14 @@ AND o_s.car_id = '$car_id'
 AND stock_date BETWEEN '$start_date'
 AND '$end_date'
 AND oil_type = '$oilIsType' ORDER BY stock_date ASC";
-                    
-                }//end if $car_id==All
-                
-                
+
+                } //end if $car_id==All
+
+
             } // end if $customer_id==All
-            
-            
-        } 
+
+
+        }
 
 
         $query = $this->db->query($str);
@@ -1799,7 +1799,8 @@ ORDER BY
 	COUNT(*) AS count_order,
 	SUM(cubic_value) AS sum_cubic,
 	price,
-	SUM(price) AS sum_price
+	SUM(price) AS sum_price,
+    o_s.remark
 FROM
 	orders AS o_s
 LEFT JOIN transport_cubiccode AS cubic ON(o_s.cubic_id=cubic.cubic_id)
@@ -1824,7 +1825,8 @@ ORDER BY DATE(order_date),cubic_id,distance_id ASC";
 	COUNT(*) AS count_order,
 	SUM(cubic_value) AS sum_cubic,
 	price,
-	SUM(price) AS sum_price
+	SUM(price) AS sum_price,
+    o_s.remark
 FROM
 	orders AS o_s
 LEFT JOIN transport_cubiccode AS cubic ON (
@@ -1867,7 +1869,8 @@ ORDER BY
 	COUNT(*) AS count_order,
 	SUM(cubic_value) AS sum_cubic,
 	price,
-	SUM(price) AS sum_price
+	SUM(price) AS sum_price,
+    o_s.remark
 FROM
 	orders AS o_s
 LEFT JOIN transport_cubiccode AS cubic ON(o_s.cubic_id=cubic.cubic_id)
@@ -1892,7 +1895,8 @@ ORDER BY DATE(order_date),cubic_id,distance_id ASC";
 	COUNT(*) AS count_order,
 	SUM(cubic_value) AS sum_cubic,
 	price,
-	SUM(price) AS sum_price
+	SUM(price) AS sum_price,
+    o_s.remark
 FROM
 	orders AS o_s
 LEFT JOIN transport_cubiccode AS cubic ON (
@@ -1956,6 +1960,7 @@ ORDER BY
 
 
 } // End Class
+
 
 
 
