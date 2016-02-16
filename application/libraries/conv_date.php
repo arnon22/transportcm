@@ -93,6 +93,21 @@ class Conv_date
 
     }
 
+    public function eng2engDatedot($date)
+    {
+
+        $dt = explode('.', $date);
+        //$today =array('date'=>$dt[0],'mo'=>$dt[1],'Year'=>$dt['2']);
+        $date = $dt[0];
+        $mouht = $dt[1];
+        $year = $dt[2];
+
+        $dateEng = $year . "-" . $mouht . "-" . $date;
+
+        return $dateEng;
+
+    }
+
     function DateThai($strDate)
     {
         $strYear = date("Y", strtotime($strDate)) + 543;

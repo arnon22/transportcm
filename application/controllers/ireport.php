@@ -611,10 +611,13 @@ class Ireport extends CI_Controller
 
             $start_Date = $this->session->userdata('start_date');
             $end_Date = $this->session->userdata('end_date');
+
             $factory_id = $this->session->userdata('factory_id');
             $select_note = $this->session->userdata('select_note');
 
-
+             #$mk_date ='2015-01-30';
+            $st_date = $this->conv_date->eng2engDatedot($start_Date);
+            $en_date = $this->conv_date->eng2engDatedot($end_Date);
             //$factory_id = 2;
             // $dthai = $this->conv_date->DateThai2($c_date);
 
@@ -623,9 +626,14 @@ class Ireport extends CI_Controller
             //$this->pdf->AddPage('L', 'A4');
             $this->pdf->SetMargins(5, 5, 5);
             $this->pdf->AddPage('P', 'A4');
+            //**** กำหนดขนาด Space ของ Footer
+            $height_of_cell = 40; // mm
+            $page_height = 297; // 210 x 297mm (portrait letter)
+            $bottom_margin = 0; // mm
 
-            $title_report = "รายงาน รายรับ วันที่ " . $this->conv_date->DateThai($start_Date) .$start_Date.
-                " ถึง " . $this->conv_date->DateThai2($end_Date);
+
+            $title_report = "รายงาน รายรับ วันที่ " . $this->conv_date->DateThai3($st_date) .
+                " ถึง " . $this->conv_date->DateThai2($en_date);
             $head_report = iconv('UTF-8', 'TIS-620', $title_report);
 
             #Header
@@ -654,31 +662,22 @@ class Ireport extends CI_Controller
             $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
             $this->pdf->SetFont('THNiramitAS', '', 15);
             $this->pdf->SetFillColor(95, 158, 160); //$this->pdf->SetFillColor(200,220,255);
-            /*
-            $this->pdf->Cell(20, 5, $Date_title, 1, 0, "C", true);
-            $this->pdf->Cell(15, 5, $factory_title, 1, 0, "C", true);
-            //$this->pdf->Cell(17, 5, $ref_title, 1, 0, "C", true);
-            $this->pdf->Cell(100, 5, $List_title, 1, 0, "C", true);
-            $this->pdf->Cell(20, 5, $Amount_title, 1, 0, "C", true);
-            $this->pdf->Cell(45, 5, $Remark_title, 1, 0, "C", true);
-            $this->pdf->Ln();
-            */
-            
+                        
             #Title
             /*Update Code Multi Cell*/
             $this->pdf->SetWidths(array(
                 22,
-                10,
-                100,
+                15,
+                95,
                 28,
                 40));
 
             $this->pdf->SetAligns(array(
-                "L",
                 "C",
-                "L",
-                "R",
-                "L"));
+                "C",
+                "C",
+                "C",
+                "C"));
             $this->pdf->mRows(array(
                 "$Date_title",
                 "$factory_title",
@@ -687,8 +686,7 @@ class Ireport extends CI_Controller
                 "$Remark_title"));
 
 
-            $check_report = $this->report->check_numreport($factory_id, $start_Date, $end_Date,
-                $select_note);
+            $check_report = $this->report->check_numreport($factory_id, $start_Date, $end_Date,$select_note);
 
             if ($check_report == '0') {
 
@@ -731,11 +729,12 @@ alert('There are no fields to generate a report');
 
                         $sumline_amount = $sumline_amount + $row['total_amount'];
 
+                        $space_left = $page_height - ($this->pdf->GetY() + $bottom_margin); // space left on page
                         /*Update Code Multi Cell*/
                         $this->pdf->SetWidths(array(
                             22,
-                            10,
-                            100,
+                            15,
+                            95,
                             28,
                             40));
 
@@ -753,14 +752,15 @@ alert('There are no fields to generate a report');
                             "$remark"));
 
 
-                        if ($i == 48) {
+                        #if ($i == 48) {
+                        if ($height_of_cell > $space_left) {
 
                             $sub_total = number_format($sumline_amount, 2, '.', ',');
 
                             $this->pdf->SetFillColor(220, 220, 255); //$this->pdf->SetFillColor(200,220,255);
-                            $this->pdf->Cell(120, 5, $sub_total_title, 1, 0, "C", true);
-                            $this->pdf->Cell(25, 5, $sub_total, 1, 0, "R", true);
-                            $this->pdf->Cell(57, 5, $Baht, 1, 0, "C", true);
+                            $this->pdf->Cell(132, 5, $sub_total_title, 1, 0, "C", true);
+                            $this->pdf->Cell(28, 5, $sub_total, 1, 0, "R", true);
+                            $this->pdf->Cell(40, 5, $Baht, 1, 0, "C", true);
 
 
                             $sumline_amount = 0;
@@ -770,31 +770,45 @@ alert('There are no fields to generate a report');
                                 " ถึง " . $this->conv_date->DateThai2($endDate);
                             $head_report = iconv('UTF-8', 'TIS-620', $title_report);
 
-                            #Header
-                            //Header Report
-                            $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
-                            $this->pdf->SetFont('THNiramitAS-Bold', '', 16);
-                            $this->pdf->Header();
-                            $this->pdf->SetX(50);
-                            $this->pdf->Cell(50, 10, $head_report, 'C');
-                            $this->pdf->Ln();
                             #hearder Table
                             $factory_title = iconv('utf-8', 'tis-620', $this->lang->line('factory_code'));
-                            $ref_title = iconv('utf-8', 'tis-620', $this->lang->line('reference_number'));
+                            //$ref_title = iconv('utf-8', 'tis-620', $this->lang->line('reference_number'));
                             $Date_title = iconv('utf-8', 'tis-620', $this->lang->line('date'));
                             $List_title = iconv('utf-8', 'tis-620', $this->lang->line('list'));
                             $Amount_title = iconv('utf-8', 'tis-620', $this->lang->line('amount'));
                             $Remark_title = iconv('utf-8', 'tis-620', $this->lang->line('remark'));
+
+                            #footer
+                            $Baht = iconv('utf-8', 'tis-620', $this->lang->line('baht'));
+                            $sub_total_title = iconv('utf-8', 'tis-620', $this->lang->line('sub_total'));
+                            $totals_title = iconv('utf-8', 'tis-620', $this->lang->line('totals'));
+
                             #TITLE
                             $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
-                            $this->pdf->SetFont('THNiramitAS', '', 12);
+                            $this->pdf->SetFont('THNiramitAS', '', 15);
                             $this->pdf->SetFillColor(95, 158, 160); //$this->pdf->SetFillColor(200,220,255);
-                            $this->pdf->Cell(20, 5, $Date_title, 1, 0, "C", true);
-                            $this->pdf->Cell(15, 5, $factory_title, 1, 0, "C", true);
-                            $this->pdf->Cell(100, 5, $List_title, 1, 0, "C", true);
-                            $this->pdf->Cell(20, 5, $Amount_title, 1, 0, "C", true);
-                            $this->pdf->Cell(45, 5, $Remark_title, 1, 0, "C", true);
-                            $this->pdf->Ln();
+
+                            #Title
+                            /*Update Code Multi Cell*/
+                            $this->pdf->SetWidths(array(
+                                22,
+                                15,
+                                95,
+                                28,
+                                40));
+
+                            $this->pdf->SetAligns(array(
+                                "C",
+                                "C",
+                                "C",
+                                "C",
+                                "C"));
+                            $this->pdf->mRows(array(
+                                "$Date_title",
+                                "$factory_title",
+                                "$List_title",
+                                "$Amount_title",
+                                "$Remark_title"));
                             $i = 0;
                         } //End if
                         $i++;
@@ -806,18 +820,18 @@ alert('There are no fields to generate a report');
                 if ('{nb}' == $p) {
                     $sub_total = number_format($sumline_amount, 2, '.', ',');
                     $this->pdf->SetFillColor(220, 220, 255); //$this->pdf->SetFillColor(200,220,255);
-                    $this->pdf->Cell(135, 5, $sub_total_title, 1, 0, "C", true);
-                    $this->pdf->Cell(20, 5, $sub_total, 1, 0, "R", true);
-                    $this->pdf->Cell(45, 5, $Baht, 1, 0, "C", true);
+                    $this->pdf->Cell(132, 5, $sub_total_title, 1, 0, "C", true);
+                    $this->pdf->Cell(28, 5, $sub_total, 1, 0, "R", true);
+                    $this->pdf->Cell(40, 5, $Baht, 1, 0, "C", true);
 
 
                 }
 
                 $this->pdf->SetY(270);
                 $this->pdf->SetFillColor(200, 220, 255); //$this->pdf->SetFillColor(200,220,255);
-                $this->pdf->Cell(150, 5, $totals_title, 1, 0, "C", true);
-                $this->pdf->Cell(25, 5, $totals, 1, 0, "R", true);
-                $this->pdf->Cell(25, 5, $Baht, 1, 0, "C", true);
+                $this->pdf->Cell(132, 5, $totals_title, 1, 0, "C", true);
+                $this->pdf->Cell(28, 5, $totals, 1, 0, "R", true);
+                $this->pdf->Cell(40, 5, $Baht, 1, 0, "C", true);
 
 
                 // $this->pdf->WriteHTML($htmlTable);
