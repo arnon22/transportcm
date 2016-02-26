@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - transportation@localhost" uuid="2052c45f-cce7-4106-b93a-87c26a6fcd91">
+      <secret-storage>memory</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>transportation.*</schema-pattern>
+      <default-schemas>transportation.*</default-schemas>
+    </data-source>
+  </component>
+</project>
