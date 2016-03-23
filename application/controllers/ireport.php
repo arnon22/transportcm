@@ -2118,8 +2118,8 @@ alert('There are no fields to generate a report');
                     "L",
                     "L",
                     "L",
-                    "L",
-                    "L",
+                    "R",
+                    "R",
                     "L"));
                 $this->pdf->mRows(array(
                     iconv('utf-8', 'tis-620', $this->lang->line('date')),

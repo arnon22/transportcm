@@ -349,10 +349,10 @@ $lang['note']="หมายเหตุ";
 $lang['edit'] = "แก้ไข";
 $lang['delete'] = "ลบ";
 
-$lang['amount']="จำนวน (บาท)";
+$lang['amount']="จำนวน\n(บาท)";
 
 $lang['income_title_from_add']="<h4>บันทึกรายการรับ.</h4>";
-$lang['remark_numberic']="<span style=\"color:red;\">จำนวนเงิน ต้องเป็นตัวเลขเท่านั้น</span>";
+$lang['remark_numberic']= "<span style=\\";
 
 $lang['save'] = "บันทึก";
 $lang['cancle'] = "ยกเลิก";
@@ -429,7 +429,7 @@ $lang['ref.number'] = "เลขที่ / เล่มที่";
 $lang['detail'] = "รายละเอียด";
 $lang['oil_value'] = "จำนวนลิตร";
 $lang['price_per_lits'] = "ราคา/\nลิตร";
-$lang['price_amount'] = "จำนวนเงิน";
+$lang['price_amount'] = "จำนวนเงิน\n(บาท)";
 $lang['car_driver'] = "คนขับ";
 $lang['oil_recived'] = "เหมาน้ำมัน (ล.)";
 $lang['datetime'] = "วันที่/เวลา";
