@@ -404,7 +404,7 @@ class Ireport extends CI_Controller
 
                 } //End if
 
-                $title_form = $this->lang->line('h2_report_order_month');
+                $title_form = $this->lang->line('h2_report_order_summary_month');
                 //display
                 $viewpage = "orders-by-month";
                 $this->show_report_form($viewpage, (object)array(
@@ -2868,7 +2868,7 @@ alert('There are no fields to generate a report');
                 "$title_note"));
 
             $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
-            $this->pdf->SetFont('THNiramitAS', '', 16);
+            $this->pdf->SetFont('THNiramitAS', '', 15);
 
             // Get Result Report
             $result = $this->report->check_order_report($factory_id, $car_id, $start_date, $end_date);
@@ -2905,7 +2905,7 @@ alert('There are no fields to generate a report');
                 $ir_txtTotal = iconv('utf-8', 'tis-620', "รวมทั้งหมด");
 
                 $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
-                $this->pdf->SetFont('THNiramitAS', '', 16);
+                $this->pdf->SetFont('THNiramitAS', '', 15);
 
                 /*กำหนดค่า Space ด้าน ด้านซ้าย*/
                 $space_left = $page_height - ($this->pdf->GetY() + $bottom_margin); // space left on page
@@ -3093,7 +3093,7 @@ alert('There are no fields to generate a report');
             #$this->pdf->SetFont('THNiramitAS-Bold', '', 14);
 
             $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
-            $this->pdf->SetFont('THNiramitAS', '', 16);
+            $this->pdf->SetFont('THNiramitAS', '', 15);
             /*
             $this->pdf->Cell(139, 6, iconv('utf-8', 'tis-620', "รวมทั้งหมด"), 1, 'C');
             $this->pdf->Cell(18, 6, iconv('utf-8', 'tis-620', "$total_cubicvalue"), 1, 0,

@@ -533,7 +533,7 @@ class Pdf extends FPDF
         $p = $this->totalpage();
 
         //**** กำหนดขนาด Space ของ Footer
-        $height_of_cell = 30; // mm
+        $height_of_cell = 40; // mm
         $page_height = 297; //210 x 297  mm (portrait letter)
         $bottom_margin = 0; // mm
 
@@ -560,16 +560,30 @@ class Pdf extends FPDF
             $Remark_title = iconv('utf-8', 'tis-620', $this->CI->lang->line('remark'));
 
             #TITLE
-            $this->AddFont('THNiramitAS', '', 'THNiramit.php');
-            $this->SetFont('THNiramitAS', '', 16);
-            $this->SetFillColor(95, 158, 160); //$this->pdf->SetFillColor(200,220,255);
-            $this->Cell(20, 5, $Date_title, 1, 0, "C", true);
-            $this->Cell(12, 5, $factory_title, 1, 0, "C", true);
-            $this->Cell(15, 5, $car_number_title, 1, 0, "C", true);
-            $this->Cell(88, 5, $List_title, 1, 0, "C", true);
-            $this->Cell(20, 5, $Amount_title, 1, 0, "C", true);
-            $this->Cell(45, 5, $Remark_title, 1, 0, "C", true);
-            $this->Ln();
+            $this->SetWidths(array(
+                22,
+                14,
+                20,
+                85,
+                20,
+                45
+            ));
+            $this->SetAligns(array(
+                "L",
+                "L",
+                "L",
+                "L",
+                "R",
+                "L"
+            ));
+            $this->mRows(array(
+                "$Date_title",
+                "$factory_title",
+                "$car_number_title",
+                "$List_title",
+                "$Amount_title",
+                "$Remark_title",
+            ));
 
         } else
         {
@@ -582,17 +596,6 @@ class Pdf extends FPDF
             $Remark_title = iconv('utf-8', 'tis-620', $this->CI->lang->line('remark'));
 
             #TITLE
-            /*
-            $this->AddFont('THNiramitAS', '', 'THNiramit.php');
-            $this->SetFont('THNiramitAS', '', 16);
-            $this->SetFillColor(95, 158, 160);
-            $this->Cell(22, 5, $Date_title, 1, 0, "C", true);
-            $this->Cell(15, 5, $factory_title, 1, 0, "C", true);
-            $this->Cell(100, 5, $List_title, 1, 0, "C", true);
-            $this->Cell(20, 5, $Amount_title, 1, 0, "R", true);
-            $this->Cell(45, 5, $Remark_title, 1, 0, "L", true);
-            $this->Ln();
-            */
             $this->SetWidths(array(
                 22,
                 15,
@@ -683,15 +686,8 @@ class Pdf extends FPDF
             } else
             {
                 /*
-                $this->Cell(20, 5, $expense_date, 1, 0, "L");
-                $this->Cell(15, 5, $factory, 1, 0, "C");               
-                $this->Cell(85, 5, $deatil, 1, 0, "L");
-                $this->Cell(25, 5, $amount, 1, 0, "R");
-                $this->Cell(57, 5, $remark, 1, 0, "L");
-                $this->Ln();
+                รายงานค่าใช้จ่ายทั่วไป
                 */
-
-
                 $this->SetWidths(array(
                     22,
                     15,
@@ -710,18 +706,10 @@ class Pdf extends FPDF
                     "$deatil",
                     "$amount",
                     "$remark"));
-                #$pdf->Rows(array("s","d","f","g"));
-                ///$this->MultiCell(20, 5, $expense_date,'1','R');
-                # $this->SetXY(25,20);
-                #$this->MultiCell(15, 5, $factory,'1','R');
-                # $this->SetXY(40,20);
-                # $this->MultiCell(85, 5, $deatil,'1','R');
 
             }
 
-            //$this->pdf->Cell(25, 5, $sumlineamounr, 1, 0,"R");
-            //$this->GetY() + $h > $this->PageBreakTrigger
-            //$nb = max($nb, $this->NbLines($this->widths[$i], $data[$i]));
+
             $h = 1 * $i;
 
             #if ($this->GetY() + $h > $this->PageBreakTrigger + 15)
@@ -776,6 +764,27 @@ class Pdf extends FPDF
                 $this->Cell(50, 10, $head_report, 'C');
                 $this->Ln();
 
+                #TITLE
+                $this->SetWidths(array(
+                    22,
+                    15,
+                    90,
+                    28,
+                    45));
+                $this->SetAligns(array(
+                    "L",
+                    "C",
+                    "C",
+                    "R",
+                    "L"));
+                $this->mRows(array(
+                    "$Date_title",
+                    "$factory_title",
+                    "$List_title",
+                    "$Amount_title",
+                    "$Remark_title"));
+                $this->AddFont('THNiramitAS', '', 'THNiramit.php');
+                $this->SetFont('THNiramitAS', '', 15);
 
                 if ($expense_Type == "car")
                 {
@@ -816,6 +825,7 @@ class Pdf extends FPDF
                     $List_title = iconv('utf-8', 'tis-620', $this->CI->lang->line('list'));
                     $Amount_title = iconv('utf-8', 'tis-620', $this->CI->lang->line('amount'));
                     $Remark_title = iconv('utf-8', 'tis-620', $this->CI->lang->line('remark'));
+
 
                     #TITLE
                     $this->SetWidths(array(
@@ -867,22 +877,38 @@ class Pdf extends FPDF
                 $this->Cell(45, 5, $Baht, 1, 0, "L", true);
 
 
+
+
+
+
             } else
             {
-                /*
-                $sub_total = number_format($sumline_amount, 2, '.', ',');
-                $this->SetFillColor(220, 220, 255); //$this->pdf->SetFillColor(200,220,255);
-                $this->Cell(120, 5, $sub_total_title, 1, 0, "C", true);
-                $this->Cell(25, 5, $sub_total, 1, 0, "R", true);
-                $this->Cell(57, 5, $Baht, 1, 0, "C", true);
-                */
+                //Subtotal หน้าสุดท้าย
 
                 $sub_total = number_format($sumline_amount, 2, '.', ',');
+
                 $this->SetFillColor(220, 220, 255);
                 $this->Cell(127, 5, $sub_total_title, 1, 0, "C", true);
                 $this->Cell(28, 5, $sub_total, 1, 0, "R", true);
                 $this->Cell(45, 5, $Baht, 1, 0, "L", true);
 
+                /*
+                $this->SetWidths(array(
+                    127,
+                    28,
+                    45
+                ));
+                $this->SetAligns(array(
+                    "C",
+                    "R",
+                    "L"
+                ));
+                $this->mRows(array(
+                    "$sub_total_title",
+                    "$sub_total",
+                    "$Baht"
+                ));
+                */
 
             }
         }
@@ -995,7 +1021,7 @@ class Pdf extends FPDF
         $nb = 0;
         for ($i = 0; $i < count($data); $i++)
             $nb = max($nb, $this->NbLines($this->widths[$i], $data[$i]));
-        $h = 5 * $nb;
+        $h = 7 * $nb;
         //Issue a page break first if needed
         $this->CheckPageBreak($h);
         //Draw the cells of the row
@@ -1009,7 +1035,7 @@ class Pdf extends FPDF
             //Draw the border
             $this->Rect($x, $y, $w, $h);
             //Print the text
-            $this->MultiCell($w, 5, $data[$i], 0, $a);
+            $this->MultiCell($w, 7, $data[$i], 0, $a);
             //Put the position to the right of the cell
             $this->SetXY($x + $w, $y);
         }

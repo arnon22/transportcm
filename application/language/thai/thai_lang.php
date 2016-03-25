@@ -71,7 +71,7 @@ $lang['Revenue_report']="รายงานรายรับ";
 $lang['Expenditure_report']="รายงานรายจ่าย";
 $lang['Expenditure_car_report']="รายงานรายจ่ายเกี่ยวกับรถ";
 $lang['oil_recive_Expenditure_report']="รายงานการรับ-จ่ายน้ำมัน";
-$lang['oil_recive_report']="รายงานรับน้ำมัน";
+$lang['oil_recive_report']="รายงาน รับ-จ่าย น้ำมัน";
 $lang['oil_Expenditure_report']="รายงานจ่ายน้ำมัน";
 $lang['oil_stock_report']="รายงานสต๊อกน้ำมัน";
 
@@ -445,6 +445,7 @@ $lang['cubic_sum_report'] = "รวมคิว";
 $lang['price_per_order'] = "ราคา (บาท/เที่ยว)";
 
 $lang['h2_report_order_month'] = "รายงานค่าขนส่งรายเดือน";
+$lang['h2_report_order_summary_month'] = "รายงานสรุปค่าขนส่งรายเดือน";
 
 $lang['pricelist']="ตารางราคาค่าขนส่ง";
 $lang['refresh'] = "เรียกข้อมูลใหม่";
