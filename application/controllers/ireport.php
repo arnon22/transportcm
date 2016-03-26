@@ -404,7 +404,7 @@ class Ireport extends CI_Controller
 
                 } //End if
 
-                $title_form = $this->lang->line('h2_report_order_month');
+                $title_form = $this->lang->line('h2_report_order_summary_month');
                 //display
                 $viewpage = "orders-by-month";
                 $this->show_report_form($viewpage, (object)array(
@@ -1503,10 +1503,14 @@ alert('There are no fields to generate a report');
             $oiltype = $this->session->userdata('oiltype');
             $factory = $this->session->userdata('factory');
             $startdate = $this->session->userdata('startdate');
+            $s_start = $this->conv_date->eng2engDatedot($startdate);
             $enddate = $this->session->userdata('enddate');
+            $e_date = $this->conv_date->eng2engDatedot($enddate);
+
             $customer = $this->session->userdata('customer');
             $car_number = $this->session->userdata('car_number');
             $method = $this->session->userdata('method');
+
 
             if ($factory == "All") {
                 $factory_name = "ทั้งหมด";
@@ -1528,8 +1532,8 @@ alert('There are no fields to generate a report');
             } else {
                 $left_report = "ลูกค้า : " . $this->customer->getCustomer_name($customer);
             }
-            $right_report = "วันที่  " . $this->conv_date->DateThai2($startdate) . " ถึง " .
-                $this->conv_date->DateThai2($enddate);
+            $right_report = "วันที่  " . $this->conv_date->DateThai2($s_start). " ถึง " .
+                $this->conv_date->DateThai2($e_date);
 
 
             $result = $this->report->check_oil_receive_sell_number($factory, $oiltype, $car_number,
@@ -1538,21 +1542,29 @@ alert('There are no fields to generate a report');
             //var_dump($result);
 
             // Create PDf Report
+            $this->pdf->SetAutoPageBreak(false);
             $this->pdf->AliasNbPages();
             $p = $this->pdf->totalpage();
+
+            //**** กำหนดขนาด Space ของ Footer
+            $height_of_cell = 30; // mm
+            $page_height = 297; //210 x 297  mm (portrait letter)
+            $bottom_margin = 0; // mm
+
+
             //$finalpage = intval($p);
             $c_page = $this->pdf->PageNo();
             $this->pdf->SetMargins(3, 3, 3);
             $this->pdf->AddPage('P', 'A4');
             //Header Report
             $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
-            $this->pdf->SetFont('THNiramitAS-Bold', '', 18);
+            $this->pdf->SetFont('THNiramitAS-Bold', '', 16);
             //$this->pdf->Header();
             $this->pdf->SetX(80);
             $this->pdf->Cell(50, 10, $head_report, 'C');
             $this->pdf->Ln();
             $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
-            $this->pdf->SetFont('THNiramitAS', '', 16);
+            $this->pdf->SetFont('THNiramitAS', '', 15);
             //$this->pdf->SetX(3);
             $this->pdf->Cell(10, 10, iconv('utf-8', 'tis-620', $left_report), 'C');
             $this->pdf->SetX(-60);
@@ -1570,17 +1582,17 @@ alert('There are no fields to generate a report');
             $priceList = iconv('utf-8', 'tis-620', $this->lang->line('price_per_lits'));
             $priceAmount = iconv('utf-8', 'tis-620', $this->lang->line('price_amount'));
             $remark = iconv('utf-8', 'tis-620', $this->lang->line('remark'));
-
+            $this->pdf->SetX(5);
             /* Title */
             $this->pdf->SetWidths(array(
-                38,
-                22,
-                18,
-                47,
-                15,
-                15,
+                34,
                 20,
-                30));
+                18,
+                45,
+                20,
+                15,
+                22,
+                27));
 
             $this->pdf->SetAligns(array(
                 "L",
@@ -1617,7 +1629,7 @@ alert('There are no fields to generate a report');
             foreach ($result as $row) {
 
                 $i = $i + 1;
-
+                $this->pdf->SetX(5);
                 if ($oiltype == 'receive') {
                     $oil = intval($row['receive_oil']);
                     $price = intval($row['receive_price']);
@@ -1637,7 +1649,7 @@ alert('There are no fields to generate a report');
                 $total_amount = $total_amount + $amount;
 
                 $date = date('Y-m-d', strtotime($row['stock_date']));
-                $oil_date = $this->conv_date->thaiDate2($date);
+                $oil_date = $this->conv_date->eng2engDate($date);
                 $oil_time = date("H:i", strtotime($row['stock_date']));
                 $oil_ref = iconv('utf-8', 'tis-620', $row['ref_number']);
                 $oil_car = iconv('utf-8', 'tis-620', $row['car_number']);
@@ -1647,18 +1659,20 @@ alert('There are no fields to generate a report');
                 $oil_amount = number_format($amount, 2, '.', ',');
                 $oil_note = iconv('utf-8', 'tis-620', $row['note']);
 
+                /*กำหนดค่า Space ด้าน ด้านซ้าย*/
+                $space_left = $page_height - ($this->pdf->GetY() + $bottom_margin); // space left on page
 
                 /*Update Code Multi Cell*/
                 $this->pdf->SetWidths(array(
-                    24,
-                    14,
                     22,
-                    18,
-                    47,
-                    15,
-                    15,
+                    12,
                     20,
-                    30));
+                    18,
+                    45,
+                    20,
+                    15,
+                    22,
+                    27));
 
                 $this->pdf->SetAligns(array(
                     "L",
@@ -1682,47 +1696,50 @@ alert('There are no fields to generate a report');
                     "$oil_note"));
 
 
-                if ($i == 48) {
+                //if ($i == 48) {
+                if ($height_of_cell > $space_left) {
                     $i = 0;
                     // Total
                     $this->pdf->Ln(1);
                     $this->pdf->SetFillColor(192, 192, 192);
-                    $this->pdf->Cell(105, 5, iconv('utf-8', 'tis-620', $this->lang->line('sub_total')),
+                    $this->pdf->SetX(5);
+                    $this->pdf->Cell(72, 5, iconv('utf-8', 'tis-620', $this->lang->line('sub_total')),
                         1, 0, "C", true);
-                    $this->pdf->Cell(20, 5, number_format($sub_oil, 2, '.', ','), 1, 0, "C");
-                    $this->pdf->Cell(20, 5, number_format($sub_price, 2, '.', ','), 1, 0, "R");
-                    $this->pdf->Cell(25, 5, number_format($sub_amount, 2, '.', ','), 1, 0, "R");
+                    $this->pdf->Cell(65, 5, number_format($sub_oil, 2, '.', ','), 1, 0, "R");
+                    $this->pdf->Cell(15, 5, iconv('utf-8', 'tis-620', "-"), 1, 0, "R");
+                    $this->pdf->Cell(22, 5, number_format($sub_amount, 2, '.', ','), 1, 0, "R");
                     //$this->pdf->Cell(35, 5, iconv('utf-8','tis-620',$row['oil_type']), 1, 0, "C");
-                    $this->pdf->Cell(35, 5, "", 1, 0, "C");
+                    $this->pdf->Cell(27, 5, "", 1, 0, "C");
                     $this->pdf->Ln();
 
                     $this->pdf->SetMargins(3, 3, 3);
                     $this->pdf->AddPage('P', 'A4');
                     //Header Report
                     $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
-                    $this->pdf->SetFont('THNiramitAS-Bold', '', 18);
+                    $this->pdf->SetFont('THNiramitAS-Bold', '', 16);
                     //$this->pdf->Header();
                     $this->pdf->SetX(80);
                     $this->pdf->Cell(50, 10, $head_report, 'C');
                     $this->pdf->Ln();
                     $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
-                    $this->pdf->SetFont('THNiramitAS', '', 16);
+                    $this->pdf->SetFont('THNiramitAS', '', 15);
                     //$this->pdf->SetX(3);
                     $this->pdf->Cell(10, 10, iconv('utf-8', 'tis-620', $left_report), 'C');
                     $this->pdf->SetX(-60);
                     $this->pdf->Cell(10, 10, iconv('utf-8', 'tis-620', $right_report), 'C');
                     $this->pdf->Ln();
+                    $this->pdf->SetX(5);
                     /*Title Report*/
                     /* Title */
                     $this->pdf->SetWidths(array(
-                        38,
-                        22,
-                        18,
-                        47,
-                        15,
-                        15,
+                        34,
                         20,
-                        30));
+                        18,
+                        45,
+                        20,
+                        15,
+                        22,
+                        27));
 
                     $this->pdf->SetAligns(array(
                         "L",
@@ -1758,13 +1775,13 @@ alert('There are no fields to generate a report');
                 // Total
                 $this->pdf->Ln(1);
                 $this->pdf->SetFillColor(192, 192, 192);
-                $this->pdf->Cell(78, 5, iconv('utf-8', 'tis-620', $this->lang->line('sub_total')),
+                $this->pdf->SetX(5);
+                $this->pdf->Cell(72, 5, iconv('utf-8', 'tis-620', $this->lang->line('sub_total')),
                     1, 0, "C", true);
-                $this->pdf->Cell(47, 5, number_format($sub_oil, 2, '.', ','), 1, 0, "C");
-                $this->pdf->Cell(15, 5, number_format($sub_price, 2, '.', ','), 1, 0, "R");
-                $this->pdf->Cell(20, 5, number_format($sub_amount, 2, '.', ','), 1, 0, "R");
-
-                $this->pdf->Cell(45, 5, "", 1, 0, "C");
+                $this->pdf->Cell(65, 5, number_format($sub_oil, 2, '.', ','), 1, 0, "R");
+                $this->pdf->Cell(15, 5, iconv('utf-8', 'tis-620', "-"), 1, 0, "R");
+                $this->pdf->Cell(22, 5, number_format($sub_amount, 2, '.', ','), 1, 0, "R");
+                $this->pdf->Cell(27, 5, "", 1, 0, "C");
                 $this->pdf->Ln();
             }
 
@@ -1772,16 +1789,14 @@ alert('There are no fields to generate a report');
             // Total
             $this->pdf->Ln(1);
             $this->pdf->SetFillColor(192, 192, 192);
-            $this->pdf->Cell(78, 5, iconv('utf-8', 'tis-620', $this->lang->line('totals')),
+            $this->pdf->SetX(5);
+            $this->pdf->Cell(72, 5, iconv('utf-8', 'tis-620', $this->lang->line('totals')),
                 1, 0, "C", true);
-            $this->pdf->Cell(15, 5, number_format($total_oil, 2, '.', ','), 1, 0, "C");
-            $this->pdf->Cell(15, 5, number_format($total_price, 2, '.', ','), 1, 0, "R");
-            $this->pdf->Cell(20, 5, number_format($total_amount, 2, '.', ','), 1, 0, "R");
-
-            $this->pdf->Cell(45, 5, "", 1, 0, "C");
+            $this->pdf->Cell(65, 5, number_format($total_oil, 2, '.', ','), 1, 0, "R");
+            $this->pdf->Cell(15, 5, iconv('utf-8', 'tis-620', "-"), 1, 0, "R");
+            $this->pdf->Cell(22, 5, number_format($total_amount, 2, '.', ','), 1, 0, "R");
+            $this->pdf->Cell(27, 5, "", 1, 0, "C");
             $this->pdf->Ln();
-
-
             $this->pdf->Output();
 
 
@@ -1875,32 +1890,6 @@ alert('There are no fields to generate a report');
                 $this->pdf->Cell(43, 8, iconv('utf-8', 'tis-620', $this->lang->line('net_total')),
                     1, 0, "C", true);
                 $this->pdf->Ln();
-
-
-                /*Title*/
-                /*
-                $this->pdf->SetWidths(array(
-                30,
-                43,
-                43,
-                43,
-                43,
-                43));
-                $this->pdf->SetAligns(array(
-                "L",
-                "R",
-                "R",
-                "R",
-                "R",
-                "R"));    
-                $this->pdf->mRows(array(
-                iconv('utf-8', 'tis-620', $this->lang->line('date')),
-                iconv('utf-8', 'tis-620', $this->lang->line('pricetotal_per_day')),
-                iconv('utf-8', 'tis-620', $this->lang->line('vat_7_percent')),
-                iconv('utf-8', 'tis-620', $this->lang->line('vat_3_percent')),
-                iconv('utf-8', 'tis-620', $this->lang->line('net_total')))); 
-                */
-
 
                 /*Content*/
                 $date_rs = $this->report->orders_summary_by_month_report($factory_id, $selectMonth,
@@ -2129,8 +2118,8 @@ alert('There are no fields to generate a report');
                     "L",
                     "L",
                     "L",
-                    "L",
-                    "L",
+                    "R",
+                    "R",
                     "L"));
                 $this->pdf->mRows(array(
                     iconv('utf-8', 'tis-620', $this->lang->line('date')),
@@ -2298,7 +2287,6 @@ alert('There are no fields to generate a report');
 
         $this->load->model('report_model', 'report');
         $this->load->model('factory_model', 'factory');
-
         $month = $this->session->userdata('oilstock_month');
         $year = $this->session->userdata('oilstock_year');
         $factory_id = $this->session->userdata('oil_factory_id');
@@ -2317,17 +2305,17 @@ alert('There are no fields to generate a report');
         if (!empty($month) && !empty($year)) {
             /*Print PDF*/
 
-
             $result = $this->report->oilstock_report($month, $year, $factory_id);
 
+            // Create PDf Report
+            $this->pdf->SetAutoPageBreak(false);
             $this->pdf->AliasNbPages();
             $this->pdf->AddPage('L', 'A4');
-
-
             $p = $this->pdf->totalpage();
-
-
-            /*Head */
+            //**** กำหนดขนาด Space ของ Footer
+            $height_of_cell = 30; // mm
+            $page_height = 210; // A4 = 210 x 297mm (portrait letter)
+            $bottom_margin = 0; // mm
 
             //Header Report
             $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
@@ -2367,12 +2355,10 @@ alert('There are no fields to generate a report');
             $title_summary = iconv('utf-8', 'tis-620',"รวมเงิน\n(บาท)");
             $title_pay = iconv('utf-8', 'tis-620',"จ่าย\n(ลิตร)");
             $title_total = iconv('utf-8', 'tis-620',"คงเหลือ\n(ลิตร)");
-
-
-
+            $title_foot_total = iconv('utf-8', 'tis-620', "รวมทั้งสิ้น");
 
             $this->pdf->SetWidths(array(
-                20,
+                22,
                 20,
                 65,
                 20,
@@ -2389,13 +2375,13 @@ alert('There are no fields to generate a report');
                 "L",
                 "L",
                 "L",
+                "R",
+                "R",
                 "L",
+                "R",
+                "R",
                 "L",
-                "L",
-                "L",
-                "L",
-                "L",
-                "L"));
+                "R"));
             $this->pdf->mRows(array(
                 "$title_date",
                 "$title_ref",
@@ -2409,9 +2395,7 @@ alert('There are no fields to generate a report');
                 "$title_total",
                 "$title_summary"));
 
-
             /*Content*/
-
             $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
             $this->pdf->SetFont('THNiramitAS', '', 15);
 
@@ -2421,10 +2405,9 @@ alert('There are no fields to generate a report');
             $subtotal_sellAmount = 0;
             $subtotal_receiveOil = 0;
             $subtotal_receiveAmount = 0;
-
+            $t_sellOil_amount = 0;
 
             foreach ($result as $row) {
-
                 #$stock_date = date('d-m-Y', strtotime("{$row['stock_date']}"));
                 $st_date = date('Y-m-d', strtotime("{$row['stock_date']}"));
                 $stock_date = $this->conv_date->eng2engDate($st_date);
@@ -2442,6 +2425,7 @@ alert('There are no fields to generate a report');
                 $total_sellamount = intval($row['total_sellamount']);
                 $total_amount = $total_sellamount - $total_receiveamount; // คงเหลือ
                 $total_oilAmount = $total_receiveoil - $total_selloil;
+
 
                 /*All all_receiveOil*/
                 $all_receiveOil = intval($row['all_receiveOil']);
@@ -2462,34 +2446,6 @@ alert('There are no fields to generate a report');
                 $all_totalOilAmount = $Balance_receiveOil + $total_oilAmount;
                 $all_totalAmount = $Balance_Amount + $total_amount;
 
-                /*
-                $this->pdf->SetXY(5, $y);
-                $this->pdf->Cell(20, 8, iconv('utf-8', 'tis-620', $stock_date), 1, 'C');
-                $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', "{$row['ref_number']}"), 1,
-                    'C');
-                if ($oilType == "1") {
-                    $this->pdf->Cell(45, 8, iconv('utf-8', 'tis-620', "{$row['stock_details']}"), 1,
-                        'C');
-                } else {
-                    $this->pdf->Cell(45, 8, iconv('utf-8', 'tis-620', "{$row['stock_details']} {$row['car_number']}"),
-                        1, 'C');
-                }
-
-                $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', "{$row['receive_oil']}"), 1,
-                    'C');
-                $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', number_format($row['receive_price'],
-                    2, '.', ',')), 1, 'C');
-                $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', number_format($row['receive_amount'],
-                    2, '.', ',')), 1, 'C');
-                $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', "{$row['sell_oil']}"), 1, 'C');
-                $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', number_format($row['sell_price'],
-                    2, '.', ',')), 1, 'C');
-                $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', number_format($row['sell_amount'],
-                    2, '.', ',')), 1, 'C');
-                $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', ""), 1, 'C');
-                $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', ""), 1, 'C');
-                $this->pdf->Ln();
-                */
 
                 /*detail*/
 
@@ -2506,8 +2462,14 @@ alert('There are no fields to generate a report');
                 $sell_price =number_format($row['sell_price'],2,'.', ',');
                 $sell_amount =number_format($row['sell_amount'],2,'.', ',');
 
+
+                /*กำหนดค่า Space ด้าน ด้านซ้าย*/
+                $space_left = $page_height - ($this->pdf->GetY() + $bottom_margin); // space left on page
+                $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
+                $this->pdf->SetFont('THNiramitAS', '', 15);
+
                 $this->pdf->SetWidths(array(
-                    20,
+                    22,
                     20,
                     65,
                     20,
@@ -2524,13 +2486,13 @@ alert('There are no fields to generate a report');
                     "L",
                     "L",
                     "L",
+                    "R",
+                    "R",
                     "L",
+                    "R",
+                    "R",
                     "L",
-                    "L",
-                    "L",
-                    "L",
-                    "L",
-                    "L"));
+                    "R"));
                 $this->pdf->mRows(array(
                     "$stock_date",
                     "$ref_no",
@@ -2543,27 +2505,23 @@ alert('There are no fields to generate a report');
                     "$sell_amount",
                     "",
                     ""));
-                if ($i == 18) {
+
+                //if ($i == 18) {
+                if ($height_of_cell > $space_left) {
 
                     //Sub Total
-                    $this->pdf->SetX(5);
+                    $this->pdf->SetX(10);
                     $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
                     $this->pdf->SetFont('THNiramitAS-Bold', '', 16);
-                    $this->pdf->Cell(90, 8, iconv('utf-8', 'tis-620', "ผลรวมของหน้านี้"), 1, 'C');
-                    $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
-                    $this->pdf->SetFont('THNiramitAS', '', 15);
-                    $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', number_format($subtotal_receiveOil,
-                        2, '.', ',')), 1, 'C');
-                    $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-                    $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', number_format($subtotal_receiveAmount,
-                        2, '.', ',')), 1, 'C');
-                    $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', number_format($subtotal_sellOil,
-                        2, '.', ',')), 1, 'C');
-                    $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-                    $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', number_format($subtotal_sellAmount,
-                        2, '.', ',')), 1, 'C');
-                    $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-                    $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
+                    $this->pdf->Cell(107, 8, iconv('utf-8', 'tis-620', "ผลรวมของหน้านี้"), 1, 'C');
+                    $this->pdf->Cell(20, 8, iconv('utf-8', 'tis-620', number_format($subtotal_receiveOil,2, '.', ',')), 1, 'L');
+                    $this->pdf->Cell(15, 8, iconv('utf-8', 'tis-620', "-"), 1, 'R');
+                    $this->pdf->Cell(24, 8, iconv('utf-8', 'tis-620', number_format($subtotal_receiveAmount,2, '.', ',')), 1, 'R');
+                    $this->pdf->Cell(20, 8, iconv('utf-8', 'tis-620', number_format($subtotal_sellOil,2, '.', ',')), 1, 'L');
+                    $this->pdf->Cell(15, 8, iconv('utf-8', 'tis-620', "-"), 1, 'R');
+                    $this->pdf->Cell(24, 8, iconv('utf-8', 'tis-620', number_format($subtotal_sellAmount,2, '.', ',')), 1, 'R');
+                    $this->pdf->Cell(27, 8, iconv('utf-8', 'tis-620', "-"), 1, 'L');
+                    $this->pdf->Cell(27, 8, iconv('utf-8', 'tis-620', "-"), 1, 'R');
 
                     $subtotal_receiveOil = 0;
                     $subtotal_receiveAmount = 0;
@@ -2581,9 +2539,9 @@ alert('There are no fields to generate a report');
                     $this->pdf->Cell(50, 10, $head_report, 'C');
                     $this->pdf->Ln();
                     $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
-                    $this->pdf->SetFont('THNiramitAS-Bold', '', 15);
-
-                    $this->pdf->SetXY(5, 20);
+                    $this->pdf->SetFont('THNiramitAS-Bold', '', 16);
+                    //$this->pdf->SetXY(5, 20);
+                    /*
                     $this->pdf->Cell(20, 8, iconv('utf-8', 'tis-620', 'วันที่'), 1, 0, 'C');
                     $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', 'เล่มที่/เลขที่'), 1, 0, 'C');
                     $this->pdf->Cell(45, 8, iconv('utf-8', 'tis-620', 'รายการ'), 1, 0, 'C');
@@ -2595,45 +2553,65 @@ alert('There are no fields to generate a report');
                     $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', 'รวมเงิน(บาท)'), 1, 0, 'C');
                     $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', 'คงเหลือ(ลิตร)'), 1, 0, 'C');
                     $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', 'รวมเงิน(บาท)'), 1, 0, 'C');
-                    $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
-                    $this->pdf->SetFont('THNiramitAS', '', 12);
                     $this->pdf->Ln();
+                    */
+                    $this->pdf->SetWidths(array(
+                        22,
+                        20,
+                        65,
+                        20,
+                        15,
+                        24,
+                        20,
+                        15,
+                        24,
+                        27,
+                        27));
+
+                    $this->pdf->SetAligns(array(
+                        "L",
+                        "L",
+                        "L",
+                        "L",
+                        "R",
+                        "R",
+                        "L",
+                        "R",
+                        "R",
+                        "L",
+                        "R"));
+                    $this->pdf->mRows(array(
+                        "$title_date",
+                        "$title_ref",
+                        "$title_detail",
+                        "$title_recive",
+                        "$title_price_per_lit",
+                        "$title_summary",
+                        "$title_pay",
+                        "$title_price_per_lit",
+                        "$title_summary",
+                        "$title_total",
+                        "$title_summary"));
+
                     $i = 0;
                     $y = 20;
 
 
                 }
 
-
+                $t_sellOil_amount = $t_sellOil_amount+ $sell_amount;
                 $y = $y + 8;
                 $i++;
 
             } // End for each
 
             if ('{nb}' == $p) {
-                /*
-                $this->pdf->SetX(5);
-                $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
-                $this->pdf->SetFont('THNiramitAS-Bold', '', 15);
-                $this->pdf->Cell(90, 8, iconv('utf-8', 'tis-620', "ผลรวมย่อย"), 1, 'C');
+
                 $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
                 $this->pdf->SetFont('THNiramitAS', '', 15);
-                $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', number_format($subtotal_receiveOil,
-                    2, '.', ',')), 1, 'C');
-                $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-                $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', number_format($subtotal_receiveAmount,
-                    2, '.', ',')), 1, 'C');
-                $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', number_format($subtotal_sellOil,
-                    2, '.', ',')), 1, 'C');
-                $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-                $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', number_format($subtotal_sellAmount,
-                    2, '.', ',')), 1, 'C');
-                $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-                $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-                $this->pdf->Ln();
-                */
+                /*
                 $this->pdf->SetWidths(array(
-                    20,
+                    22,
                     20,
                     65,
                     20,
@@ -2650,13 +2628,13 @@ alert('There are no fields to generate a report');
                     "L",
                     "L",
                     "L",
+                    "R",
+                    "R",
                     "L",
+                    "R",
+                    "R",
                     "L",
-                    "L",
-                    "L",
-                    "L",
-                    "L",
-                    "L"));
+                    "R"));
                 $this->pdf->mRows(array(
                     "$stock_date",
                     "$ref_no",
@@ -2669,47 +2647,91 @@ alert('There are no fields to generate a report');
                     "$sell_amount",
                     "",
                     ""));
+    */
 
 
             }
 
             /*Sum footer*/
             /*ยอดยกมา*/
-            $this->pdf->SetXY(5, 170);
+            //$this->pdf->SetXY(10, 170);
             $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
             $this->pdf->SetFont('THNiramitAS-Bold', '', 15);
-            $this->pdf->Cell(90, 8, iconv('utf-8', 'tis-620', "ยอดยกมา"), 1, 'C');
+            $this->pdf->Cell(107, 8, iconv('utf-8', 'tis-620', "ยอดยกมา"), 1, 'C');
             $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
             $this->pdf->SetFont('THNiramitAS', '', 15);
-            $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-            $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-            $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-            $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-            $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-            $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-            $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', number_format($Balance_receiveOil,
+            $this->pdf->Cell(20, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
+            $this->pdf->Cell(15, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
+            $this->pdf->Cell(24, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
+            $this->pdf->Cell(20, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
+            $this->pdf->Cell(15, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
+            $this->pdf->Cell(24, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
+            $this->pdf->Cell(27, 8, iconv('utf-8', 'tis-620', number_format($Balance_receiveOil,
                 2, '.', ',')), 1, 'C');
-            $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', $Balance_Amount), 1, 'C');
+            $this->pdf->Cell(27, 8, iconv('utf-8', 'tis-620', $Balance_Amount), 1, 'C');
             $this->pdf->Ln();
-            $this->pdf->SetX(5);
+            $this->pdf->SetX(10);
             $this->pdf->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
             $this->pdf->SetFont('THNiramitAS-Bold', '', 15);
-            $this->pdf->Cell(90, 8, iconv('utf-8', 'tis-620', "รวมทั้งสิ้น"), 1, 'C');
+            #$this->pdf->Cell(107, 8, iconv('utf-8', 'tis-620', "รวมทั้งสิ้น"), 1, 'C');
             $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
             $this->pdf->SetFont('THNiramitAS', '', 15);
-            $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', number_format($total_receiveoil)),
+            /*
+            $this->pdf->Cell(20, 8, iconv('utf-8', 'tis-620', number_format($total_receiveoil)),
                 1, 'C');
-            $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-            $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', number_format($total_receiveamount,
+            $this->pdf->Cell(15, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
+            $this->pdf->Cell(24, 8, iconv('utf-8', 'tis-620', number_format($total_receiveamount,
                 2, '.', ',')), 1, 'C');
-            $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', number_format($total_selloil,
+            $this->pdf->Cell(20, 8, iconv('utf-8', 'tis-620', number_format($total_selloil,
                 2, '.', ',')), 1, 'C');
-            $this->pdf->Cell(22, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
-            $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', number_format($total_sellamount,
+            $this->pdf->Cell(15, 8, iconv('utf-8', 'tis-620', "-"), 1, 'C');
+            $this->pdf->Cell(24, 8, iconv('utf-8', 'tis-620', number_format($total_sellamount,
                 2, '.', ',')), 1, 'C');
-            $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', number_format($all_totalOilAmount,
+            $this->pdf->Cell(27, 8, iconv('utf-8', 'tis-620', number_format($all_totalOilAmount,
                 2, '.', ',')), 1, 'C');
-            $this->pdf->Cell(25, 8, iconv('utf-8', 'tis-620', $all_totalAmount), 1, 'C');
+            $this->pdf->Cell(27, 8, iconv('utf-8', 'tis-620', $all_totalAmount), 1, 'R');
+            */
+
+            $t_recive_oil = number_format($total_receiveoil,2);
+            $t_rec_amount = number_format($total_receiveamount,2);
+            $t_sale_oil = number_format($total_selloil,2);
+            $t_sell_amount = number_format($total_sellamount,2);
+            $al_total_oil = number_format($all_totalOilAmount,2);
+
+            $this->pdf->SetWidths(array(
+               107,
+                20,
+                15,
+                24,
+                20,
+                15,
+                24,
+                27,
+                27));
+            $this->pdf->SetAligns(array(
+                "L",
+                "L",
+                "R",
+                "R",
+                "L",
+                "R",
+                "R",
+                "L",
+                "R"));
+            $this->pdf->mRows(array(
+                "$title_foot_total",
+                "$t_recive_oil",
+                "-",
+                "$t_rec_amount",
+                "$t_sale_oil",
+                "-",
+                "$t_sell_amount",
+                "$al_total_oil",
+                ""));
+
+
+
+
 
 
             $this->pdf->output();
@@ -2846,7 +2868,7 @@ alert('There are no fields to generate a report');
                 "$title_note"));
 
             $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
-            $this->pdf->SetFont('THNiramitAS', '', 16);
+            $this->pdf->SetFont('THNiramitAS', '', 15);
 
             // Get Result Report
             $result = $this->report->check_order_report($factory_id, $car_id, $start_date, $end_date);
@@ -2883,7 +2905,7 @@ alert('There are no fields to generate a report');
                 $ir_txtTotal = iconv('utf-8', 'tis-620', "รวมทั้งหมด");
 
                 $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
-                $this->pdf->SetFont('THNiramitAS', '', 16);
+                $this->pdf->SetFont('THNiramitAS', '', 15);
 
                 /*กำหนดค่า Space ด้าน ด้านซ้าย*/
                 $space_left = $page_height - ($this->pdf->GetY() + $bottom_margin); // space left on page
@@ -2924,7 +2946,7 @@ alert('There are no fields to generate a report');
                     "{$row['car_number']}",
                     "$d_name",
                     "$ir_oil",
-                    "$space_left"));
+                    "$ir_note"));
 
 
                 //if ($r == 27) {
@@ -3071,7 +3093,7 @@ alert('There are no fields to generate a report');
             #$this->pdf->SetFont('THNiramitAS-Bold', '', 14);
 
             $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
-            $this->pdf->SetFont('THNiramitAS', '', 16);
+            $this->pdf->SetFont('THNiramitAS', '', 15);
             /*
             $this->pdf->Cell(139, 6, iconv('utf-8', 'tis-620', "รวมทั้งหมด"), 1, 'C');
             $this->pdf->Cell(18, 6, iconv('utf-8', 'tis-620', "$total_cubicvalue"), 1, 0,
