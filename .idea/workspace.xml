@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
+<<<<<<< HEAD
     <bookmark url="file://$PROJECT_DIR$/application/controllers/ireport.php" line="2746" mnemonic="1" />
+=======
+<<<<<<< HEAD
+    <bookmark url="file://$PROJECT_DIR$/application/controllers/ireport.php" line="2969" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/application/controllers/ireport.php" line="599" mnemonic="2" />
+    <bookmark url="file://$PROJECT_DIR$/application/controllers/ireport.php" line="984" mnemonic="3" />
+    <bookmark url="file://$PROJECT_DIR$/application/controllers/ireport.php" line="1053" mnemonic="4" />
+    <bookmark url="file://$PROJECT_DIR$/application/controllers/ireport.php" line="882" mnemonic="5" />
+    <bookmark url="file://$PROJECT_DIR$/application/controllers/ireport.php" line="1303" mnemonic="6" />
+    <bookmark url="file://$PROJECT_DIR$/application/controllers/ireport.php" line="3542" mnemonic="7" />
+    <bookmark url="file://$PROJECT_DIR$/application/controllers/ireport.php" line="2464" mnemonic="8" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2248693c-ee66-4e8c-afd2-e14dea5aa7e0" name="Default" comment="" />
+=======
+    <bookmark url="file://$PROJECT_DIR$/application/controllers/ireport.php" line="2749" mnemonic="1" />
+>>>>>>> origin/master
     <bookmark url="file://$PROJECT_DIR$/application/controllers/ireport.php" line="599" mnemonic="2" />
     <bookmark url="file://$PROJECT_DIR$/application/controllers/ireport.php" line="964" mnemonic="3" />
     <bookmark url="file://$PROJECT_DIR$/application/controllers/ireport.php" line="1031" mnemonic="4" />
@@ -21,6 +38,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/saletax.php" afterPath="$PROJECT_DIR$/application/controllers/saletax.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/libraries/pdf.php" afterPath="$PROJECT_DIR$/application/libraries/pdf.php" />
     </list>
+>>>>>>> origin/master
     <ignored path="transportcm.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -46,24 +64,6 @@
         <option name="myItemId" />
         <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
       </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - transportation@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - transportation@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$GroupNode" />
-      </PATH_ELEMENT>
     </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -72,17 +72,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.0">
+=======
+<<<<<<< HEAD
+            <state vertical-scroll-proportion="1.7882882">
+              <caret line="176" column="0" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+=======
+            <state vertical-scroll-proportion="-1.4193548">
+>>>>>>> origin/master
               <caret line="172" column="54" selection-start-line="172" selection-start-column="54" selection-end-line="172" selection-end-column="54" />
+>>>>>>> origin/master
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="php.ini" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../php/php.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2088" column="0" selection-start-line="2088" selection-start-column="0" selection-end-line="2088" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file leaf-file-name="ireport.php" pinned="false" current-in-tab="true">
+=======
+      <file leaf-file-name="products_model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/products_model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+              <folding />
+=======
+      <file leaf-file-name="ireport.php" pinned="false" current-in-tab="false">
+>>>>>>> origin/master
         <entry file="file://$PROJECT_DIR$/application/controllers/ireport.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.4539007">
@@ -133,12 +164,26 @@
                 <marker date="1459149078481" expanded="true" signature="124603:124914" placeholder="..." />
                 <marker date="1459149078481" expanded="true" signature="124797:124833" placeholder="..." />
               </folding>
+>>>>>>> origin/master
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="truckorder.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/truckorder.php">
+=======
+<<<<<<< HEAD
+      <file leaf-file-name="ireport.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/ireport.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2803" column="18" selection-start-line="2803" selection-start-column="18" selection-end-line="2803" selection-end-column="18" />
+              <folding />
+=======
+      <file leaf-file-name="pdf.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/libraries/pdf.php">
+>>>>>>> origin/master
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-21.290323">
               <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
@@ -154,6 +199,7 @@
                 <marker date="1459141371971" expanded="true" signature="17155:17235" placeholder="UPDATE order... " />
                 <marker date="1459141371971" expanded="true" signature="18121:18193" placeholder="UPDATE order... " />
               </folding>
+>>>>>>> origin/master
             </state>
           </provider>
         </entry>
@@ -173,11 +219,20 @@
       <file leaf-file-name="saletax.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/saletax.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="-19.870968">
               <caret line="112" column="12" selection-start-line="112" selection-start-column="12" selection-end-line="112" selection-end-column="12" />
               <folding>
                 <marker date="1459138902682" expanded="true" signature="2632:2695" placeholder="SELECT DISTI... taxsell" />
               </folding>
+=======
+            <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
+              <caret line="7" column="53" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
+=======
+              <caret line="22" column="61" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="61" />
+              <folding />
+>>>>>>> origin/master
             </state>
           </provider>
         </entry>
@@ -185,11 +240,18 @@
       <file leaf-file-name="pdf.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/libraries/pdf.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="23.666666">
               <caret line="804" column="61" selection-start-line="804" selection-start-column="61" selection-end-line="804" selection-end-column="61" />
               <folding>
                 <element signature="e#16238#18891#0#PHP" expanded="false" />
               </folding>
+=======
+            <state vertical-scroll-proportion="0.0">
+              <caret line="86" column="38" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
+>>>>>>> origin/master
+              <folding />
+>>>>>>> origin/master
             </state>
           </provider>
         </entry>
@@ -197,11 +259,21 @@
       <file leaf-file-name="ss.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/ss.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="-62.451614">
               <caret line="88" column="8" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="8" />
               <folding>
                 <element signature="e#6#85#0#PHP" expanded="true" />
               </folding>
+=======
+            <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
+              <caret line="96" column="5" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="31" />
+=======
+              <caret line="95" column="34" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="34" />
+>>>>>>> origin/master
+              <folding />
+>>>>>>> origin/master
             </state>
           </provider>
         </entry>
@@ -273,16 +345,12 @@
       <server host="127.0.0.1" id="f624a0eb-6b2b-4843-a9ee-087de1cb8493" name="local machone" port="779" use_path_mappings="true" />
     </servers>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP for Xampp">
-    <include_path>
-      <path value="F:\xampp\ciHelp" />
-    </include_path>
-  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="xampp for Apache" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -319,6 +387,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+<<<<<<< HEAD
+=======
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="transportcm" />
@@ -431,13 +501,18 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
+>>>>>>> origin/master
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+=======
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+>>>>>>> origin/master
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ciHelp" />
   </component>
@@ -484,7 +559,7 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\sony\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -505,20 +580,35 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2782516" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="false" />
+    <layout>
+<<<<<<< HEAD
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25321338" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32810867" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2750533" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> origin/master
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272727" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> origin/master
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32839838" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -585,9 +675,218 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/application/models/products_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/ireport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/ss.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="53" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/libraries/conv_date.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="5" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="176" column="0" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/products_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/ireport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/ss.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="53" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/libraries/conv_date.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="20" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
+          <caret line="188" column="9" selection-start-line="188" selection-start-column="9" selection-end-line="188" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/products_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/ireport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/products_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/ireport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1018" column="0" selection-start-line="1018" selection-start-column="0" selection-end-line="1018" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> origin/master
+          <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/products_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+<<<<<<< HEAD
+          <folding />
+=======
+>>>>>>> origin/master
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/ireport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+          <folding />
+=======
+          <folding>
+            <element signature="e#642#749#0#PHP" expanded="false" />
+            <element signature="e#755#871#0#PHP" expanded="false" />
+            <element signature="e#877#1010#0#PHP" expanded="false" />
+            <element signature="e#1034#1636#0#PHP" expanded="false" />
+            <element signature="e#1658#2010#0#PHP" expanded="false" />
+            <element signature="e#2016#2363#0#PHP" expanded="false" />
+            <element signature="e#2369#2680#0#PHP" expanded="false" />
+            <element signature="e#2686#6605#0#PHP" expanded="false" />
+            <element signature="e#14027#15127#0#PHP" expanded="false" />
+            <element signature="e#15168#16141#0#PHP" expanded="false" />
+            <element signature="e#19760#19778#0#PHP" expanded="false" />
+            <element signature="e#19783#30337#0#PHP" expanded="false" />
+            <element signature="e#37117#40064#0#PHP" expanded="false" />
+            <element signature="e#40089#40760#0#PHP" expanded="false" />
+            <element signature="e#40140#40753#0#PHP" expanded="false" />
+            <element signature="e#40789#44752#0#PHP" expanded="false" />
+            <element signature="e#44801#44860#0#PHP" expanded="false" />
+            <element signature="e#44899#45647#0#PHP" expanded="false" />
+            <element signature="e#45654#50096#0#PHP" expanded="false" />
+            <element signature="e#50137#53470#0#PHP" expanded="false" />
+            <element signature="e#65466#74020#0#PHP" expanded="false" />
+            <element signature="e#86909#106142#0#PHP" expanded="false" />
+            <element signature="e#120612#120838#0#PHP" expanded="false" />
+            <element signature="e#120872#124401#0#PHP" expanded="false" />
+            <element signature="e#124426#127954#0#PHP" expanded="false" />
+            <element signature="e#127979#137199#0#PHP" expanded="false" />
+            <marker date="1458808466473" expanded="true" signature="5052:5189" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="5796:6106" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="8731:8868" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="9373:9702" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="12365:12502" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="12952:13296" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="18482:18621" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="18730:19045" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="23337:23462" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="32084:32223" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="32823:33138" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="43306:43445" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="43618:43937" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="48651:48790" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="48963:49282" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="52088:52227" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="52411:52723" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="122918:123057" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="123241:123471" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="123241:123552" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="123435:123471" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="126470:126609" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="126793:127023" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="126793:127104" placeholder="..." />
+            <marker date="1458808466473" expanded="true" signature="126987:127023" placeholder="..." />
+          </folding>
+>>>>>>> origin/master
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+>>>>>>> origin/master
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -597,6 +896,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="704" column="54" selection-start-line="704" selection-start-column="41" selection-end-line="704" selection-end-column="54" />
+<<<<<<< HEAD
+          <folding />
+=======
           <folding>
             <element signature="e#642#749#0#PHP" expanded="false" />
             <element signature="e#755#871#0#PHP" expanded="false" />
@@ -643,6 +945,7 @@
             <marker date="1459149078481" expanded="true" signature="124603:124914" placeholder="..." />
             <marker date="1459149078481" expanded="true" signature="124797:124833" placeholder="..." />
           </folding>
+>>>>>>> origin/master
         </state>
       </provider>
     </entry>
@@ -660,6 +963,8 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/../../ciHelp/CI_phpStorm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -667,6 +972,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> origin/master
     <entry file="file://$PROJECT_DIR$/application/libraries/conv_date.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -686,6 +992,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="704" column="54" selection-start-line="704" selection-start-column="41" selection-end-line="704" selection-end-column="54" />
+<<<<<<< HEAD
+          <folding />
+=======
           <folding>
             <element signature="e#642#749#0#PHP" expanded="false" />
             <element signature="e#755#871#0#PHP" expanded="false" />
@@ -732,6 +1041,7 @@
             <marker date="1459149078481" expanded="true" signature="124603:124914" placeholder="..." />
             <marker date="1459149078481" expanded="true" signature="124797:124833" placeholder="..." />
           </folding>
+>>>>>>> origin/master
         </state>
       </provider>
     </entry>
@@ -749,6 +1059,8 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/../../ciHelp/CI_phpStorm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -756,6 +1068,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> origin/master
     <entry file="file://$PROJECT_DIR$/application/libraries/conv_date.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -775,6 +1088,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="704" column="54" selection-start-line="704" selection-start-column="41" selection-end-line="704" selection-end-column="54" />
+<<<<<<< HEAD
+          <folding />
+=======
           <folding>
             <element signature="e#642#749#0#PHP" expanded="false" />
             <element signature="e#755#871#0#PHP" expanded="false" />
@@ -821,6 +1137,7 @@
             <marker date="1459149078481" expanded="true" signature="124603:124914" placeholder="..." />
             <marker date="1459149078481" expanded="true" signature="124797:124833" placeholder="..." />
           </folding>
+>>>>>>> origin/master
         </state>
       </provider>
     </entry>
@@ -838,6 +1155,8 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/../../ciHelp/CI_phpStorm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -845,6 +1164,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> origin/master
     <entry file="file://$PROJECT_DIR$/application/libraries/conv_date.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -864,6 +1184,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="704" column="54" selection-start-line="704" selection-start-column="41" selection-end-line="704" selection-end-column="54" />
+<<<<<<< HEAD
+          <folding />
+=======
           <folding>
             <element signature="e#642#749#0#PHP" expanded="false" />
             <element signature="e#755#871#0#PHP" expanded="false" />
@@ -910,6 +1233,7 @@
             <marker date="1459149078481" expanded="true" signature="124603:124914" placeholder="..." />
             <marker date="1459149078481" expanded="true" signature="124797:124833" placeholder="..." />
           </folding>
+>>>>>>> origin/master
         </state>
       </provider>
     </entry>
@@ -927,6 +1251,8 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/../../ciHelp/CI_phpStorm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -934,6 +1260,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> origin/master
     <entry file="file://$PROJECT_DIR$/application/libraries/conv_date.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -969,6 +1296,8 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/../../ciHelp/config">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -983,6 +1312,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> origin/master
     <entry file="file://$PROJECT_DIR$/CI_phpStorm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.7724867">
@@ -997,42 +1327,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../ciHelp/DB_active_rec.php">
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/application/models/report_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/36e24b9e/2052c45f-cce7-4106-b93a-87c26a6fcd91/transportation.expense">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/2052c45f-cce7-4106-b93a-87c26a6fcd91/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.038732395">
-          <caret line="1" column="59" selection-start-line="1" selection-start-column="59" selection-end-line="1" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../php/php.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7380952">
-          <caret line="2088" column="26" selection-start-line="2088" selection-start-column="26" selection-end-line="2088" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.58201057">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/products_model.php">
+=======
+    <entry file="file://$PROJECT_DIR$/../../ciHelp/DB_active_rec.php">
+>>>>>>> origin/master
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/ss.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
+          <caret line="7" column="53" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/libraries/conv_date.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="5" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="31" />
+=======
           <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
         </state>
       </provider>
@@ -1149,18 +1476,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="95" column="34" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="34" />
+>>>>>>> origin/master
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/application/controllers/ireport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2803" column="18" selection-start-line="2803" selection-start-column="18" selection-end-line="2803" selection-end-column="18" />
+=======
     <entry file="file://$PROJECT_DIR$/application/views/reports/orders-by-month.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="61" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="61" />
+>>>>>>> origin/master
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1169,6 +1505,14 @@
         </state>
       </provider>
     </entry>
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/../../php/php.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2088" column="0" selection-start-line="2088" selection-start-column="0" selection-end-line="2088" selection-end-column="0" />
+=======
+>>>>>>> origin/master
     <entry file="file://$PROJECT_DIR$/application/views/reports/report_order_month.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1187,6 +1531,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/libraries/pdf.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="23.666666">
           <caret line="804" column="61" selection-start-line="804" selection-start-column="61" selection-end-line="804" selection-end-column="61" />
           <folding>
@@ -1241,13 +1586,29 @@
             <marker date="1459141371971" expanded="true" signature="17155:17235" placeholder="UPDATE order... " />
             <marker date="1459141371971" expanded="true" signature="18121:18193" placeholder="UPDATE order... " />
           </folding>
+=======
+        <state vertical-scroll-proportion="-1.4193548">
+          <caret line="172" column="54" selection-start-line="172" selection-start-column="54" selection-end-line="172" selection-end-column="54" />
+>>>>>>> origin/master
+          <folding />
+>>>>>>> origin/master
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/ireport.php">
+    <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.4539007">
           <caret line="2672" column="36" selection-start-line="2672" selection-start-column="36" selection-end-line="2672" selection-end-column="36" />
+=======
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="1.7882882">
+          <caret line="176" column="0" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+          <folding />
+=======
+        <state vertical-scroll-proportion="-10.566667">
+          <caret line="1029" column="35" selection-start-line="1029" selection-start-column="24" selection-end-line="1029" selection-end-column="35" />
+>>>>>>> origin/master
           <folding>
             <element signature="e#642#749#0#PHP" expanded="false" />
             <element signature="e#755#871#0#PHP" expanded="false" />
@@ -1294,6 +1655,7 @@
             <marker date="1459149078481" expanded="true" signature="124603:124914" placeholder="..." />
             <marker date="1459149078481" expanded="true" signature="124797:124833" placeholder="..." />
           </folding>
+>>>>>>> origin/master
         </state>
       </provider>
     </entry>
