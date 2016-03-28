@@ -109,7 +109,7 @@ class Buytax extends CI_Controller
             $col['name'] = "total_vat";
             $col["editable"] = true;
             $col["editrules"] = array("number" => true, "required" => true);
-            $col["editoptions"] = array("onblur" => "update_vat()");
+            #$col["editoptions"] = array("onblur" => "update_vat()");
             $col["formatter"] = "number";
             $col["align"] = "right";
             $col["formatoptions"] = array(

@@ -110,7 +110,7 @@ class Saletax extends CI_Controller
             $col['name'] = "total_vat";
             $col["editable"] = true;
             $col["editrules"] = array("number" => true, "required" => true);
-            $col["editoptions"] = array("onblur" => "update_vat()");
+           # $col["editoptions"] = array("onblur" => "update_vat()");
             $col["align"] = "right";
             $col['formatter'] = "currency";
             $col["formatoptions"] = array(
