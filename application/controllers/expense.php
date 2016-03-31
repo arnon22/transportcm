@@ -49,7 +49,6 @@ class Expense extends CI_Controller
                 $grid = new jqgrid();
                 $opt["caption"] = $this->lang->line('factory');
                 $opt["detail_grid_id"] = "list2";
-
                 $opt['autowidth'] = true;
                 $opt['height'] = "60";
                 $opt["subgridparams"] = "factory_id,factory_code,factory_name";
@@ -96,13 +95,14 @@ class Expense extends CI_Controller
 
                 $out_master = $grid->render("list1");
 
+
                 // detail grid
                 $grid = new jqgrid();
 
                 $opt = array();
-                $opt["sortname"] = 'id'; // by default sort grid by this field
+                $opt["sortname"] = 'expense_date'; // by default sort grid by this field
                 $opt["sortorder"] = "desc"; // ASC or DESC
-               $opt["height"] = 300; // autofit height of subgrid
+                $opt["height"] = 300; // autofit height of subgrid
                 $opt["rowNum"] = 10; // by default 20
                 $opt['rowList'] = array(
                     10,

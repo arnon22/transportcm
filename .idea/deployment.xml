@@ -2,9 +2,10 @@
 <project version="4">
   <component name="PublishConfigData">
     <serverData>
-      <paths name="loacalhost">
+      <paths name="Xampp Apache">
         <serverdata>
           <mappings>
+            <mapping local="$PROJECT_DIR$/../../ciHelp" web="/" />
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>

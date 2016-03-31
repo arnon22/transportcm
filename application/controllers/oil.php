@@ -369,7 +369,7 @@ HAVING factory_status =1";
             $col2['name'] = 'receive_price';
             $col2['align'] = "right";
             $col2['editable'] = true;
-            $col2['formatter'] = "number";
+            #$col2['formatter'] = "number";
             $col2['search'] = false;
             $col2["editrules"] = array("required" => true, "number" => true);
             $col2["editoptions"] = array("onblur" => "update_reciveValue()", "defaultValue" =>

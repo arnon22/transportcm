@@ -508,8 +508,15 @@ class Pdf extends FPDF
         $ed_date = $this->CI->conv_date->DateThai2($ed_date2);
 
 
-        $title = "รายงานค่าใช้จ่าย วันที่ $st_date ถึงวันที่ $ed_date";
+
+
+        if($expense_Type=="car"){
+            $title = "รายงาน รายจ่ายเกี่ยวกับรถ";
+        }else{
+            $title = "รายงาน รายจ่ายทั่วไป";
+        }
         $head_report = iconv('UTF-8', 'TIS-620', $title);
+        $right_report = "วันที่ $st_date ถึงวันที่ $ed_date";
 
         $i = 0;
 
@@ -543,9 +550,15 @@ class Pdf extends FPDF
         $this->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
         $this->SetFont('THNiramitAS-Bold', '', 16);
         $this->Header();
-        $this->SetX(50);
+        $this->SetX(75);
         $this->Cell(50, 10, $head_report, 'C');
         $this->Ln();
+        $this->AddFont('THNiramitAS', '', 'THNiramit.php');
+        $this->SetFont('THNiramitAS', '', 15);
+        $this->SetX(-65);
+        $this->Cell(10, 10, iconv('utf-8', 'tis-620', $right_report), 'C');
+        $this->Ln();
+
 
         if ($expense_Type == "car")
         {
@@ -557,8 +570,9 @@ class Pdf extends FPDF
             $car_number_title = iconv('utf-8', 'tis-620', $this->CI->lang->line('car_number'));
             $Amount_title = iconv('utf-8', 'tis-620', $this->CI->lang->line('amount'));
             $Remark_title = iconv('utf-8', 'tis-620', $this->CI->lang->line('remark'));
-            $this->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
-            $this->SetFont('THNiramitAS-Bold', '', 15);
+
+            $this->AddFont('THNiramitAS', '', 'THNiramit.php');
+            $this->SetFont('THNiramitAS', '', 15);
             #TITLE
             $this->SetWidths(array(
                 22,
@@ -569,12 +583,12 @@ class Pdf extends FPDF
                 37
             ));
             $this->SetAligns(array(
-                "L",
-                "L",
-                "L",
-                "L",
-                "R",
-                "L"
+                "C",
+                "C",
+                "C",
+                "C",
+                "C",
+                "C"
             ));
             $this->mRows(array(
                 "$Date_title",
@@ -594,8 +608,8 @@ class Pdf extends FPDF
             $List_title = iconv('utf-8', 'tis-620', $this->CI->lang->line('list'));
             $Amount_title = iconv('utf-8', 'tis-620', $this->CI->lang->line('amount'));
             $Remark_title = iconv('utf-8', 'tis-620', $this->CI->lang->line('remark'));
-            $this->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
-            $this->SetFont('THNiramitAS-Bold', '', 15);
+            $this->AddFont('THNiramitAS', '', 'THNiramit.php');
+            $this->SetFont('THNiramitAS', '', 15);
             #TITLE
             $this->SetWidths(array(
                 22,
@@ -604,11 +618,11 @@ class Pdf extends FPDF
                 28,
                 45));
             $this->SetAligns(array(
-                "L",
                 "C",
                 "C",
-                "R",
-                "L"));
+                "C",
+                "C",
+                "C"));
             $this->mRows(array(
                 "$Date_title",
                 "$factory_title",
@@ -714,7 +728,7 @@ class Pdf extends FPDF
                     $this->SetFillColor(220, 220, 255); //$this->pdf->SetFillColor(200,220,255);
                     $this->Cell(140, 5, $sub_total_title, 1, 0, "C", true);
                     $this->Cell(24, 5, $sub_total, 1, 0, "R", true);
-                    $this->Cell(37, 5, $Baht, 1, 0, "L", true);
+                    $this->Cell(37, 5, "", 1, 0, "L", true);
                     $this->Ln();
                 } else
                 {
@@ -731,7 +745,7 @@ class Pdf extends FPDF
                     $this->SetFillColor(220, 220, 255); //$this->pdf->SetFillColor(200,220,255);
                     $this->Cell(127, 5, $sub_total_title, 1, 0, "C", true);
                     $this->Cell(28, 5, $sub_total, 1, 0, "R", true);
-                    $this->Cell(45, 5, $Baht, 1, 0, "C", true);
+                    $this->Cell(45, 5, "", 1, 0, "C", true);
 
                 }
 
@@ -747,12 +761,18 @@ class Pdf extends FPDF
                     $this->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
                     $this->SetFont('THNiramitAS-Bold', '', 16);
                     $this->Header();
-                    $this->SetX(50);
+                    $this->SetX(75);
                     $this->Cell(50, 10, $head_report, 'C');
                     $this->Ln();
+                    $this->AddFont('THNiramitAS', '', 'THNiramit.php');
+                    $this->SetFont('THNiramitAS', '', 15);
+                    $this->SetX(-65);
+                    $this->Cell(10, 10, iconv('utf-8', 'tis-620', $right_report), 'C');
+                    $this->Ln();
+
                     #TITLE
-                    $this->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
-                    $this->SetFont('THNiramitAS-Bold', '', 15);
+                    $this->AddFont('THNiramitAS', '', 'THNiramit.php');
+                    $this->SetFont('THNiramitAS', '', 15);
                     $this->SetWidths(array(
                         22,
                         16,
@@ -790,8 +810,13 @@ class Pdf extends FPDF
                     $this->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
                     $this->SetFont('THNiramitAS-Bold', '', 16);
                     $this->Header();
-                    $this->SetX(50);
+                    $this->SetX(75);
                     $this->Cell(50, 10, $head_report, 'C');
+                    $this->Ln();
+                    $this->AddFont('THNiramitAS', '', 'THNiramit.php');
+                    $this->SetFont('THNiramitAS', '', 15);
+                    $this->SetX(-65);
+                    $this->Cell(10, 10, iconv('utf-8', 'tis-620', $right_report), 'C');
                     $this->Ln();
 
                     $factory_title = iconv('utf-8', 'tis-620', $this->CI->lang->line('factory'));
@@ -801,8 +826,8 @@ class Pdf extends FPDF
                     $Amount_title = iconv('utf-8', 'tis-620', $this->CI->lang->line('amount'));
                     $Remark_title = iconv('utf-8', 'tis-620', $this->CI->lang->line('remark'));
                     #TITLE
-                    $this->AddFont('THNiramitAS-Bold', '', 'THNiramit Bold.php');
-                    $this->SetFont('THNiramitAS-Bold', '', 15);
+                    $this->AddFont('THNiramitAS', '', 'THNiramit.php');
+                    $this->SetFont('THNiramitAS', '', 15);
                     $this->SetWidths(array(
                         22,
                         15,
@@ -810,11 +835,11 @@ class Pdf extends FPDF
                         28,
                         45));
                     $this->SetAligns(array(
-                        "L",
                         "C",
                         "C",
-                        "R",
-                        "L"));
+                        "C",
+                        "C",
+                        "C"));
                     $this->mRows(array(
                         "$Date_title",
                         "$factory_title",
@@ -842,7 +867,7 @@ class Pdf extends FPDF
                 $this->SetFillColor(220, 220, 255); //$this->pdf->SetFillColor(200,220,255);
                 $this->Cell(140, 5, $sub_total_title, 1, 0, "C", true);
                 $this->Cell(24, 5, $sub_total, 1, 0, "R", true);
-                $this->Cell(37, 5, $Baht, 1, 0, "L", true);
+                $this->Cell(37, 5, "", 1, 0, "L", true);
             } else
             {
                 //Subtotal หน้าสุดท้าย
@@ -850,7 +875,7 @@ class Pdf extends FPDF
                 $this->SetFillColor(220, 220, 255);
                 $this->Cell(127, 5, $sub_total_title, 1, 0, "C", true);
                 $this->Cell(28, 5, $sub_total, 1, 0, "R", true);
-                $this->Cell(45, 5, $Baht, 1, 0, "L", true);
+                $this->Cell(45, 5, "", 1, 0, "L", true);
                 /*
                 $this->SetWidths(array(
                     127,
@@ -886,15 +911,16 @@ class Pdf extends FPDF
             $this->SetFillColor(200, 220, 255); //$this->pdf->SetFillColor(200,220,255);
             $this->Cell(140, 5, $totals_title, 1, 0, "C", true);
             $this->Cell(24, 5, $totals, 1, 0, "R", true);
-            $this->Cell(37, 5, $Baht, 1, 0, "L", true);
+            $this->Cell(37, 5, "", 1, 0, "L", true);
 
         } else
         {
+            #Normal Footer
             $this->SetY(270);
             $this->SetFillColor(200, 220, 255); //$this->pdf->SetFillColor(200,220,255);
-            $this->Cell(120, 5, $totals_title, 1, 0, "C", true);
+            $this->Cell(127, 5, $totals_title, 1, 0, "C", true);
             $this->Cell(28, 5, $totals, 1, 0, "R", true);
-            $this->Cell(45, 5, $Baht, 1, 0, "L", true);
+            $this->Cell(45, 5, "", 1, 0, "L", true);
         }
 
 

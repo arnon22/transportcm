@@ -32,7 +32,15 @@ $this->pdf->AddFont('THNiramitAS', '', 'THNiramit.php');
 $this->pdf->SetFont('THNiramitAS', '', 16);
 
 
+//$this->pdf->SetX(3);
+$this->pdf->Cell(10, 10, iconv('utf-8', 'tis-620', $left_report), 'C');
+$this->pdf->SetX(-60);
+$this->pdf->Cell(10, 10, iconv('utf-8', 'tis-620', $right_report), 'C');
+$this->pdf->Ln();
+
+
 $order_date = date('Y-m-d', strtotime($row['order_date']));
+$ir_date = $this->conv_date->eng2engDate($order_date);
 $order_time = date('H:i', strtotime($row['order_date']));
 
 $startdate = $this->session->userdata('startdate');

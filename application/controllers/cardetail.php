@@ -92,11 +92,31 @@ class Cardetail extends CI_Controller
                 }
 
                 if ($totalDistance != "" and $totalCubic != "" and $Count_Order != "") {
+                    if($total_oilAmount!=0||$total_oilAmount!=""){
+
+
                     //$aver_oil_distance = ($totalUseoil / $totalDistance);
-                    $aver_oil_distance = ($totalDistance/$totalUseoil);
-                    $aver_oil_cubic = ($totalUseoil / $totalCubic);
-                    $aver_oil_countOrder = ($totalUseoil / $Count_Order);
+                    /*เฉลี่ยน้ำมัน กม./ลิตร*/
+                    #$aver_oil_distance = ($totalDistance/$totalUseoil);
+                    $aver_oil_distance = ($totalDistance/$total_oilAmount); //ระยะทาง/เติมน้ำมัน
+                    /*เฉลี่ยน้ำมัน ลิตร/คิว*/
+                    #$aver_oil_cubic = ($totalUseoil / $totalCubic);
+                    $aver_oil_cubic = ($total_oilAmount / $totalCubic); # เติมน้ำมัน/คิว
+                    /*เฉลี่ยน้ำมัน ลิตร/เที่ยว*/
+                    #$aver_oil_countOrder = ($totalUseoil / $Count_Order);
+                    $aver_oil_countOrder = ($total_oilAmount / $Count_Order);# เติมน้ำมัน/จำนวนเที่ยว
+                    /*เฉลี่ยคิว/เที่ยว*/
                     $aver_cubic_countOrder = ($totalCubic / $Count_Order);
+                    }else{
+                        $aver_oil_distance = 0;
+                        $aver_oil_cubic = 0;
+                        $aver_oil_countOrder = 0;
+                        #$aver_cubic_countOrder = 0;
+                        #$totalDistance = 0;
+                        #$totalCubic = 0;
+                        #$totalUseoil = 0;
+                    }
+
                 } else {
                     $aver_oil_distance = 0;
                     $aver_oil_cubic = 0;
